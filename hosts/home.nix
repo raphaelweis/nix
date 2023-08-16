@@ -18,13 +18,18 @@
 		vscode
 		networkmanagerapplet
 		acpi
-		gh
     ];
 
-    programs.git = {
-        enable = true; 
-        userEmail = "raphael.weis.2003@gmail.com";
-        userName = "Raphaël Weis";
+    programs = {
+		git = {
+        	enable = true; 
+        	userEmail = "raphael.weis.2003@gmail.com";
+        	userName = "Raphaël Weis";
+		};
+		gh = {
+			enable = true;
+			gitCredentialHelper.enable = true;
+		};
     };
     # wayland.windowManager.hyprland = {
     #     enable = true;
