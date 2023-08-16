@@ -59,6 +59,7 @@
 		pulse.enable = true;
 		jack.enable = true;
 	};
+	services.gvfs.enable = true;
 
 # Configure console keymap
 	console.keyMap = "us-acentos";
@@ -112,8 +113,6 @@
 	programs.zsh.enable = true;
 	programs.hyprland.enable = true;
 	programs.hyprland.xwayland.enable = true;
-	xdg.portal.enable = true;
-	xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
 # List services that you want to enable:
 
