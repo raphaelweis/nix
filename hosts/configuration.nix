@@ -61,7 +61,8 @@
         killall
         ripgrep
         curl
+		zsh
     ];
-    programs.zsh.enable = true;
     programs.hyprland.enable = true;
+	programs.zsh.enable = true;
 }
