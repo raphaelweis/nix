@@ -2,25 +2,37 @@
 {
     home.stateVersion = "22.11"; # Please read the comment before changing.
 
-    home.packages = with pkgs; [
-		alacritty
-		tmux
-		firefox
-		starship
-		neovim
-		rofi
-		lsd
-		wl-clipboard
-		cliphist
-		hyprpaper
-		bluetuith
-		pavucontrol
-		vscode
-		networkmanagerapplet
-		acpi
-    ];
+		home = {
+			packages = with pkgs; [
+				alacritty
+					tmux
+					firefox
+					starship
+					neovim
+					rofi
+					lsd
+					wl-clipboard
+					cliphist
+					hyprpaper
+					bluetuith
+					pavucontrol
+					vscode
+					networkmanagerapplet
+					acpi
+			];
+
+			pointerCursor = {
+				gtk.enable = true;
+				name = "Dracula-cursors";
+				# name = "Catppuccin-Mocha-Dark-Cursors";
+				package = pkgs.dracula-theme;
+				# package = pkgs.catppuccin-cursors.mochaDark;
+				size = 24;
+    		};
+		};
 
     programs = {
+		home-manager.enable = true;
 		zsh = {
 			enable = true;
 			enableAutosuggestions = true;
@@ -90,8 +102,19 @@
 			gitCredentialHelper.enable = true;
 		};
     };
-    # wayland.windowManager.hyprland = {
-    #     enable = true;
-    #     xwayland.enable = true;
-    # };
+
+	gtk = {
+		enable = true;
+		theme = {
+			name = "Dracula";
+			package = pkgs.dracula-theme;
+		};
+		iconTheme = {
+			name = "Papirus-Dark";
+			package = pkgs.papirus-icon-theme;
+		};
+		font = {
+			name = "JetBrains Mono Medium";
+		};
+	};
 }
