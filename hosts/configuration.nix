@@ -63,7 +63,6 @@
         curl
 		zsh
     ];
-    programs.hyprland.enable = true;
 	programs.dconf.enable = true;
 	programs.zsh.enable = true;
 }

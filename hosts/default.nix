@@ -1,4 +1,4 @@
-{ nixpkgs, user, home-manager, ... }:
+{ nixpkgs, user, home-manager, hyprland, ... }:
 
 let 
 	system = "x86_64-linux";
@@ -12,7 +12,7 @@ in
 	desktop = lib.nixosSystem {
 		inherit system;
 		specialArgs = {
-			inherit pkgs user;
+			inherit pkgs user hyprland;
 			host = {
 				hostName = "nixos-desktop";
 			};

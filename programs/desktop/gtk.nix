@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-let
-	gtk-theme = "Gruvbox-Dark-B-LB";
-in
+{ pkgs, gtk-theme, cursor-theme, cursor-size, ... }:
 {
 	home = {
 		sessionVariables = {
-			GTK_THEME = "${gtk-theme}";
+			GTK_THEME = "Gruvbox-Dark-B-LB";
 		};
 		pointerCursor = {
 			gtk.enable = true;
@@ -18,7 +15,7 @@ in
 	gtk = {
 		enable = true;
 		theme = {
-			name = "${gtk-theme}";
+			name = "Gruvbox-Dark-B-LB";
 			package = pkgs.gruvbox-gtk-theme;
 		};
 		iconTheme = {
