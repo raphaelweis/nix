@@ -1,5 +1,9 @@
 { pkgs, user, ... }:
 {
+	nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable flakes and the nix command
+
+	environment.pathsToLink = [ "/share/zsh" ]; # Enable completion for system packages
+
     users.users.${user} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" ];
