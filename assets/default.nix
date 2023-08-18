@@ -1,0 +1,3 @@
+[
+	./wallpapers.nix
+]

@@ -1,0 +1,4 @@
+[
+	./gtk.nix
+	./hyprpaper.nix
+]
