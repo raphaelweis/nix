@@ -9,7 +9,7 @@ let
 	lib = nixpkgs.lib;
 in
 {
-	desktop = lib.nixosSystem {
+	desktop = lib.nixosSystem { # desktop configuration
 		inherit system;
 		specialArgs = {
 			inherit pkgs user hyprland;

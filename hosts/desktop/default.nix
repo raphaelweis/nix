@@ -1,8 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, hyprland, ... }:
 {
     system.stateVersion = "23.05";
 
-    imports = [./hardware-configuration.nix];
+	imports = [
+		(import ../../modules/desktop/hyprland)
+		./hardware-configuration.nix
+	]; 
+
     boot = {
         kernelPackages = pkgs.linuxPackages_latest;
         loader = {

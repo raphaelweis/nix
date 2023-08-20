@@ -7,9 +7,9 @@ let
 in
 {
 	imports = 
-		(import ../programs/shell) ++
+		(import ../modules/shell) ++
 		(import ../assets) ++
-		(import ../programs/desktop);
+		(import ../modules/desktop);
 
 	home = {
 		stateVersion = "22.11";
@@ -21,7 +21,6 @@ in
 			neovim
 			rofi
 			lsd
-			wl-clipboard
 			cliphist
 			hyprpaper
 			bluetuith

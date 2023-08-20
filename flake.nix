@@ -1,5 +1,5 @@
 {
-	description = "A very basic flake";
+	description = "Nix configurations, Raphaël Weis";
 
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -7,10 +7,7 @@
 			url = "github:nix-community/home-manager";	
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
-		hyprland = {
-			url = "github:hyprwm/Hyprland";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+		hyprland.url = "github:hyprwm/Hyprland";
 	};
 
 	outputs = inputs @ { self, nixpkgs, home-manager, hyprland, ... }:
