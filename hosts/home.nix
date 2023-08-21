@@ -7,7 +7,7 @@ let
 in
 {
 	imports = 
-		(import ../modules/shell) ++
+		(import ../modules/cli) ++
 		(import ../assets) ++
 		(import ../modules/desktop);
 

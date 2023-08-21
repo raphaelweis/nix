@@ -3,7 +3,7 @@
     system.stateVersion = "23.05";
 
 	imports = [
-		(import ../../modules/desktop/hyprland)
+		(import ../../modules/hyprland)
 		./hardware-configuration.nix
 	]; 
 
