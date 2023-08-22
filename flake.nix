@@ -18,7 +18,7 @@
 			nixosConfigurations = (
 				import ./hosts {
 					inherit (nixpkgs) lib;
-					inherit inputs nixpkgs user home-manager hyprland;
+					inherit nixpkgs user home-manager hyprland;
 				}
 			);
 		};

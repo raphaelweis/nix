@@ -7,8 +7,9 @@ let
 in
 {
 	imports = 
-		(import ../modules/cli) ++
 		(import ../assets) ++
+		(import ../modules/cli) ++
+		(import ../modules/applications) ++
 		(import ../modules/desktop);
 
 	home = {
