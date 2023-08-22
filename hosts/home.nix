@@ -1,10 +1,19 @@
 { pkgs, user, ... }:
 {
-	imports = 
-		(import ../assets) ++
-		(import ../modules/cli) ++
-		(import ../modules/applications) ++
-		(import ../modules/desktop);
+	imports = [
+		(import ../assets) 
+		(import ../modules/alacritty) 
+		(import ../modules/fzf) 
+		(import ../modules/gh) 
+		(import ../modules/git) 
+		(import ../modules/gtk) 
+		(import ../modules/hyprpaper) 
+		(import ../modules/starship) 
+		(import ../modules/tmux) 
+		(import ../modules/zsh) 
+	 	(import ../modules/hyprland/home.nix)
+	];
+
 
 	home = {
 		stateVersion = "22.11";

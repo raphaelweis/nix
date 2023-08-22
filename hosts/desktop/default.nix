@@ -18,9 +18,14 @@
             timeout = 5;
         };
     };
-    hardware.bluetooth = {
-		enable = true;
-		powerOnBoot = true;
+
+    hardware = {
+		bluetooth = {
+			enable = true;
+			powerOnBoot = true;
+		};
+		opengl.enable = true;
 	};
-	hardware.opengl.enable = true;
+
+	services.blueman.enable = true;
 }

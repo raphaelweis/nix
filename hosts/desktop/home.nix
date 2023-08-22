@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-	imports = [(import ../../modules/hyprland/home.nix)];
-
 	# to make headset buttons work
 	systemd.user.services.mpris-proxy = {
 		Unit.Description = "Mpris proxy";
@@ -12,6 +10,5 @@
 
 	home.packages = with pkgs; [ # desktop specific user packages
 		bluetuith
-		blueman
 	];
 }
