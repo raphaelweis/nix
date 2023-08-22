@@ -3,7 +3,6 @@
 	programs.tmux = {
 		enable = true;
 		plugins = with pkgs; [ tmuxPlugins.sensible tmuxPlugins.vim-tmux-navigator ];
-		disableConfirmationPrompt = true;
 		prefix = "space";
 		keyMode = "vi";
 		mouse = true;
@@ -39,6 +38,10 @@
 			# vi mode keybinds
 			bind-key -T copy-mode-vi 'v' send -X begin-selection
 			bind-key -T copy-mode-vi 'y' send -X copy-selection
+
+			# disable confirmation before killing windows
+			bind-key & kill-window
+			bind-key x kill-pane
 
 			unbind -T copy-mode-vi MouseDragEnd1Pane
 
