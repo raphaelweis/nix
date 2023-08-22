@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+	vars = import ../../hosts/vars.nix;
+in
 {
 	programs.alacritty = {
 		enable = true; 
@@ -38,25 +41,25 @@
 			draw_bold_text_with_bright_colors = true;
 			font = {
 				bold = {
-					family = "JetBrainsMonoNL NF";
+					family = "${vars.fonts.system-font}";
 					style = "Bold";
 				};
 				bold_italic = {
-					family = "JetBrainsMonoNL NF";
+					family = "${vars.fonts.system-font}";
 					style = "BoldItalic";
 				};
 				italic = {
-					family = "JetBrainsMonoNL NF";
+					family = "${vars.fonts.system-font}";
 					style = "MediumItalic";
 				};
 				normal = {
-					family = "JetBrainsMonoNL NF";
+					family = "${vars.fonts.system-font}";
 					style = "Regular";
 				};
 				size = 14;
 			};
 			window = {
-				opacity = 0.8;
+				opacity = 0.7;
 				padding = {
 					x = 10;
 					y = 10;

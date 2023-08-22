@@ -1,10 +1,4 @@
 { pkgs, user, ... }:
-let
-	# TODO: Figure out how to pass in these damn variables to the other files
-	gtk-theme = "Gruvbox-Dark-B-LB";
-	cursor-theme = "Capitaine Cursors (Gruvbox)";
-	cursor-size = 24;
-in
 {
 	imports = 
 		(import ../assets) ++

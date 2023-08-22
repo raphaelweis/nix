@@ -23,7 +23,7 @@
 		}
 
 		decoration {
-			rounding = 10
+			rounding = 5
 			blur {
 				enabled = true
 				size = 3
@@ -63,6 +63,7 @@
 		bind = $mainMod SHIFT, M, exit, 
 		bind = $mainMod, E, exec, nautilus					
 		bind = $mainMod, V, togglefloating, 
+		bind = $mainMod, M, fullscreen,
 		bind = $mainMod, P, exec, rofi -show run
 		bind = $mainMod, J, togglesplit, # dwindle
 
