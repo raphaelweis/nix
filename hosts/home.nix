@@ -18,7 +18,6 @@
 			lsd
 			cliphist
 			hyprpaper
-			bluetuith
 			pavucontrol
 			vscode
 			networkmanagerapplet
