@@ -4,4 +4,6 @@
 	./fzf.nix
 	./git.nix
 	./gh.nix
+	./tmux.nix
 ]
+
