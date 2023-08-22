@@ -1,10 +1,16 @@
 { ... }:
+let
+	vars = import ../../hosts/vars.nix;
+in
 {
 	xdg.configFile."hypr/hyprland.conf".text = ''
 		monitor=,preferred,auto,auto
 
+		env XCURSOR_SIZE = ${toString vars.theme.cursor.size}
+		exec-once = hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}
+
 		exec-once = hyprpaper &
-		exec-once = hyprctl setcursor "Capitaine Cursors (Gruvbox)" 24
+		exec-once = waybar &
 
 		input {
 			kb_layout = us

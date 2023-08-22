@@ -9,9 +9,9 @@ in
 		};
 		pointerCursor = {
 			gtk.enable = true;
-			name = "${vars.theme.cursor-theme}";
-			package = pkgs.capitaine-cursors-themed;
-			size = 24;
+			package = pkgs.${vars.theme.cursor.package};
+			name = "${vars.theme.cursor.theme}";
+			size = vars.theme.cursor.size;
 		};
 	};
 

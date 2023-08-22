@@ -6,7 +6,7 @@
 
     users.users.${user} = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" ];
+        extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" "input" ];
         shell = pkgs.zsh;
     };
     security.sudo.wheelNeedsPassword = false;

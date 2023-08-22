@@ -34,11 +34,15 @@
 			slurp
 			wl-clipboard
 			wlr-randr
+			waybar-hyprland
+			rofi-wayland
+			dunst
 		];
 	};
 
 	xdg.portal = { # Required for flatpak with window managers and for file browsing
 		enable = true;
+		wlr.enable = true;
 		extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; #xdg-desktop-portal-hyprland pulled in by flake automatically
 	};
 }

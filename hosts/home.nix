@@ -23,7 +23,6 @@
 			firefox
 			starship
 			neovim
-			rofi
 			lsd
 			cliphist
 			hyprpaper
