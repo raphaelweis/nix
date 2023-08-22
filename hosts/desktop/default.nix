@@ -18,6 +18,9 @@
             timeout = 5;
         };
     };
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+		enable = true;
+		powerOnBoot = true;
+	};
 	hardware.opengl.enable = true;
 }
