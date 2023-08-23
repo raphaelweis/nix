@@ -1,14 +1,26 @@
-{ ... }:
+{ pkgs, ... }:
 let
 	vars = import ../../hosts/vars.nix;
+	timeout = 10 * 60;
 in
 {
+
+	home.packages = with pkgs; [ swayidle ];
+	programs.swaylock = {
+		enable = true;
+		package = pkgs.swaylock-effects;
+    	settings = {
+			color = "000000f0";
+		};
+	};
+
 	xdg.configFile."hypr/hyprland.conf".text = ''
 		monitor=,preferred,auto,auto
 
 		env XCURSOR_SIZE = ${toString vars.theme.cursor.size}
 		exec-once = hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}
 
+		exec-once = swayidle -w timeout ${toString timeout}  "swaylock -f" &
 		exec-once = hyprpaper &
 		exec-once = waybar &
 

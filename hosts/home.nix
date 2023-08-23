@@ -3,6 +3,7 @@
 	imports = [
 		(import ../assets) 
 		(import ../modules/alacritty) 
+		(import ../modules/firefox)
 		(import ../modules/fzf) 
 		(import ../modules/gh) 
 		(import ../modules/git) 
@@ -20,7 +21,6 @@
 		packages = with pkgs; [
 			alacritty
 			tmux
-			firefox
 			starship
 			neovim
 			lsd

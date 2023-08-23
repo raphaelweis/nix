@@ -43,6 +43,11 @@
 	xdg.portal = { # Required for flatpak with window managers and for file browsing
 		enable = true;
 		wlr.enable = true;
-		extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; #xdg-desktop-portal-hyprland pulled in by flake automatically
+		extraPortals = [
+			pkgs.xdg-desktop-portal-gtk 
+			pkgs.xdg-desktop-portal-wlr 
+		]; #xdg-desktop-portal-hyprland pulled in by flake automatically
 	};
+
+	security.pam.services.swaylock = {}; # required for swaylock to work
 }
