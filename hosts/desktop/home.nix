@@ -1,14 +1,48 @@
-{ pkgs, ... }:
+{ pkgs, home-manager, ... }:
+let
+	vars = import ./vars.nix;
+in
 {
-	# to make headset buttons work
-	systemd.user.services.mpris-proxy = {
-		Unit.Description = "Mpris proxy";
-		Unit.After = [ "network.target" "sound.target" ];
-		Service.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
-		Install.WantedBy = [ "default.target" ];
+	imports = [
+		(import ../../assets) 
+		(import ../../modules/home-manager/alacritty) 
+		(import ../../modules/home-manager/firefox)
+		(import ../../modules/home-manager/fzf) 
+		(import ../../modules/home-manager/gh) 
+		(import ../../modules/home-manager/git) 
+		(import ../../modules/home-manager/gtk) 
+		(import ../../modules/home-manager/hyprpaper) 
+		(import ../../modules/home-manager/starship) 
+		(import ../../modules/home-manager/tmux) 
+		(import ../../modules/home-manager/zsh) 
+		(import ../../modules/home-manager/waybar)
+		(import ../../modules/home-manager/swaylock)
+		(import ../../modules/home-manager/hyprland)
+	];
+
+	home = {
+		stateVersion = "22.11";
+		packages = with pkgs; [ # desktop specific user packages
+			bluetuith
+			alacritty
+			tmux
+			starship
+			neovim
+			lsd
+			cliphist
+			hyprpaper
+			pavucontrol
+			vscode
+			networkmanagerapplet
+			acpi
+			gnome.nautilus
+			gnome.gnome-themes-extra
+			gtk-engine-murrine
+			gruvbox-dark-icons-gtk
+		];
 	};
 
-	home.packages = with pkgs; [ # desktop specific user packages
-		bluetuith
-	];
+	programs = {
+		home-manager.enable = true;
+	};
 }

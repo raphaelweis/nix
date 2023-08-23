@@ -34,7 +34,6 @@
 			slurp
 			wl-clipboard
 			wlr-randr
-			waybar-hyprland
 			rofi-wayland
 			dunst
 		];

@@ -1,4 +1,5 @@
 {
+	username = "raphaelw";
 	theme = {
 		gtk-theme = "Gruvbox-Dark-B-LB";
 		icon-theme = "Papirus-Dark";

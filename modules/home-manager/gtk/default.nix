@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-	vars = import ../../hosts/vars.nix; # TODO: figure out how to import machine specific vars
+	vars = import ../../../hosts/desktop/vars.nix; # TODO: figure out how to import machine specific vars
 in
 {
 	home = {

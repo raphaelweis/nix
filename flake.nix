@@ -12,14 +12,33 @@
 
 	outputs = inputs @ { self, nixpkgs, home-manager, hyprland, ... }:
 		let
-			user = "raphaelw";
+			inherit (self) outputs;
+			lib = nixpkgs.lib // home-manager.lib;
+			system = "x86_64-linux";
+			pkgs = import nixpkgs {
+				inherit system;
+				config.allowUnfree = true;
+			};
+			desktopVars = import ./hosts/desktop/vars.nix;
 		in
 		{
-			nixosConfigurations = (
-				import ./hosts {
-					inherit (nixpkgs) lib;
-					inherit nixpkgs user home-manager hyprland;
-				}
-			);
+			nixosConfigurations = {
+				desktop = lib.nixosSystem {
+					modules = [
+						./hosts/desktop/configuration.nix
+					     home-manager.nixosModules.home-manager {
+							home-manager.useGlobalPkgs = true;
+							home-manager.useUserPackages = true;
+							home-manager.extraSpecialArgs = {
+								inherit pkgs;
+							};
+							home-manager.users.${desktopVars.username} = {
+								imports = [ ./hosts/desktop/home.nix ];
+							};
+						}
+					];
+					specialArgs = { inherit pkgs hyprland; };
+				};
+			};
 		};
 }

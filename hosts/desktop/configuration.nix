@@ -1,10 +1,40 @@
-{ pkgs, user, ... }:
+{ pkgs, ... }:
+let
+	vars = import ./vars.nix;
+in
 {
+	imports = [
+		(import ../../modules/nixos/hyprland)
+		(import ./hardware-configuration.nix)
+	]; 
+
+    boot = {
+        kernelPackages = pkgs.linuxPackages_latest;
+        loader = {
+            systemd-boot = {
+                enable = true;
+                configurationLimit = 3;
+            };
+            efi.canTouchEfiVariables = true;
+            timeout = 5;
+        };
+    };
+
+    hardware = {
+		bluetooth = {
+			enable = true;
+			powerOnBoot = true;
+		};
+		opengl.enable = true;
+	};
+
+	services.blueman.enable = true;
+
 	nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable flakes and the nix command
 
 	environment.pathsToLink = [ "/share/zsh" ]; # Enable completion for system packages
 
-    users.users.${user} = {
+    users.users.${vars.username} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "video" "audio" "camera" "networkmanager" "kvm" "libvirtd" "input" ];
         shell = pkgs.zsh;
@@ -55,6 +85,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
+		home-manager
         vim
         gcc
         alsa-utils
@@ -65,4 +96,6 @@
     ];
 	programs.dconf.enable = true;
 	programs.zsh.enable = true;
+	
+    system.stateVersion = "23.05";
 }
