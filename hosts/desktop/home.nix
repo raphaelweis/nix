@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }:
+{ pkgs, home-manager, host, ... }:
 let
 	vars = import ./vars.nix;
 in
@@ -6,6 +6,7 @@ in
 	imports = [
 		(import ../../assets) 
 		(import ../../modules/home-manager/alacritty) 
+		(import ../../modules/home-manager/chrome)
 		(import ../../modules/home-manager/firefox)
 		(import ../../modules/home-manager/fzf) 
 		(import ../../modules/home-manager/gh) 

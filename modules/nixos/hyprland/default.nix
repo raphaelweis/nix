@@ -5,10 +5,13 @@
     	trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   	};
 
-  	programs.hyprland = { #enable hyprland
-    	enable = true;
-    	package = hyprland.packages.${pkgs.system}.hyprland;
-  	};
+	programs = {
+		xwayland.enable = true;
+		hyprland = { #enable hyprland
+			enable = true;
+			xwayland.enable = true;
+		};
+	};
 
 	# Autostart Hyprland on login if on tty1
 	environment = {
@@ -36,6 +39,7 @@
 			wlr-randr
 			rofi-wayland
 			dunst
+			xwayland
 		];
 	};
 
@@ -45,7 +49,8 @@
 		extraPortals = [
 			pkgs.xdg-desktop-portal-gtk 
 			pkgs.xdg-desktop-portal-wlr 
-		]; #xdg-desktop-portal-hyprland pulled in by flake automatically
+			pkgs.xdg-desktop-portal-hyprland
+		];
 	};
 
 	security.pam.services.swaylock = {}; # required for swaylock to work

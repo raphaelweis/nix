@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 let
-	vars = import ../../../hosts/desktop/vars.nix;
+	vars = import ../../../hosts/${host}/vars.nix;
 	timeout = 10 * 60;
 in
 {
@@ -36,8 +36,8 @@ in
 			rounding = 5
 			blur {
 				enabled = true
-				size = 3
-				passes = 1
+				size = 2
+				passes = 3
 			}
 			drop_shadow = yes
 			shadow_range = 4
@@ -65,13 +65,15 @@ in
 			new_is_master = true
 		}
 
+		windowrule = float, pavucontrol
+
    		$mainMod = SUPER
 
-	   	bind = $mainMod, Q, exec, firefox
-	   	bind = $mainMod, RETURN, exec, alacritty -e tmux
+	   	bind = $mainMod, Q, exec, ${vars.programs.browser}
+	   	bind = $mainMod, RETURN, exec, ${vars.programs.terminal} -e tmux
 	   	bind = $mainMod, C, killactive, 
 		bind = $mainMod SHIFT, M, exit, 
-		bind = $mainMod, E, exec, nautilus					
+		bind = $mainMod, E, exec, ${vars.programs.file-explorer}					
 		bind = $mainMod, V, togglefloating, 
 		bind = $mainMod, M, fullscreen,
 		bind = $mainMod, P, exec, rofi -show run

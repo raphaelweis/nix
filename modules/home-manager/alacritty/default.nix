@@ -68,6 +68,7 @@ in
 			env = {
 				WINIT_X11_SCALE_FACTOR = "1";
 				TERM = "xterm-256color";
+  				WAYLAND_DISPLAY = if vars.display.wayland then "alacritty" else null;
 			};
 		};
 	};

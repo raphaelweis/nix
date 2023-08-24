@@ -31,6 +31,7 @@
 							home-manager.useUserPackages = true;
 							home-manager.extraSpecialArgs = {
 								inherit pkgs;
+								host = "desktop";
 							};
 							home-manager.users.${desktopVars.username} = {
 								imports = [ ./hosts/desktop/home.nix ];
