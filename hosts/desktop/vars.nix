@@ -8,6 +8,7 @@
 	};
 	display = {
 		wayland = true;
+		vm = "Hyprland";
 	};
 	theme = {
 		gtk-theme = "Gruvbox-Dark-B-LB";

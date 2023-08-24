@@ -25,8 +25,5 @@ in
 			name = "${vars.theme.icon-theme}";
 			package = pkgs.papirus-icon-theme;
 		};
-		font = {
-			name = "JetBrainsMono NL NF";
-		};
 	};
 }

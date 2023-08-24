@@ -4,6 +4,7 @@ let
 in
 {
 	imports = [
+		(import ../../modules/nixos/fonts)
 		(import ../../modules/nixos/hyprland)
 		(import ./hardware-configuration.nix)
 	]; 
@@ -55,10 +56,6 @@ in
             LC_TIME = "fr_FR.UTF-8";
         };
     };
-    console = {
-        font = "Lat2-Terminus16";
-        keyMap = "us-acentos";
-    };
     security.rtkit.enable = true;
     security.polkit.enable = true;
 
@@ -73,16 +70,6 @@ in
 	    };
 	    gvfs.enable = true;
     };
-
-    fonts.packages = with pkgs; [
-        font-awesome
-        corefonts
-        (nerdfonts.override {
-            fonts = [
-                "JetBrainsMono"
-            ];
-        })
-    ];
 
     environment.systemPackages = with pkgs; [
 		home-manager

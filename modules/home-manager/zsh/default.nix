@@ -1,3 +1,7 @@
+{ host, ... }:
+let
+	vars = import ../../../hosts/${host}/vars.nix;
+in
 {
 	programs.zsh = {
 		enable = true;
