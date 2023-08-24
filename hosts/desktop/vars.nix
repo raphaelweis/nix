@@ -9,6 +9,10 @@
 	display = {
 		wayland = true;
 		vm = "Hyprland";
+		refresh-rate = 165;
+		resolution = "3440x1440";
+		monitor1 = "DP-3";
+		scale = "1";
 	};
 	theme = {
 		gtk-theme = "Gruvbox-Dark-B-LB";

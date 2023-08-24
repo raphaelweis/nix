@@ -32,6 +32,9 @@ in
 					white = "0xebdbb2";
 				};
 			};
+			mouse = {
+				hide_when_typing = true;
+			};
 			cursor = {
 				style = {
 					blinking = "Off";
