@@ -9,6 +9,7 @@ in
 
 	wayland.windowManager.hyprland = {
 		enable = true;
+        systemdIntegration = true;
 		settings = {
 			monitor = "${vars.display.monitor1}, ${vars.display.resolution}@${toString vars.display.refresh-rate}, auto, ${vars.display.scale}";
 			env = "XCURSOR_SIZE = ${toString vars.theme.cursor.size}";

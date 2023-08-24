@@ -4,6 +4,7 @@ let
 in
 {
 	imports = [
+		(import ../../modules/nixos/xremap)
 		(import ../../modules/nixos/fonts)
 		(import ../../modules/nixos/hyprland)
 		(import ./hardware-configuration.nix)
