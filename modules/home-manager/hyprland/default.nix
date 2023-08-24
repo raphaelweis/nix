@@ -5,8 +5,6 @@ let
 	mainMod =  "SUPER";
 in
 {
-	home.packages = with pkgs; [ swayidle ];
-
 	wayland.windowManager.hyprland = {
 		enable = true;
         systemdIntegration = true;
@@ -15,7 +13,6 @@ in
 			env = "XCURSOR_SIZE = ${toString vars.theme.cursor.size}";
 			exec-once = [
 				"hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}"
-				"swayidle -w timeout ${toString timeout}  'swaylock -f' &"
 				"waybar &"
 				"hyprpaper &"
 			];

@@ -14,6 +14,7 @@ in
 		(import ../../modules/home-manager/gtk) 
 		(import ../../modules/home-manager/hyprpaper) 
 		(import ../../modules/home-manager/starship) 
+		(import ../../modules/home-manager/swayidle)
 		(import ../../modules/home-manager/tmux) 
 		(import ../../modules/home-manager/zsh) 
 		(import ../../modules/home-manager/waybar)
