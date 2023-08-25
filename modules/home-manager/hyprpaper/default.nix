@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-	wallpaper = "River Blue.jpg";
+	wallpaper = "golden-state-bridge.jpg";
 in
 {
 	home = {
