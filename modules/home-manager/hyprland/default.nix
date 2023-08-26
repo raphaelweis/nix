@@ -1,127 +1,143 @@
-{ pkgs, host, ... }:
+{ pkgs, host, hyprland, ... }:
 let
 	vars = import ../../../hosts/${host}/vars.nix;
 	timeout = 10 * 60;
 	mainMod =  "SUPER";
 in
 {
+	home = {
+		packages = with pkgs; [
+			dbus
+			dconf
+			grim
+			slurp
+			wl-clipboard
+			wlr-randr
+			rofi-wayland
+			dunst
+			xwayland
+			qt6.qtwayland
+			libsForQt5.qt5.qtwayland
+			xdg-desktop-portal-gtk 
+			xdg-desktop-portal-hyprland 
+		];
+		sessionVariables = {
+			XDG_CURRENT_DESKTOP="Hyprland";
+			XDG_SESSION_TYPE="wayland";
+			XDG_SESSION_DESKTOP="Hyprland";
+			GDK_BACKEND = "wayland";
+			WLR_NO_HARDWARE_CURSORS = "1";
+			MOZ_ENABLE_WAYLAND = "1";
+		};
+	};
+
 	wayland.windowManager.hyprland = {
 		enable = true;
         systemdIntegration = true;
-		settings = {
-			monitor = "${vars.display.monitor1}, ${vars.display.resolution}@${toString vars.display.refresh-rate}, auto, ${vars.display.scale}";
-			env = "XCURSOR_SIZE = ${toString vars.theme.cursor.size}";
-			exec-once = [
-				"${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-				"hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}"
-				"waybar &"
-				"hyprpaper &"
-			];
+		extraConfig = ''
+			monitor = ${vars.display.monitor1}, ${vars.display.resolution}@${toString vars.display.refresh-rate}, auto, ${vars.display.scale}
 
-			input = {
-				kb_layout = "us";
-				kb_variant = "intl";
-				follow_mouse = 1;
-				sensitivity = 0;
-			};
+			env = XCURSOR_SIZE, ${toString vars.theme.cursor.size}
 
-			general = {
-				gaps_in = 5;
-				gaps_out = 10;
-				border_size = 2;
-				"col.active_border" = "rgb(fabd2f) rgb(d79921) 45deg";
-				"col.inactive_border" = "rgba(000000ff)";
-				layout = "dwindle";
-			};
+			exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+			exec-once = hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}
+			exec-once = waybar &
+			exec-once = hyprpaper &
 
-			decoration = {
-				rounding = 5;
-				blur = {
-					enabled = true;
-					size = 2;
-					passes = 3;
-				};
-				drop_shadow = true;
-				shadow_range = 4;
-				shadow_render_power = 3;
-				"col.shadow" = "rgba(1a1a1aee)";
-			};
+			input {
+				follow_mouse = 1
+				kb_layout = us
+				kb_variant = intl
+				sensitivity = 0
+			}
 
-			animations = {
-				enabled = "yes";
-				bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-				animation = [
-					"windows, 1, 7, default"
-					"windowsOut, 1, 7, default, popin 80%"
-					"border, 1, 10, default"
-					"borderangle, 1, 8, default"
-					"fade, 1, 7, default"
-					"workspaces, 1, 3, default"
-				];
-			};
+			general {
+				border_size = 2
+				col.active_border = rgb(fabd2f) rgb(d79921) 45deg
+				col.inactive_border = rgba(00000000)
+				gaps_in = 5
+				gaps_out = 10
+				layout = dwindle
+			}
 
-			dwindle = {
-				pseudotile = true;
-				preserve_split = true;
-			};
+			decoration {
+				blur {
+					enabled = true
+					passes = 3
+					size = 2
+				}
+				col.shadow = rgba(1a1a1aee)
+				drop_shadow = true
+				rounding = 5
+				shadow_range = 4
+				shadow_render_power = 3
+			}
 
-			master = {
-				new_is_master = true;
-			};
+			animations {
+				bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+				animation = windows, 1, 7, default
+				animation = windowsOut, 1, 7, default, popin 80%
+				animation = border, 1, 10, default
+				animation = borderangle, 1, 8, default
+				animation = fade, 1, 7, default
+				animation = workspaces, 1, 3, default
+				enabled = yes
+			}
 
-			windowrule = [
-				"float, pavucontrol"
-			];
-			
-			bind = [
-				"${mainMod}, Q, exec, ${vars.programs.browser.command}"
-				"${mainMod}, RETURN, exec, ${vars.programs.terminal.command}"
-				"${mainMod}, C, killactive,"
-				"${mainMod} SHIFT, M, exit,"
-				"${mainMod}, E, exec, ${vars.programs.file-explorer.command}"
-				"${mainMod}, V, togglefloating,"
-				"${mainMod}, M, fullscreen,"
-				"${mainMod}, P, exec, ${vars.programs.program-launcher.command}"
-				"${mainMod}, J, togglesplit, dwindle"
-				"${mainMod} SHIFT, L, exec, ${vars.programs.screenlocker.command}"
+			dwindle {
+				preserve_split = true
+				pseudotile = true
+			}
 
-				"${mainMod}, left, movefocus, l"
-				"${mainMod}, right, movefocus, r"
-				"${mainMod}, up, movefocus, u"
-				"${mainMod}, down, movefocus, d"
+			master {
+				new_is_master = true
+			}
 
-				"${mainMod}, 1, workspace, 1"
-				"${mainMod}, 2, workspace, 2"
-				"${mainMod}, 3, workspace, 3"
-				"${mainMod}, 4, workspace, 4"
-				"${mainMod}, 5, workspace, 5"
-				"${mainMod}, 6, workspace, 6"
-				"${mainMod}, 7, workspace, 7"
-				"${mainMod}, 8, workspace, 8"
-				"${mainMod}, 9, workspace, 9"
-				"${mainMod}, 0, workspace, 10"
+			windowrule = float, pavucontrol
 
-				"${mainMod} SHIFT, 1, movetoworkspace, 1"
-				"${mainMod} SHIFT, 2, movetoworkspace, 2"
-				"${mainMod} SHIFT, 3, movetoworkspace, 3"
-				"${mainMod} SHIFT, 4, movetoworkspace, 4"
-				"${mainMod} SHIFT, 5, movetoworkspace, 5"
-				"${mainMod} SHIFT, 6, movetoworkspace, 6"
-				"${mainMod} SHIFT, 7, movetoworkspace, 7"
-				"${mainMod} SHIFT, 8, movetoworkspace, 8"
-				"${mainMod} SHIFT, 9, movetoworkspace, 9"
-				"${mainMod} SHIFT, 0, movetoworkspace, 10"
+			bind = SUPER, Q, exec, ${vars.programs.browser.command}
+			bind = SUPER, RETURN, exec, ${vars.programs.terminal.command}
+			bind = SUPER, C, killactive,
+			bind = SUPER SHIFT, M, exit,
+			bind = SUPER, E, exec, ${vars.programs.file-explorer.command}
+			bind = SUPER, V, togglefloating,
+			bind = SUPER, M, fullscreen,
+			bind = SUPER, P, exec, ${vars.programs.program-launcher.command}
+			bindr = SUPER, SUPER_L, exec, ${vars.programs.application-launcher.command} || pkill ${vars.programs.application-launcher.name}
+			bind = SUPER, J, togglesplit, dwindle
+			bind = SUPER SHIFT, L, exec, ${vars.programs.screenlocker.command}
 
-				"${mainMod}, mouse_down, workspace, e+1"
-				"${mainMod}, mouse_up, workspace, e-1"
-			];
-			bindr = [
-				"SUPER, SUPER_L, exec, ${vars.programs.application-launcher.command} || pkill ${vars.programs.application-launcher.name}"
-			];
-			bindm = [
-				"${mainMod}, mouse:272, movewindow"
-				"${mainMod}, mouse:273, resizewindow"
-			];
-		};	
+			bind = SUPER, left, movefocus, l
+			bind = SUPER, right, movefocus, r
+			bind = SUPER, up, movefocus, u
+			bind = SUPER, down, movefocus, d
+
+			bind = SUPER, 1, workspace, 1
+			bind = SUPER, 2, workspace, 2
+			bind = SUPER, 3, workspace, 3
+			bind = SUPER, 4, workspace, 4
+			bind = SUPER, 5, workspace, 5
+			bind = SUPER, 6, workspace, 6
+			bind = SUPER, 7, workspace, 7
+			bind = SUPER, 8, workspace, 8
+			bind = SUPER, 9, workspace, 9
+			bind = SUPER, 0, workspace, 10
+
+			bind = SUPER SHIFT, 1, movetoworkspace, 1
+			bind = SUPER SHIFT, 2, movetoworkspace, 2
+			bind = SUPER SHIFT, 3, movetoworkspace, 3
+			bind = SUPER SHIFT, 4, movetoworkspace, 4
+			bind = SUPER SHIFT, 5, movetoworkspace, 5
+			bind = SUPER SHIFT, 6, movetoworkspace, 6
+			bind = SUPER SHIFT, 7, movetoworkspace, 7
+			bind = SUPER SHIFT, 8, movetoworkspace, 8
+			bind = SUPER SHIFT, 9, movetoworkspace, 9
+			bind = SUPER SHIFT, 0, movetoworkspace, 10
+
+			bind = SUPER, mouse_down, workspace, e+1
+			bind = SUPER, mouse_up, workspace, e-1
+			bindm = SUPER, mouse:272, movewindow
+			bindm = SUPER, mouse:273, resizewindow
+		'';
 	};
 }

@@ -15,7 +15,7 @@
 	outputs = inputs @ { self, nixpkgs, home-manager, hyprland, xremap, nixvim, ... }:
 		let
 			inherit (self) outputs;
-			lib = nixpkgs.lib;
+			lib = nixpkgs.lib // home-manager.lib;
 			system = "x86_64-linux";
 			pkgs = import nixpkgs {
 				inherit system;
@@ -28,25 +28,22 @@
 				desktop = let host = "desktop"; in lib.nixosSystem {
 					modules = [
 						./hosts/desktop/configuration.nix
-							home-manager.nixosModules.home-manager {
-								home-manager = {
-									useGlobalPkgs = true;
-									useUserPackages = true;
-									extraSpecialArgs = {
-										inherit pkgs host;
-									};
-									sharedModules = [
-										nixvim.homeManagerModules.nixvim
-									];
-									users.${desktopVars.username} = {
-										imports = [ ./hosts/desktop/home.nix ];
-									};
-								};
-							}
 						xremap.nixosModules.default
 					];
 					specialArgs = {
 						inherit pkgs hyprland host;
+					};
+				};
+			};
+			homeConfigurations = {
+				"raphaelw@desktop" = let host = "home"; in lib.homeManagerConfiguration {
+					inherit pkgs;
+					modules = [ 
+						./hosts/home/home.nix
+        				hyprland.homeManagerModules.default
+					];
+					extraSpecialArgs = {
+						inherit pkgs host hyprland;
 					};
 				};
 			};

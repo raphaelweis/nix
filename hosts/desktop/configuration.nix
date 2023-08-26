@@ -20,13 +20,14 @@ in
 	]; 
 
     environment.systemPackages = with pkgs; [
+	home-manager
         vim
         gcc
         alsa-utils
         killall
         ripgrep
         curl
-		zsh
+	git
     ];
 
     system.stateVersion = "23.05";
