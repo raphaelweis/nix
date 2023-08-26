@@ -12,6 +12,7 @@ in
 			monitor = "${vars.display.monitor1}, ${vars.display.resolution}@${toString vars.display.refresh-rate}, auto, ${vars.display.scale}";
 			env = "XCURSOR_SIZE = ${toString vars.theme.cursor.size}";
 			exec-once = [
+				"${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
 				"hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}"
 				"waybar &"
 				"hyprpaper &"

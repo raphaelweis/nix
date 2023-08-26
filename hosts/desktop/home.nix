@@ -6,11 +6,10 @@ in
 	imports = [
 		(import ../../assets) 
 		(import ../../modules/home-manager/alacritty) 
-		(import ../../modules/home-manager/chrome)
-		(import ../../modules/home-manager/firefox)
 		(import ../../modules/home-manager/fzf) 
 		(import ../../modules/home-manager/gh) 
 		(import ../../modules/home-manager/git) 
+		(import ../../modules/home-manager/gnome-keyring) 
 		(import ../../modules/home-manager/gtk) 
 		(import ../../modules/home-manager/hyprpaper) 
 		(import ../../modules/home-manager/starship) 
@@ -24,7 +23,7 @@ in
 
 	home = {
 		stateVersion = "22.11";
-		packages = with pkgs; [ # desktop specific user packages
+		packages = with pkgs; [
 			bluetuith
 			alacritty
 			tmux
@@ -39,11 +38,11 @@ in
 			acpi
 			gnome.nautilus
 			gnome.gnome-themes-extra
-			gnome.gnome-keyring
 			gtk-engine-murrine
 			gruvbox-dark-icons-gtk
 			discord
-			epiphany
+			brave
+			firefox
 		];
 	};
 

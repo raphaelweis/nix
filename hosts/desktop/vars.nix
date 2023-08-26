@@ -6,8 +6,8 @@
 			command = "nvim";
 		};
 		browser = {
-			name = "epiphany";
-			command = "epiphany";
+			name = "brave";
+			command = "brave";
 		};
 		terminal = {
 			name = "alacritty";
