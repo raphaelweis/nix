@@ -26,10 +26,10 @@ in
 
 			general = {
 				gaps_in = 5;
-				gaps_out = 20;
+				gaps_out = 10;
 				border_size = 2;
-				"col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-				"col.inactive_border" = "rgba(595959aa)";
+				"col.active_border" = "rgb(fabd2f) rgb(d79921) 45deg";
+				"col.inactive_border" = "rgba(000000ff)";
 				layout = "dwindle";
 			};
 
@@ -50,7 +50,7 @@ in
 				enabled = "yes";
 				bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
 				animation = [
-					"windows, 1, 7, myBezier"
+					"windows, 1, 7, default"
 					"windowsOut, 1, 7, default, popin 80%"
 					"border, 1, 10, default"
 					"borderangle, 1, 8, default"
@@ -73,15 +73,16 @@ in
 			];
 			
 			bind = [
-				"${mainMod}, Q, exec, ${vars.programs.browser}"
-				"${mainMod}, RETURN, exec, ${vars.programs.terminal} -e tmux"
+				"${mainMod}, Q, exec, ${vars.programs.browser.command}"
+				"${mainMod}, RETURN, exec, ${vars.programs.terminal.command}"
 				"${mainMod}, C, killactive,"
 				"${mainMod} SHIFT, M, exit,"
-				"${mainMod}, E, exec, ${vars.programs.file-explorer}"
+				"${mainMod}, E, exec, ${vars.programs.file-explorer.command}"
 				"${mainMod}, V, togglefloating,"
 				"${mainMod}, M, fullscreen,"
-				"${mainMod}, P, exec, rofi -show run"
-				"${mainMod}, J, togglesplit, # dwindle"
+				"${mainMod}, P, exec, ${vars.programs.program-launcher.command}"
+				"${mainMod}, J, togglesplit, dwindle"
+				"${mainMod} SHIFT, L, exec, ${vars.programs.screenlocker.command}"
 
 				"${mainMod}, left, movefocus, l"
 				"${mainMod}, right, movefocus, r"
@@ -113,15 +114,13 @@ in
 				"${mainMod}, mouse_down, workspace, e+1"
 				"${mainMod}, mouse_up, workspace, e-1"
 			];
-
+			bindr = [
+				"SUPER, SUPER_L, exec, ${vars.programs.application-launcher.command} || pkill ${vars.programs.application-launcher.name}"
+			];
 			bindm = [
 				"${mainMod}, mouse:272, movewindow"
 				"${mainMod}, mouse:273, resizewindow"
 			];
 		};	
-		extraConfig = ''
-	   		$mainMod = SUPER
-	
-		'';
 	};
 }

@@ -1,10 +1,34 @@
 {
 	username = "raphaelw";
-	programs = { # these need to be the name of the executables
-		editor = "nvim";
-		browser = "google-chrome-stable";
-		terminal = "alacritty";
-		file-explorer = "nautilus";
+	programs = {
+		editor = {
+			name = "nvim";
+			command = "nvim";
+		};
+		browser = {
+			name = "epiphany";
+			command = "epiphany";
+		};
+		terminal = {
+			name = "alacritty";
+			command = "alacritty -e tmux";
+		};
+		file-explorer = {
+			name = "nautilus";
+			command = "nautilus";
+		};
+		application-launcher = {
+			name = "rofi";
+			command = "rofi -show drun";
+		};
+		program-launcher = {
+			name = "rofi";
+			command = "rofi -show run";
+		};
+		screenlocker = {
+			name = "swaylock";
+			command = "swaylock -f";
+		};
 	};
 	display = {
 		wayland = true;

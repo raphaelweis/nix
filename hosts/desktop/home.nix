@@ -39,8 +39,11 @@ in
 			acpi
 			gnome.nautilus
 			gnome.gnome-themes-extra
+			gnome.gnome-keyring
 			gtk-engine-murrine
 			gruvbox-dark-icons-gtk
+			discord
+			epiphany
 		];
 	};
 
