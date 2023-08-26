@@ -5,6 +5,7 @@
     	trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   	};
 
+    hardware.opengl.enable = true; # this is required
 	programs = {
 		xwayland.enable = true;
 		hyprland = {
@@ -40,6 +41,7 @@
 			rofi-wayland
 			dunst
 			xwayland
+			qt6.qtwayland
 		];
 	};
 

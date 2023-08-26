@@ -1,4 +1,5 @@
 {
+	hostname=  "nixos-desktop";
 	username = "raphaelw";
 	programs = {
 		editor = {

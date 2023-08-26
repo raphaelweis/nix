@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, host, ... }:
 let
-	vars = import ../../../hosts/desktop/vars.nix;
+	vars = import ../../../hosts/${host}/vars.nix;
 in
 {
 	programs.alacritty = {
