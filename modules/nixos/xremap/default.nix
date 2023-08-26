@@ -4,8 +4,6 @@ let
 in
 {
 	services.xremap = {
-		serviceMode = "user";
-		userName = vars.username;
 		withHypr = true;
 		config = {
 			keymap = [

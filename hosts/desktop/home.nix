@@ -1,4 +1,4 @@
-{ pkgs, home-manager, host, ... }:
+{ imputs, pkgs, home-manager, host, ... }:
 let
 	vars = import ./vars.nix;
 in
@@ -12,6 +12,7 @@ in
 		(import ../../modules/home-manager/gnome-keyring) 
 		(import ../../modules/home-manager/gtk) 
 		(import ../../modules/home-manager/hyprpaper) 
+		# (import ../../modules/home-manager/nixvim) 
 		(import ../../modules/home-manager/starship) 
 		(import ../../modules/home-manager/swayidle)
 		(import ../../modules/home-manager/tmux) 
