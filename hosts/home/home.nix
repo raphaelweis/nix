@@ -43,7 +43,7 @@ in
 			gtk-engine-murrine
 			gruvbox-dark-icons-gtk
 			discord
-			brave
+			google-chrome
 			firefox
 		];
 	};

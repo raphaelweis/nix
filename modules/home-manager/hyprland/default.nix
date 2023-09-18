@@ -18,7 +18,8 @@ in
 			xwayland
 			qt6.qtwayland
 			libsForQt5.qt5.qtwayland
-			xdg-desktop-portal-gtk 
+			xdg-desktop-portal
+			xdg-desktop-portal-gtk
 			xdg-desktop-portal-hyprland 
 		];
 		sessionVariables = {

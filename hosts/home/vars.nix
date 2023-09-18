@@ -7,8 +7,8 @@
 			command = "nvim";
 		};
 		browser = {
-			name = "brave";
-			command = "brave";
+			name = "chrome";
+			command = "google-chrome-stable";
 		};
 		terminal = {
 			name = "alacritty";
