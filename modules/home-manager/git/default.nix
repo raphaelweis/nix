@@ -1,7 +1,12 @@
 {
-	programs.git = {
-		enable = true; 
-		userEmail = "raphael.weis.2003@gmail.com";
-		userName = "Raphaël Weis";
-	};
+  programs.git = {
+    enable = true;
+    userEmail = "raphael.weis.2003@gmail.com";
+    userName = "Raphaël Weis";
+    extraConfig = {
+      merge = {
+        tool = "nvimdiff";
+      };
+    };
+  };
 }

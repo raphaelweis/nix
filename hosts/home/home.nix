@@ -43,9 +43,14 @@ in
       gtk-engine-murrine
       gruvbox-dark-icons-gtk
       discord
-      brave
+      google-chrome
       firefox
     ];
+    sessionVariables = {
+      EDITOR = vars.programs.editor.command;
+      VISUAL = vars.programs.editor.command;
+      BROWSER = vars.programs.browser.command;
+    };
   };
 
   programs = {
