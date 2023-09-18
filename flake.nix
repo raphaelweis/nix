@@ -12,16 +12,14 @@
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, hyprland, xremap, nixvim, ... }:
+  outputs = { self, nixpkgs, home-manager, hyprland, xremap, nixvim, ... }@inputs:
     let
-      inherit (self) outputs;
       lib = nixpkgs.lib // home-manager.lib;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      desktopVars = import ./hosts/desktop/vars.nix;
     in
     {
       nixosConfigurations = {
@@ -31,7 +29,7 @@
             xremap.nixosModules.default
           ];
           specialArgs = {
-            inherit pkgs hyprland host;
+            inherit host inputs;
           };
         };
       };
@@ -43,7 +41,7 @@
             hyprland.homeManagerModules.default
           ];
           extraSpecialArgs = {
-            inherit pkgs host hyprland;
+            inherit host inputs;
           };
         };
       };
