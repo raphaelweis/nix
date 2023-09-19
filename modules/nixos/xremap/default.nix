@@ -1,10 +1,13 @@
-{ host, ... }:
+{ host, inputs, ... }:
 let
   vars = import ../../../hosts/${host}/vars.nix;
 in
 {
+  imports = [
+    inputs.xremap.nixosModules.default
+  ];
+  hardware.uinput.enable = true;
   services.xremap = {
-    withHypr = true;
     userName = vars.username;
     config = {
       keymap = [

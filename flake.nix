@@ -12,7 +12,7 @@
     nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, xremap, nixvim, ... }@inputs:
+  outputs = { nixpkgs, home-manager, hyprland, xremap, nixvim, ... }@inputs:
     let
       lib = nixpkgs.lib // home-manager.lib;
       system = "x86_64-linux";
@@ -24,23 +24,21 @@
     {
       nixosConfigurations = {
         desktop = let host = "desktop"; in lib.nixosSystem {
-          modules = [
-            ./hosts/desktop/configuration.nix
-            xremap.nixosModules.default
-          ];
-          specialArgs = {
-            inherit pkgs host inputs;
-          };
+          inherit pkgs;
+          modules = [ ./hosts/desktop/configuration.nix ];
+          specialArgs = { inherit host inputs; };
         };
       };
       homeConfigurations = {
-        "raphaelw@desktop" = let host = "home"; in lib.homeManagerConfiguration {
-          modules = [
-            ./hosts/home/home.nix
-          ];
-          extraSpecialArgs = {
-            inherit pkgs host inputs;
-          };
+        "hyprland" = let host = "hyprland"; in lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hosts/home/${host}/home.nix ];
+          extraSpecialArgs = { inherit pkgs host inputs; };
+        };
+        "minimal" = let host = "minimal"; in lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./hosts/home/${host}/home.nix ];
+          extraSpecialArgs = { inherit pkgs host inputs; };
         };
       };
     };
