@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 let
   vars = import ./vars.nix;
 in
@@ -17,6 +17,9 @@ in
     username = vars.username;
     homeDirectory = "/home/${vars.username}";
     stateVersion = "22.11";
+    packages = with pkgs; [
+      nixgl.auto.nixGLDefault
+    ];
     sessionVariables = { };
   };
 

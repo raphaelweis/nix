@@ -1,6 +1,6 @@
 { pkgs, host, ... }:
 let
-  vars = import ../../../hosts/${host}/vars.nix;
+  vars = import ../../../hosts/nixos/${host}/vars.nix;
 in
 {
   users.users.${vars.username} = {

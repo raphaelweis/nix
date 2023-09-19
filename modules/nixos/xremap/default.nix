@@ -1,42 +1,10 @@
-{ host, inputs, ... }:
+{ host, ... }:
 let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
+  vars = import ../../../hosts/nixos/${host}/vars.nix;
 in
 {
-  imports = [
-    inputs.xremap.nixosModules.default
-  ];
+  # this is just to make the home-manager module work
   hardware.uinput.enable = true;
-  services.xremap = {
-    userName = vars.username;
-    config = {
-      keymap = [
-        # vim style navigation
-        {
-          name = "Go Left";
-          remap = {
-            "ALT-h" = "left";
-          };
-        }
-        {
-          name = "Go Down";
-          remap = {
-            "ALT-j" = "down";
-          };
-        }
-        {
-          name = "Go Up";
-          remap = {
-            "ALT-k" = "up";
-          };
-        }
-        {
-          name = "Go Right";
-          remap = {
-            "ALT-l" = "right";
-          };
-        }
-      ];
-    };
-  };
+  users.groups.uinput.members = [ vars.username ];
+  users.groups.input.members = [ vars.username ];
 }

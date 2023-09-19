@@ -1,6 +1,6 @@
 { pkgs, host, inputs, ... }:
 let
-  vars = import ../../../hosts/${host}/vars.nix;
+  vars = import ../../../hosts/home-manager/${host}/vars.nix;
 in
 {
   imports = [
@@ -99,7 +99,6 @@ in
       windowrule = float, pavucontrol
 
       bind = SUPER, Q, exec, ${vars.programs.browser.command}
-      bind = SUPER, RETURN, exec, ${vars.programs.terminal.command}
       bind = SUPER, C, killactive,
       bind = SUPER SHIFT, M, exit,
       bind = SUPER, E, exec, ${vars.programs.file-explorer.command}

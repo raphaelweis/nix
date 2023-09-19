@@ -10,23 +10,24 @@
     hyprland.url = "github:hyprwm/Hyprland";
     xremap.url = "github:xremap/nix-flake";
     nixvim.url = "github:nix-community/nixvim";
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { nixpkgs, home-manager, hyprland, xremap, nixvim, ... }@inputs:
+  outputs = { nixpkgs, home-manager, nixgl, ... }@inputs:
     let
       lib = nixpkgs.lib // home-manager.lib;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [ nixgl.overlay ];
       };
     in
     {
       nixosConfigurations = {
         desktop = let host = "desktop"; in lib.nixosSystem {
-          inherit pkgs;
-          modules = [ ./hosts/desktop/configuration.nix ];
-          specialArgs = { inherit host inputs; };
+          modules = [ ./hosts/nixos/desktop/configuration.nix ];
+          specialArgs = { inherit pkgs host inputs; };
         };
       };
       homeConfigurations = {

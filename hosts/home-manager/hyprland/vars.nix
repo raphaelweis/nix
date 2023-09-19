@@ -13,7 +13,7 @@
     terminal = {
       name = "alacritty";
       command = "alacritty -e tmux";
-      font-size = 12;
+      font-size = 14;
       opacity = 0.7;
     };
     file-explorer = {
