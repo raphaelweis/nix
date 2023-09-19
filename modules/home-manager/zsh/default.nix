@@ -17,8 +17,8 @@
     shellAliases = {
       vim = "nvim";
       bt = "bluetuith";
-      ls = "lsd";
-      la = "ls -la";
+      ls = "ls --color=auto";
+      la = "ls --color=auto -la";
       ".2" = "../..";
       ".3" = "../../..";
       ".4" = "../../../..";

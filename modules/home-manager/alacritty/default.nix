@@ -1,6 +1,6 @@
 { host, ... }:
 let
-  vars = import ../../../hosts/home/${host}/vars.nix;
+  vars = import ../../../hosts/home-manager/${host}/vars.nix;
 in
 {
   programs.alacritty = {

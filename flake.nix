@@ -32,12 +32,12 @@
       homeConfigurations = {
         "hyprland" = let host = "hyprland"; in lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./hosts/home/${host}/home.nix ];
+          modules = [ ./hosts/home-manager/${host}/home.nix ];
           extraSpecialArgs = { inherit pkgs host inputs; };
         };
         "minimal" = let host = "minimal"; in lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./hosts/home/${host}/home.nix ];
+          modules = [ ./hosts/home-manager/${host}/home.nix ];
           extraSpecialArgs = { inherit pkgs host inputs; };
         };
       };

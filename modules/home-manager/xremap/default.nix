@@ -1,14 +1,9 @@
-{ host, inputs, ... }:
-let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
-in
+{ inputs, ... }:
 {
   imports = [
-    inputs.xremap.nixosModules.default
+    inputs.xremap.homeManagerModules.default
   ];
-  hardware.uinput.enable = true;
   services.xremap = {
-    userName = vars.username;
     config = {
       keymap = [
         # vim style navigation
