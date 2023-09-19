@@ -24,7 +24,6 @@
     {
       nixosConfigurations = {
         desktop = let host = "desktop"; in lib.nixosSystem {
-          # inherit pkgs;
           modules = [
             ./hosts/desktop/configuration.nix
             xremap.nixosModules.default
@@ -36,10 +35,8 @@
       };
       homeConfigurations = {
         "raphaelw@desktop" = let host = "home"; in lib.homeManagerConfiguration {
-          # inherit pkgs;
           modules = [
             ./hosts/home/home.nix
-            hyprland.homeManagerModules.default
           ];
           extraSpecialArgs = {
             inherit pkgs host inputs;

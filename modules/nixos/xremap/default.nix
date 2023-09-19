@@ -1,6 +1,11 @@
+{ host, ... }:
+let
+  vars = import ../../../hosts/${host}/vars.nix;
+in
 {
   services.xremap = {
     withHypr = true;
+    userName = vars.username;
     config = {
       keymap = [
         # vim style navigation

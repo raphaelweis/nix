@@ -1,24 +1,29 @@
-{ pkgs, host, ... }:
+{ pkgs, host, inputs, ... }:
 let
   vars = import ../../../hosts/${host}/vars.nix;
 in
 {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
+
   home = {
-    packages = with pkgs; [
-      dbus
-      dconf
-      grim
-      slurp
-      wl-clipboard
-      wlr-randr
-      rofi-wayland
-      dunst
-      xwayland
-      qt6.qtwayland
-      libsForQt5.qt5.qtwayland
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
+    packages = with pkgs;
+      [
+        dbus
+        dconf
+        grim
+        slurp
+        wl-clipboard
+        wlr-randr
+        rofi-wayland
+        dunst
+        xwayland
+        qt6.qtwayland
+        libsForQt5.qt5.qtwayland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+      ];
     sessionVariables = {
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_TYPE = "wayland";
