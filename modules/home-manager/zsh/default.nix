@@ -15,7 +15,6 @@
       theme = "robbyrussell";
     };
     shellAliases = {
-      vim = "nvim";
       bt = "bluetuith";
       ls = "ls --color=auto";
       la = "ls --color=auto -la";

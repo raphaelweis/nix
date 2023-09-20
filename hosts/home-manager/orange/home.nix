@@ -9,6 +9,7 @@ in
     (import ../../../modules/home-manager/fzf)
     (import ../../../modules/home-manager/xremap)
     (import ../../../modules/home-manager/tmux)
+    (import ../../../modules/home-manager/neovim)
   ];
 
   home = {
@@ -17,7 +18,6 @@ in
     stateVersion = "22.11";
     packages = with pkgs; [
       nixgl.auto.nixGLDefault
-      neovim
     ];
     sessionVariables = { };
   };
