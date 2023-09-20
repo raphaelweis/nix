@@ -9,7 +9,6 @@
     };
     hyprland.url = "github:hyprwm/Hyprland";
     xremap.url = "github:xremap/nix-flake";
-    nixvim.url = "github:nix-community/nixvim";
     nixgl.url = "github:guibou/nixGL";
   };
 
