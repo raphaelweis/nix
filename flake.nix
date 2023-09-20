@@ -3,23 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
     hyprland.url = "github:hyprwm/Hyprland";
     xremap.url = "github:xremap/nix-flake";
     nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { nixpkgs, home-manager, nixgl, ... }@inputs:
+  outputs = { ... }@inputs:
     let
-      lib = nixpkgs.lib // home-manager.lib;
+      lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
+      pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ nixgl.overlay ];
+        overlays = [ inputs.nixgl.overlay ];
       };
     in
     {
