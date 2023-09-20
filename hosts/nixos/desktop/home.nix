@@ -44,8 +44,6 @@
       firefox
     ];
     sessionVariables = {
-      EDITOR = vars.programs.editor.command;
-      VISUAL = vars.programs.editor.command;
       BROWSER = vars.programs.browser.name;
     };
   };
