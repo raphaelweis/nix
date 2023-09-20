@@ -8,9 +8,7 @@ in
     (import ../../../modules/home-manager/zsh)
     (import ../../../modules/home-manager/fzf)
     (import ../../../modules/home-manager/xremap)
-    # (import ../../../modules/home-manager/gh)
-    # (import ../../../modules/home-manager/git)
-    # (import ../../../modules/home-manager/tmux)
+    (import ../../../modules/home-manager/tmux)
   ];
 
   home = {
@@ -20,7 +18,6 @@ in
     packages = with pkgs; [
       nixgl.auto.nixGLDefault
       neovim
-      alacritty
     ];
     sessionVariables = { };
   };
