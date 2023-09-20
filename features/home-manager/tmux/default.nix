@@ -21,12 +21,14 @@
         		unbind r
         		bind r source ~/.config/tmux/tmux.conf
 
-        		# pane splitting
+        		# pane splitting and new windows
+            bind  c  new-window      -c "#{pane_current_path}"
+
         		unbind %
-        		bind v split-window -h
+        		bind v split-window -h -c "#{pane_current_path}"
 
         		unbind '"'
-        		bind h split-window -v
+        		bind h split-window -v -c "#{pane_current_path}"
 
         		# pane resizing and maximizing
         		bind -r H resize-pane -L 3

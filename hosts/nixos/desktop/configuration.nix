@@ -1,25 +1,24 @@
-{ inputs, pkgs, ... }:
-let
-  vars = import ./vars.nix;
-in
+{ inputs, pkgs, vars, ... }:
 {
   imports = [
     # modules
     inputs.home-manager.nixosModules.home-manager
 
     # features
-    (import ../../../modules/nixos/bluetooth)
-    (import ../../../modules/nixos/boot)
-    (import ../../../modules/nixos/fonts)
-    (import ../../../modules/nixos/hyprland)
-    (import ../../../modules/nixos/locales)
-    (import ../../../modules/nixos/networking)
-    (import ../../../modules/nixos/nix)
-    (import ../../../modules/nixos/pipewire)
-    (import ../../../modules/nixos/security)
-    (import ../../../modules/nixos/services)
-    (import ../../../modules/nixos/user)
-    (import ../../../modules/nixos/xremap)
+    (import ../../../features/nixos/opengl)
+    (import ../../../features/nixos/bluetooth)
+    (import ../../../features/nixos/boot)
+    (import ../../../features/nixos/fonts)
+    (import ../../../features/nixos/hyprland)
+    (import ../../../features/nixos/locales)
+    (import ../../../features/nixos/networking)
+    (import ../../../features/nixos/nix)
+    (import ../../../features/nixos/pipewire)
+    (import ../../../features/nixos/security)
+    (import ../../../features/nixos/services)
+    (import ../../../features/nixos/user)
+    (import ../../../features/nixos/xremap)
+    (import ../../../features/nixos/wine)
 
     # machine specific hardware config
     (import ./hardware-configuration.nix)
@@ -27,6 +26,7 @@ in
 
   environment.systemPackages = with pkgs; [
     home-manager
+    htop
     vim
     gcc
     alsa-utils
@@ -39,6 +39,7 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = { inherit inputs pkgs vars; };
     users.${vars.username} = import ./home.nix;
   };
 

@@ -1,8 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 {
-
-  hardware.opengl.enable = true; # this is required
-
   # Autostart Hyprland on login if on tty1
   environment = {
     loginShellInit = ''

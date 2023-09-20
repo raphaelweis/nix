@@ -28,7 +28,6 @@
       alacritty
       tmux
       starship
-      neovim
       lsd
       cliphist
       hyprpaper
@@ -43,6 +42,7 @@
       discord
       google-chrome
       firefox
+      neofetch
     ];
     sessionVariables = {
       BROWSER = vars.programs.browser.name;
