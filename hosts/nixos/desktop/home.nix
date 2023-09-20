@@ -1,24 +1,21 @@
-{ pkgs, ... }:
-let
-  vars = import ./vars.nix;
-in
+{ pkgs, vars, ... }:
 {
   imports = [
     (import ../../../assets)
-    (import ../../../modules/home-manager/alacritty)
-    (import ../../../modules/home-manager/fzf)
-    (import ../../../modules/home-manager/gh)
-    (import ../../../modules/home-manager/git)
-    (import ../../../modules/home-manager/gnome-keyring)
-    (import ../../../modules/home-manager/gtk)
-    (import ../../../modules/home-manager/hyprpaper)
-    (import ../../../modules/home-manager/swayidle)
-    (import ../../../modules/home-manager/tmux)
-    (import ../../../modules/home-manager/zsh)
-    (import ../../../modules/home-manager/waybar)
-    (import ../../../modules/home-manager/swaylock)
-    (import ../../../modules/home-manager/hyprland)
-    (import ../../../modules/home-manager/xremap)
+    (import ../../../features/home-manager/alacritty)
+    (import ../../../features/home-manager/fzf)
+    (import ../../../features/home-manager/gh)
+    (import ../../../features/home-manager/git)
+    (import ../../../features/home-manager/gnome-keyring)
+    (import ../../../features/home-manager/gtk)
+    (import ../../../features/home-manager/hyprpaper)
+    (import ../../../features/home-manager/swayidle)
+    (import ../../../features/home-manager/tmux)
+    (import ../../../features/home-manager/zsh)
+    (import ../../../features/home-manager/waybar)
+    (import ../../../features/home-manager/swaylock)
+    (import ../../../features/home-manager/hyprland)
+    (import ../../../features/home-manager/xremap)
   ];
 
   home = {

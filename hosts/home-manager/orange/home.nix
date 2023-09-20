@@ -1,12 +1,12 @@
 { pkgs, vars, ... }:
 {
   imports = [
-    (import ../../../modules/home-manager/alacritty)
-    (import ../../../modules/home-manager/zsh)
-    (import ../../../modules/home-manager/fzf)
-    (import ../../../modules/home-manager/xremap)
-    (import ../../../modules/home-manager/tmux)
-    (import ../../../modules/home-manager/neovim)
+    (import ../../../features/home-manager/alacritty)
+    (import ../../../features/home-manager/zsh)
+    (import ../../../features/home-manager/fzf)
+    (import ../../../features/home-manager/xremap)
+    (import ../../../features/home-manager/tmux)
+    (import ../../../features/home-manager/neovim)
   ];
 
   home = {
