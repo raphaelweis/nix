@@ -16,6 +16,7 @@
     (import ../../../features/home-manager/swaylock)
     (import ../../../features/home-manager/hyprland)
     (import ../../../features/home-manager/xremap)
+    (import ../../../features/home-manager/neovim)
   ];
 
   home = {
