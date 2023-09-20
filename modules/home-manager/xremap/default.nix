@@ -1,6 +1,6 @@
 { host, inputs, ... }:
 let
-  vars = import ../../../hosts/nixos/${host}/vars.nix;
+  vars = import ../../../hosts/home-manager/${host}/vars.nix;
 in
 {
   imports = [ inputs.xremap.homeManagerModules.default ];
@@ -30,15 +30,6 @@ in
           name = "Go Right";
           remap = {
             "ALT-l" = "right";
-          };
-        }
-        # program launchers
-        {
-          name = "Launch Terminal";
-          remap = {
-            super-return = {
-              launch = [ vars.programs.terminal.command ];
-            };
           };
         }
       ];

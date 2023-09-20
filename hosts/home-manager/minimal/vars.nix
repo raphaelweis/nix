@@ -7,7 +7,7 @@
     };
     terminal = {
       name = "alacritty";
-      command = "nixGL alacritty -e tmux"; # we use nixGL because this is a non nixos distro
+      command = "gnome-terminal"; # we use nixGL because this is a non nixos distro
       font-size = 12;
       opacity = 0.9;
     };

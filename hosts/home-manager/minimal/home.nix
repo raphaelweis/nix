@@ -19,6 +19,8 @@ in
     stateVersion = "22.11";
     packages = with pkgs; [
       nixgl.auto.nixGLDefault
+      neovim
+      alacritty
     ];
     sessionVariables = { };
   };
