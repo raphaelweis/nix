@@ -1,7 +1,4 @@
-{ host, pkgs, ... }:
-let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix; # TODO: figure out how to import machine specific vars
-in
+{ vars, pkgs, ... }:
 {
   home = {
     sessionVariables = {

@@ -1,7 +1,4 @@
-{ pkgs, host, inputs, ... }:
-let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
-in
+{ pkgs, vars, inputs, ... }:
 {
   imports = [
     inputs.hyprland.homeManagerModules.default

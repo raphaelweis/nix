@@ -1,6 +1,5 @@
-{ host, ... }:
+{ vars, ... }:
 let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
   systemdTarget = if vars.display.vm == "Hyprland" then "hyprland-session.target" else "graphical-session.target";
   # swaylock = "${pkgs.swaylock}/bin/swaylock";
   # timeout = 10 * 60;

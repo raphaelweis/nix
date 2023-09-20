@@ -1,7 +1,4 @@
-{ host, ... }:
-let
-  vars = import ../../../hosts/nixos/${host}/vars.nix;
-in
+{ vars, ... }:
 {
   networking = {
     hostName = vars.hostname;

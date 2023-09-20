@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  vars = import ./vars.nix;
-in
+{ pkgs, vars, ... }:
 {
   imports = [
     (import ../../../modules/home-manager/alacritty)

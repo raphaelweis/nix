@@ -1,7 +1,4 @@
-{ host, ... }:
-let
-  vars = import ../../../hosts/nixos/${host}/vars.nix;
-in
+{ vars, ... }:
 {
   # this is just to make the home-manager module work
   hardware.uinput.enable = true;

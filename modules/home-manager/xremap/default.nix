@@ -1,7 +1,4 @@
-{ host, inputs, ... }:
-let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
-in
+{ inputs, ... }:
 {
   imports = [ inputs.xremap.homeManagerModules.default ];
   services.xremap = {

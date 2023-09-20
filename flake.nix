@@ -23,17 +23,25 @@
       # On nixos, I prefer to manage my home-manager as a nixos module
       # So the homeConfigurations are exclusively for non-nixos systems
       nixosConfigurations = {
-        desktop = let host = "desktop"; in lib.nixosSystem {
-          modules = [ ./hosts/nixos/${host}/configuration.nix ];
-          specialArgs = { inherit pkgs host inputs; };
-        };
+        desktop = let path = ./hosts/nixos/desktop; in
+          lib.nixosSystem {
+            modules = [ (path + /configuration.nix) ];
+            specialArgs = {
+              inherit pkgs inputs;
+              vars = import (path + /vars.nix);
+            };
+          };
       };
       homeConfigurations = {
-        "orange" = let host = "orange"; in lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./hosts/home-manager/${host}/home.nix ];
-          extraSpecialArgs = { inherit pkgs host inputs; };
-        };
+        "orange" = let path = ./hosts/home-manager/orange; in
+          lib.homeManagerConfiguration {
+            inherit pkgs;
+            modules = [ (path + /home.nix) ];
+            extraSpecialArgs = {
+              inherit pkgs inputs;
+              vars = import (path + /vars.nix);
+            };
+          };
       };
     };
 }

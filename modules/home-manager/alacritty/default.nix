@@ -1,7 +1,7 @@
-{ host, ... }:
-let
-  vars = import ../../../hosts/home-manager/${host}/vars.nix;
-in
+{ vars, ... }:
+# let
+#   vars = import ../../../hosts/home-manager/${host}/vars.nix;
+# in
 {
   programs.alacritty = {
     enable = true;

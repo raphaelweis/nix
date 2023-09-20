@@ -1,7 +1,4 @@
-{ pkgs, host, ... }:
-let
-  vars = import ../../../hosts/nixos/${host}/vars.nix;
-in
+{ pkgs, vars, ... }:
 {
   users.users.${vars.username} = {
     isNormalUser = true;
