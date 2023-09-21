@@ -17,6 +17,7 @@
     (import ../../features/home-manager/hyprland)
     (import ../../features/home-manager/xremap)
     (import ../../features/home-manager/neovim)
+    (import ../../features/home-manager/dunst)
   ];
 
   home = {
@@ -24,7 +25,6 @@
     homeDirectory = "/home/${vars.username}";
     stateVersion = "22.11";
     packages = with pkgs; [
-      bluetuith
       alacritty
       tmux
       starship

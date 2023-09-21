@@ -60,14 +60,16 @@ in
 inputs.nixpkgs.lib.nixosSystem {
   modules = [
     inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = { inherit pkgs inputs vars; };
+        users.${vars.username} = import ./home.nix;
+      };
+    }
     (import ./configuration.nix)
     (import ./hardware-configuration.nix)
   ];
   specialArgs = { inherit pkgs inputs vars; };
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit pkgs inputs vars; };
-    users.${vars.username} = import ./home.nix;
-  };
 }

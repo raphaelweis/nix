@@ -14,7 +14,6 @@
         wl-clipboard
         wlr-randr
         rofi-wayland
-        dunst
         xwayland
         qt6.qtwayland
         libsForQt5.qt5.qtwayland
