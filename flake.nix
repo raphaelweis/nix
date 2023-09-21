@@ -11,8 +11,7 @@
 
   outputs = { ... }@inputs:
     let
-      lib = inputs.nixpkgs.lib // inputs.home-manager.lib;
-      system = "x86_64-linux";
+      system = "x86_64-linux"; # for now I only have this type of system.
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
@@ -20,28 +19,11 @@
       };
     in
     {
-      # On nixos, I prefer to manage my home-manager as a nixos module
-      # So the homeConfigurations are exclusively for non-nixos systems
       nixosConfigurations = {
-        desktop = let path = ./hosts/nixos/desktop; in
-          lib.nixosSystem {
-            modules = [ (path + /configuration.nix) ];
-            specialArgs = {
-              inherit pkgs inputs;
-              vars = import (path + /vars.nix);
-            };
-          };
+        desktop = import ./hosts/desktop { inherit pkgs inputs; };
       };
       homeConfigurations = {
-        "orange" = let path = ./hosts/home-manager/orange; in
-          lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [ (path + /home.nix) ];
-            extraSpecialArgs = {
-              inherit pkgs inputs;
-              vars = import (path + /vars.nix);
-            };
-          };
+        "orange" = import ./hosts/orange { inherit pkgs inputs; };
       };
     };
 }
