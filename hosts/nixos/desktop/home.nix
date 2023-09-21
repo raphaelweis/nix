@@ -39,7 +39,6 @@
       gnome.gnome-themes-extra
       gtk-engine-murrine
       gruvbox-dark-icons-gtk
-      discord
       google-chrome
       firefox
       neofetch
