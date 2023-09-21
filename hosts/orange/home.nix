@@ -16,6 +16,9 @@
     packages = with pkgs; [
       nixgl.auto.nixGLDefault
     ];
+    sessionVariables = {
+      CHROME_EXECUTABLE = vars.programs.browser.command;
+    };
   };
 
   programs = {

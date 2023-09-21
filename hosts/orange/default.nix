@@ -7,6 +7,10 @@ let
         name = "nvim";
         command = "nvim";
       };
+      browser = {
+        name = "chromium";
+        command = "chromium-browser";
+      };
       terminal = {
         name = "alacritty";
         command = "gnome-terminal"; # we use nixGL because this is a non nixos distro
