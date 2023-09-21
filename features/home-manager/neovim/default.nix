@@ -14,10 +14,14 @@
       lua-language-server
       gopls
       clang-tools
+      nil
 
       # debug
       vscode-extensions.ms-vscode.cpptools
       delve
+
+      # formatters
+      nixpkgs-fmt
     ];
     plugins = with pkgs.vimPlugins; [
       # plugins
@@ -42,6 +46,9 @@
       nvim-cmp
       flutter-tools-nvim
       nvim-lspconfig
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-go
 
       # treesitter parsers
       (nvim-treesitter.withPlugins (p: [
@@ -52,6 +59,7 @@
         p.tree-sitter-lua
         p.tree-sitter-python
         p.tree-sitter-rust
+        p.tree-sitter-javascript
         p.tree-sitter-typescript
         p.tree-sitter-vimdoc
         p.tree-sitter-vim
@@ -64,10 +72,10 @@
       ]))
     ];
     extraLuaConfig = ''
-      -- Import the lua files
       ${builtins.readFile ./lua/options.lua}
       ${builtins.readFile ./lua/keymaps.lua}
 
+      ${builtins.readFile ./lua/gruvbox.lua}
       ${builtins.readFile ./lua/autopairs.lua}
       ${builtins.readFile ./lua/gitsigns.lua}
       ${builtins.readFile ./lua/indent_blankline.lua}
@@ -78,7 +86,7 @@
       ${builtins.readFile ./lua/treesitter.lua}
       ${builtins.readFile ./lua/cmp.lua}
       ${builtins.readFile ./lua/lsp.lua}
-      ${builtins.readFile ./lua/gruvbox.lua}
+      ${builtins.readFile ./lua/dap.lua}
     '';
   };
 }
