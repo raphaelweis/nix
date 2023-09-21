@@ -40,7 +40,6 @@
 
       exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
       exec-once = hyprctl setcursor ${vars.theme.cursor.theme} ${toString vars.theme.cursor.size}
-      exec-once = waybar &
       exec-once = hyprpaper &
 
       input {
@@ -48,6 +47,9 @@
         kb_layout = us
         kb_variant = intl
         sensitivity = 0
+        touchpad {
+          natural_scroll = true
+        }
       }
 
       general {

@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 let
   vars = {
-    hostname = "nixos-desktop";
+    hostname = "nixos-laptop";
     username = "raphaelw";
     programs = {
       editor = {
@@ -15,7 +15,7 @@ let
       terminal = {
         name = "alacritty";
         command = "alacritty -e tmux";
-        font-size = 14;
+        font-size = 12;
         opacity = 0.7;
       };
       file-explorer = {
@@ -37,9 +37,9 @@ let
     };
     display = {
       vm = "Hyprland";
-      refresh-rate = 165;
-      resolution = "3440x1440";
-      monitor1 = "DP-3";
+      refresh-rate = 60;
+      resolution = "1920x1080";
+      monitor1 = "eDP-1";
       scale = "1";
     };
     theme = {
