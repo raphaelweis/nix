@@ -13,4 +13,7 @@ require('nvim-treesitter.configs').setup {
 			node_incremental = '<c-space>',
 		},
 	},
+	autotag = {
+		enable = true,
+	},
 }

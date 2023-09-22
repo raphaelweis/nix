@@ -15,7 +15,9 @@
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ inputs.nixgl.overlay ];
+        overlays = [
+          inputs.nixgl.overlay
+        ];
       };
     in
     {

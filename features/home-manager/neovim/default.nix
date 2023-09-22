@@ -25,6 +25,7 @@
 
       # formatters
       nixpkgs-fmt
+      nodePackages.prettier
     ];
     plugins = with pkgs.vimPlugins; [
       # plugins
@@ -40,6 +41,7 @@
       harpoon
       telescope-fzf-native-nvim
       telescope-nvim
+      nvim-ts-autotag
       nvim-treesitter-textobjects
       nvim-treesitter
       luasnip
@@ -52,6 +54,7 @@
       nvim-dap
       nvim-dap-ui
       nvim-dap-go
+      formatter-nvim
 
       # treesitter parsers
       (nvim-treesitter.withPlugins (p: [
@@ -64,6 +67,8 @@
         p.tree-sitter-rust
         p.tree-sitter-javascript
         p.tree-sitter-typescript
+        p.tree-sitter-css
+        p.tree-sitter-html
         p.tree-sitter-vimdoc
         p.tree-sitter-vim
         p.tree-sitter-dart
@@ -90,6 +95,7 @@
       ${builtins.readFile ./lua/cmp.lua}
       ${builtins.readFile ./lua/lsp.lua}
       ${builtins.readFile ./lua/dap.lua}
+      ${builtins.readFile ./lua/formatter.lua}
 
       -- Configure language servers
       lspconfig['lua_ls'].setup({
@@ -186,7 +192,7 @@
         }
       })
 
-      -- Dap configurations that require special paths:        
+      -- Dap configurations that require special paths:
       -- C debugging
       local dap = require('dap')
       dap.adapters.cppdbg = {

@@ -48,10 +48,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		if not client.server_capabilities.documentFormattingProvider then
 			return
 		end
-		-- Tsserver usually works poorly.
+
+		-- Disable clients that will be handled by a custom formatter
 		if client.name == 'tsserver' then
 			return
 		end
+
 		-- Create an autocmd that will run *before* we save the buffer.
 		--  Run the formatting command for the LSP that has just attached.
 		vim.api.nvim_create_autocmd('BufWritePre', {
