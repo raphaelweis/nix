@@ -15,6 +15,9 @@
       gopls
       clang-tools
       nil
+      nodePackages.vscode-html-languageserver-bin
+      nodePackages.vscode-css-languageserver-bin
+      nodePackages.vscode-json-languageserver-bin
 
       # debug
       vscode-extensions.ms-vscode.cpptools
@@ -87,6 +90,122 @@
       ${builtins.readFile ./lua/cmp.lua}
       ${builtins.readFile ./lua/lsp.lua}
       ${builtins.readFile ./lua/dap.lua}
+
+      -- Configure language servers
+      lspconfig['lua_ls'].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = { -- custom settings for lua
+          Lua = {
+            -- make the language server recognize 'vim' global
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              -- make language server aware of runtime files
+              library = {
+                [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                [vim.fn.stdpath('config') .. '/lua'] = true,
+              },
+            },
+          },
+        },
+      })
+      lspconfig['gopls'].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+      })
+      lspconfig['clangd'].setup({
+        cmd = {
+          'clangd',
+          '--fallback-style=Google',
+        },
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      lspconfig['nil_ls'].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          ['nil'] = {
+            formatting = {
+              command = { 'nixpkgs-fmt' },
+            },
+            nix = {
+              flake = {
+                autoArchive = true,
+              },
+            },
+          },
+        },
+      })
+      lspconfig['tsserver'].setup({
+        cmd = {
+          "${pkgs.nodePackages.typescript-language-server}/lib/node_modules/.bin/typescript-language-server", "--stdio"
+        },
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      lspconfig['html'].setup({
+        cmd = {
+          "${pkgs.nodePackages.vscode-html-languageserver-bin}/lib/node_modules/.bin/html-languageserver", "--stdio"
+        },
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      lspconfig['cssls'].setup({
+        cmd = {
+          "${pkgs.nodePackages.vscode-css-languageserver-bin}/lib/node_modules/.bin/css-languageserver", "--stdio"
+        },
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      lspconfig['jsonls'].setup({
+        cmd = {
+          "${pkgs.nodePackages.vscode-json-languageserver-bin}/lib/node_modules/.bin/json-languageserver", "--stdio"
+        },
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+
+      -- This plugin will automatically configure dartls as well
+      require('flutter-tools').setup({
+        widget_guides = {
+          enabled = true,
+        },
+        lsp = {
+          capabilities = capabilities,
+          on_attach = on_attach
+        },
+        debugger = {
+          enabled = true,
+          run_via_dap = true,
+        },
+        dev_log = {
+          enabled = false -- we disable this because we can see the logs in dapui
+        }
+      })
+
+      -- Dap configurations that require special paths:        
+      -- C debugging
+      local dap = require('dap')
+      dap.adapters.cppdbg = {
+        id = 'cppdbg',
+        type = 'executable',
+        command = '${pkgs.vscode-extensions.ms-vscode.cpptools}/share/vscode/extensions/ms-vscode.cpptools/debugAdapters/bin/OpenDebugAD7',
+      }
+      dap.configurations.c = {
+        {
+          name = 'Launch file',
+          type = 'cppdbg',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+          cwd = ''\'''${workspaceFolder}',
+          stopAtEntry = true,
+        },
+      }
     '';
   };
 }
