@@ -17,7 +17,7 @@
       nixgl.auto.nixGLDefault
     ];
     sessionVariables = {
-      CHROME_EXECUTABLE = vars.programs.browser.command;
+      CHROME_EXECUTABLE = vars.programs.chrome.command;
     };
   };
 

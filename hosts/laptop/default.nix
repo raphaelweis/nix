@@ -4,33 +4,30 @@ let
     hostname = "nixos-laptop";
     username = "raphaelw";
     programs = {
-      editor = {
-        name = "nvim";
+      neovim = {
+        name = "neovim";
         command = "nvim";
       };
-      browser = {
+      chrome = {
         name = "google-chrome";
         command = "google-chrome-stable";
       };
-      terminal = {
+      alacritty = {
         name = "alacritty";
         command = "alacritty -e tmux";
         font-size = 12;
         opacity = 0.7;
       };
-      file-explorer = {
+      nautilus = {
         name = "nautilus";
         command = "nautilus";
       };
-      application-launcher = {
+      rofi = {
         name = "rofi";
         command = "rofi -show drun";
+        package = pkgs.rofi-wayland;
       };
-      program-launcher = {
-        name = "rofi";
-        command = "rofi -show run";
-      };
-      screenlocker = {
+      swaylock = {
         name = "swaylock";
         command = "swaylock -f";
       };

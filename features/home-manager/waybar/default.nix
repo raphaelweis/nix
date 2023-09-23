@@ -1,4 +1,4 @@
-{ ... }:
+{ vars, pkgs, ... }:
 {
   programs.waybar = {
     enable = true;
@@ -9,20 +9,66 @@
         layer = "top";
         width = 55;
         spacing = 7;
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ ];
-        modules-right = [ ];
+
+        modules-left = [ "image#nixos-logo" "tray" ];
+        modules-center = [ "hyprland/workspaces" ];
+        modules-right = [ "clock" "custom/power" ];
+
+        "image#nixos-logo" = {
+          path = ../../../assets/images/nixos-logo.png;
+          size = 32;
+        };
+        "tray" = {
+          icon-size = 21;
+          spacing = 10;
+          show-passive-items = true;
+        };
         "hyprland/workspaces" = {
           on-click = "activate";
           format = "{icon}";
           active-only = false;
           format-icons = {
-            active = "";
             default = "";
           };
           persistent_workspaces = {
-            "*" = 9;
+            "*" = 10;
           };
+        };
+        "clock" = {
+          interval = 60;
+          format = "{:%H\n%M}";
+          tooltip-format = ''
+            <big>{:%Y %B}</big>
+            <tt><small>{calendar}</small></tt>
+          '';
+        };
+        "custom/power" = {
+          tooltip = false;
+          on-click =
+            let
+              sudo = pkgs.sudo + "/bin/sudo";
+              rofi = vars.programs.rofi.package + "/bin/rofi";
+              poweroff = pkgs.systemd + "/bin/poweroff";
+              reboot = pkgs.systemd + "/bin/reboot";
+            in
+            pkgs.writeShellScript "shutdown-waybar" ''
+
+              #!/bin/sh
+
+              off=" Shutdown"
+              reboot=" Reboot"
+              cancel="󰅖 Cancel"
+
+              sure="$(printf '%s\n%s\n%s' "$off" "$reboot" "$cancel" |
+          	  ${rofi} -dmenu -p ' Are you sure?')"
+
+              if [ "$sure" = "$off" ]; then
+          	    ${sudo} ${poweroff}
+              elif [ "$sure" = "$reboot" ]; then
+          	    ${sudo} ${reboot}
+              fi
+          '';
+          format = "󰐥";
         };
       };
     };

@@ -56,11 +56,11 @@
           family = "${vars.fonts.system-font}";
           style = "Regular";
         };
-        size = vars.programs.terminal.font-size;
+        size = vars.programs.alacritty.font-size;
       };
       window = {
         startup_mode = "Maximized";
-        opacity = vars.programs.terminal.opacity;
+        opacity = vars.programs.alacritty.opacity;
         padding = {
           x = 10;
           y = 10;

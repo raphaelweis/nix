@@ -96,17 +96,17 @@
 
       windowrule = float, pavucontrol
 
-      bind = SUPER, Q, exec, ${vars.programs.browser.command}
-      bind = SUPER, RETURN, exec, ${vars.programs.terminal.command}
+      bind = SUPER, Q, exec, ${vars.programs.chrome.command}
+      bind = SUPER, RETURN, exec, ${vars.programs.alacritty.command}
       bind = SUPER, C, killactive,
       bind = SUPER SHIFT, M, exit,
-      bind = SUPER, E, exec, ${vars.programs.file-explorer.command}
+      bind = SUPER, E, exec, ${vars.programs.nautilus.command}
       bind = SUPER, V, togglefloating,
       bind = SUPER, M, fullscreen,
-      bind = SUPER, P, exec, ${vars.programs.program-launcher.command}
-      bindr = SUPER, SUPER_L, exec, ${vars.programs.application-launcher.command} || pkill ${vars.programs.application-launcher.name}
+      bind = SUPER, P, exec, ${vars.programs.rofi.package}/bin/rofi -show run
+      bindr = SUPER, SUPER_L, exec, ${vars.programs.rofi.package}/bin/rofi -show run || pkill ${vars.programs.rofi.name}
       bind = SUPER, J, togglesplit, dwindle
-      bind = SUPER SHIFT, L, exec, ${vars.programs.screenlocker.command}
+      bind = SUPER SHIFT, L, exec, ${vars.programs.swaylock.command}
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, right, movefocus, r

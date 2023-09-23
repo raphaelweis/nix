@@ -45,7 +45,7 @@
       neofetch
     ];
     sessionVariables = {
-      BROWSER = vars.programs.browser.name;
+      BROWSER = vars.programs.chrome.name;
     };
   };
 
