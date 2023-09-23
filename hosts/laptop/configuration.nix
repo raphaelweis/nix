@@ -14,6 +14,7 @@
     (import ../../features/nixos/services)
     (import ../../features/nixos/user)
     (import ../../features/nixos/xremap)
+    (import ../../features/nixos/backlight)
   ];
 
   environment.systemPackages = with pkgs; [
@@ -27,6 +28,7 @@
     curl
     git
   ];
+
 
   system.stateVersion = "23.05";
 }

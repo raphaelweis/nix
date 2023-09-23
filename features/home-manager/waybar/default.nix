@@ -46,7 +46,6 @@
           tooltip = false;
           on-click =
             let
-              sudo = pkgs.sudo + "/bin/sudo";
               rofi = vars.programs.rofi.package + "/bin/rofi";
               poweroff = pkgs.systemd + "/bin/poweroff";
               reboot = pkgs.systemd + "/bin/reboot";
@@ -63,9 +62,9 @@
           	  ${rofi} -dmenu -p ' Are you sure?')"
 
               if [ "$sure" = "$off" ]; then
-          	    ${sudo} ${poweroff}
+          	    ${poweroff}
               elif [ "$sure" = "$reboot" ]; then
-          	    ${sudo} ${reboot}
+          	    ${reboot}
               fi
           '';
           format = "󰐥";
