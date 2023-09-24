@@ -34,6 +34,7 @@
       # plugins
       gruvbox-nvim
       plenary-nvim
+      nvim-tree-lua
       vim-fugitive
       vim-tmux-navigator
       nvim-autopairs
@@ -86,6 +87,7 @@
       ${builtins.readFile ./lua/options.lua}
       ${builtins.readFile ./lua/keymaps.lua}
 
+      ${builtins.readFile ./lua/tree.lua}
       ${builtins.readFile ./lua/gruvbox.lua}
       ${builtins.readFile ./lua/autopairs.lua}
       ${builtins.readFile ./lua/gitsigns.lua}

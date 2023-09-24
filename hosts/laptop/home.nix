@@ -18,6 +18,7 @@
     (import ../../features/home-manager/xremap)
     (import ../../features/home-manager/neovim)
     (import ../../features/home-manager/dunst)
+    (import ../../features/home-manager/mimeapps)
   ];
 
   home = {
