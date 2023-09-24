@@ -7,6 +7,8 @@
   home = {
     packages = with pkgs;
       [
+        pw-volume
+        playerctl
         dbus
         dconf
         grim
@@ -17,6 +19,8 @@
         xwayland
         qt6.qtwayland
         libsForQt5.qt5.qtwayland
+        xdg-utils
+        xdg-desktop-portal
         xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland
       ];
@@ -107,6 +111,15 @@
       bindr = SUPER, SUPER_L, exec, ${vars.programs.rofi.package}/bin/rofi -show run || pkill ${vars.programs.rofi.name}
       bind = SUPER, J, togglesplit, dwindle
       bind = SUPER SHIFT, L, exec, ${vars.programs.swaylock.command}
+
+      binde = , XF86AudioRaiseVolume, exec, pw-volume change +5%
+      binde = , XF86AudioLowerVolume, exec, pw-volume change -5%
+      bind = , XF86MonBrightnessUp, exec, light -A 10
+      bind = , XF86MonBrightnessDown, exec, light -U 10
+      bind = , XF86AudioMute, exec, pw-volume mute toggle
+      bind = , XF86AudioPlay, exec, playerctl play-pause
+      bind = , XF86AudioPrev, exec, playerctl previous
+      bind = , XF86AudioNext, exec, playerctl next
 
       bind = SUPER, left, movefocus, l
       bind = SUPER, right, movefocus, r

@@ -43,9 +43,10 @@
       google-chrome
       firefox
       neofetch
+      spotify
     ];
     sessionVariables = {
-      BROWSER = vars.programs.chrome.name;
+      BROWSER = vars.programs.chrome.command;
     };
   };
 

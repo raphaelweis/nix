@@ -26,6 +26,9 @@
       # formatters
       nixpkgs-fmt
       nodePackages.prettier
+
+      # else
+      tree-sitter
     ];
     plugins = with pkgs.vimPlugins; [
       # plugins

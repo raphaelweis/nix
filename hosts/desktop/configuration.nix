@@ -25,6 +25,7 @@
     alsa-utils
     killall
     ripgrep
+    fd
     curl
     git
   ];
