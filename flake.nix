@@ -6,7 +6,6 @@
     home-manager.url = "github:nix-community/home-manager";
     hyprland.url = "github:hyprwm/Hyprland";
     xremap.url = "github:xremap/nix-flake";
-    nixgl.url = "github:guibou/nixGL";
   };
 
   outputs = { ... }@inputs:
@@ -15,9 +14,7 @@
       pkgs = import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [
-          inputs.nixgl.overlay
-        ];
+        overlays = [ ];
       };
     in
     {
