@@ -15,6 +15,7 @@
       gopls
       clang-tools
       nil
+      nodePackages.typescript-language-server
       nodePackages.vscode-html-languageserver-bin
       nodePackages.vscode-css-languageserver-bin
       nodePackages.vscode-json-languageserver-bin
@@ -59,31 +60,14 @@
       nvim-dap-ui
       nvim-dap-go
       formatter-nvim
+      dressing-nvim
 
       # treesitter parsers
-      (nvim-treesitter.withPlugins (p: [
-        p.tree-sitter-nix
-        p.tree-sitter-c
-        p.tree-sitter-cpp
-        p.tree-sitter-go
-        p.tree-sitter-lua
-        p.tree-sitter-python
-        p.tree-sitter-rust
-        p.tree-sitter-javascript
-        p.tree-sitter-typescript
-        p.tree-sitter-css
-        p.tree-sitter-html
-        p.tree-sitter-vimdoc
-        p.tree-sitter-vim
-        p.tree-sitter-dart
-        p.tree-sitter-dockerfile
-        p.tree-sitter-bash
-        p.tree-sitter-json
-        p.tree-sitter-yaml
-        p.tree-sitter-toml
-      ]))
+      nvim-treesitter.withAllGrammars
     ];
     extraLuaConfig = ''
+      local TSSERVER_PATH = "${pkgs.nodePackages.typescript-language-server}/lib/node_modules"
+
       ${builtins.readFile ./lua/options.lua}
       ${builtins.readFile ./lua/keymaps.lua}
 
@@ -152,7 +136,7 @@
       })
       lspconfig['tsserver'].setup({
         cmd = {
-          "${pkgs.nodePackages.typescript-language-server}/lib/node_modules/.bin/typescript-language-server", "--stdio"
+          TSSERVER_PATH .. "/.bin/typescript-language-server", "--stdio"
         },
         capabilities = capabilities,
         on_attach = on_attach,

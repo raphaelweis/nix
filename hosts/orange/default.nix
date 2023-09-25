@@ -3,15 +3,15 @@ let
   vars = {
     username = "vxsw5537";
     programs = {
-      editor = {
+      neovim = {
         name = "nvim";
         command = "nvim";
       };
-      browser = {
+      chromium = {
         name = "chromium";
         command = "chromium-browser";
       };
-      terminal = {
+      alacritty = {
         name = "alacritty";
         command = "gnome-terminal"; # we use nixGL because this is a non nixos distro
         font-size = 12;
