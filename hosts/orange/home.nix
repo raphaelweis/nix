@@ -15,6 +15,7 @@
     stateVersion = "22.11";
     sessionVariables = {
       CHROME_EXECUTABLE = vars.programs.chromium.command;
+      BROWSER = vars.programs.chromium.command;
     };
   };
 
