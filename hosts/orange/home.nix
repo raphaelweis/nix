@@ -16,6 +16,7 @@
     sessionVariables = {
       CHROME_EXECUTABLE = vars.programs.chromium.command;
       BROWSER = vars.programs.chromium.command;
+      XDG_DATA_DIRS = "$HOME/.nix-profile/share:/usr/local/share:/usr/share";
     };
   };
 
