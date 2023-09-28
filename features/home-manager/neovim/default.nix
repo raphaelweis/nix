@@ -52,6 +52,8 @@
       luasnip
       cmp_luasnip
       cmp-nvim-lsp
+      cmp-path
+      cmp-buffer
       friendly-snippets
       nvim-cmp
       flutter-tools-nvim
