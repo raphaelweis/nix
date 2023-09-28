@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     hyprland.url = "github:hyprwm/Hyprland";
     xremap.url = "github:xremap/nix-flake";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { ... }@inputs:

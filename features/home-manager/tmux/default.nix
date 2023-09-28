@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -14,7 +14,7 @@
 
         		# status line
             set -g status on
-            set -g status-style "bg=#3c3836 fg=#83a598"
+            set -g status-style "bg=#${config.colorScheme.colors.base01} fg=#${config.colorScheme.colors.base0D}"
             set -g status-position "top"
 
         		# reload tmux configuration with <prefix>r

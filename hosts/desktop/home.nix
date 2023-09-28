@@ -2,6 +2,7 @@
 {
   imports = [
     (import ../../assets)
+    (import ../../features/home-manager/nix-colors)
     (import ../../features/home-manager/alacritty)
     (import ../../features/home-manager/fzf)
     (import ../../features/home-manager/gh)

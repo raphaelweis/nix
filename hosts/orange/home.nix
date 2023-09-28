@@ -1,6 +1,7 @@
 { vars, ... }:
 {
   imports = [
+    (import ../../features/home-manager/nix-colors)
     (import ../../features/home-manager/alacritty)
     (import ../../features/home-manager/zsh)
     (import ../../features/home-manager/fzf)
