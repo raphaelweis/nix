@@ -2,6 +2,7 @@
 {
   imports = [
     (import ../../features/nixos/boot)
+    (import ../../features/nixos/vbox-guest)
     (import ../../features/nixos/fonts)
     (import ../../features/nixos/hyprland)
     (import ../../features/nixos/locales)

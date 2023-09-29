@@ -22,6 +22,7 @@
       nixosConfigurations = {
         "desktop" = import ./hosts/desktop { inherit pkgs inputs; };
         "laptop" = import ./hosts/laptop { inherit pkgs inputs; };
+        "vm" = import ./hosts/vm { inherit pkgs inputs; };
       };
       homeConfigurations = {
         "orange" = import ./hosts/orange { inherit pkgs inputs; };
