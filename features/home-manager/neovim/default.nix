@@ -48,7 +48,7 @@
       telescope-nvim
       nvim-ts-autotag
       nvim-treesitter-textobjects
-      nvim-treesitter
+      nvim-treesitter.withAllGrammars
       luasnip
       cmp_luasnip
       cmp-nvim-lsp
@@ -63,9 +63,6 @@
       nvim-dap-go
       formatter-nvim
       dressing-nvim
-
-      # treesitter parsers
-      nvim-treesitter.withAllGrammars
     ];
     extraLuaConfig = ''
       local TSSERVER_PATH = "${pkgs.nodePackages.typescript-language-server}/lib/node_modules"

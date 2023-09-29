@@ -25,7 +25,7 @@
   home = {
     username = vars.username;
     homeDirectory = "/home/${vars.username}";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     packages = with pkgs; [
       alacritty
       tmux

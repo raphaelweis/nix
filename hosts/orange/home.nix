@@ -13,7 +13,7 @@
   home = {
     username = vars.username;
     homeDirectory = "/home/${vars.username}";
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     sessionVariables = {
       CHROME_EXECUTABLE = vars.programs.chromium.command;
       BROWSER = vars.programs.chromium.command;
