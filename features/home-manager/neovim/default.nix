@@ -30,6 +30,8 @@
 
       # else
       tree-sitter
+      latexrun
+      texlive.combined.scheme-full
     ];
     plugins = with pkgs.vimPlugins; [
       # plugins
@@ -63,6 +65,10 @@
       nvim-dap-go
       formatter-nvim
       dressing-nvim
+      {
+        plugin = vimtex;
+        config = (import ./vimtex.nix { });
+      }
     ];
     extraLuaConfig = ''
       local TSSERVER_PATH = "${pkgs.nodePackages.typescript-language-server}/lib/node_modules"
