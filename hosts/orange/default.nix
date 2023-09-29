@@ -15,7 +15,7 @@ let
         name = "alacritty";
         command = "gnome-terminal"; # we use nixGL because this is a non nixos distro
         font-size = 12;
-        opacity = 0.9;
+        opacity = 0.7;
       };
     };
     theme = {
