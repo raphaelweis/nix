@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  toLua = str: "lua << EOF\n${str}\nEOF\n";
+in
 {
   programs.neovim = {
     enable = true;
@@ -64,7 +67,10 @@
       nvim-dap-ui
       nvim-dap-go
       formatter-nvim
-      dressing-nvim
+      {
+        plugin = dressing-nvim;
+        config = toLua (import ./dressing.nix { });
+      }
       {
         plugin = vimtex;
         config = (import ./vimtex.nix { });
