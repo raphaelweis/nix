@@ -67,6 +67,7 @@ in
       nvim-dap-ui
       nvim-dap-go
       formatter-nvim
+      zoomwintab-vim
       {
         plugin = dressing-nvim;
         config = toLua (import ./dressing.nix { });
