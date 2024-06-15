@@ -14,6 +14,17 @@
 		vscode
 	];
 
+  programs.git = {
+    enable = true;
+    userEmail = "raphael.weis@outlook.com";
+    userName = "Raphaël Weis";
+  };
+
+	programs.gh = {
+		enable = true;
+		gitCredentialHelper.enable = true;
+	};
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
