@@ -10,16 +10,19 @@
 	};
 
 	outputs = { nixpkgs, ... }@inputs:
+	let
+		mkSystem = config:
+			inputs.nixpkgs.lib.nixosSystem {
+				specialArgs = { inherit inputs; };
+				modules = [ config inputs.self.outputs.nixosModules.default ];
+			};
+	in
 	{
 		nixosConfigurations = {
-			desktop = nixpkgs.lib.nixosSystem {
-				specialArgs = { inherit inputs; };
-				modules = [
-					./hosts/desktop/configuration.nix
-					./nixosModules
-				];
-			};
+			desktop = mkSystem ./hosts/desktop/configuration.nix;
 		};
+
+    nixosModules.default = ./nixosModules;
 		homeManagerModules.default = ./homeManagerModules;
 	};
 }
