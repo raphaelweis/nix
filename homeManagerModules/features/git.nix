@@ -1,9 +1,9 @@
 { lib, config, inputs, ... }: {
-  options.custom = {
+  options.rFeatures = {
     git.enable = lib.mkEnableOption "enables and configures git";
   };
 
-  config = lib.mkIf config.custom.git.enable {
+  config = lib.mkIf config.rFeatures.git.enable {
     programs.git = {
       enable = true;
       userEmail = "raphael.weis@outlook.com";

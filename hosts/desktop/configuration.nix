@@ -1,7 +1,9 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, inputs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   hmConfig = ./home.nix;
+
+  rFeatures.stylix.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -20,14 +22,13 @@
     useXkbConfig = true;
   };
 
-  services.xserver = {
-    enable = true;
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [ dmenu alacritty i3status i3lock i3blocks ];
-    };
-  };
-  services.displayManager = { defaultSession = "none+i3"; };
+	services.xserver = { 
+		enable = true;
+		windowManager.i3.enable = true;
+	};
+	services.displayManager = {
+		defaultSession = "none+i3";
+	};
 
   services.onedrive.enable = true;
 
@@ -47,7 +48,6 @@
   users.users.raphaelw = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [ firefox ];
   };
 
   environment.systemPackages = with pkgs; [ vim curl ];

@@ -1,9 +1,9 @@
 { lib, config, inputs, ... }: {
-  options.custom = {
+  options.rFeatures = {
     gh.enable = lib.mkEnableOption "enables and configures github-cli";
   };
 
-  config = lib.mkIf config.custom.gh.enable {
+  config = lib.mkIf config.rFeatures.gh.enable {
     programs.gh = {
       enable = true;
       gitCredentialHelper.enable = true;

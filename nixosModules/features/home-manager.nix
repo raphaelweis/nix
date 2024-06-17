@@ -19,6 +19,7 @@
         "raphaelw" = {
           imports = [
             (import config.hmConfig)
+            inputs.nixvim.homeManagerModules.nixvim
             inputs.self.outputs.homeManagerModules.default
           ];
         };

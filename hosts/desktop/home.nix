@@ -12,11 +12,16 @@
     spotify
     keepassxc
     vscode.fhs
+    dmenu
   ];
 
-  custom = {
+  rFeatures = {
+    i3.enable = true;
+    firefox.enable = true;
+    alacritty.enable = true;
     git.enable = true;
     gh.enable = true;
+    nvim.enable = true;
   };
 
   # This value determines the Home Manager release that your

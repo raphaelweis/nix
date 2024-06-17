@@ -7,11 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim.url = "github:nix-community/nixvim";
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, ... }@inputs:
+  outputs = { ... }@inputs:
     let
-			rUtils = import ./rUtils.nix;
+      rUtils = import ./rUtils.nix;
       mkSystem = config:
         inputs.nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs rUtils; };
