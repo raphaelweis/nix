@@ -1,14 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
-{
-  imports = [
-		./hardware-configuration.nix
-	];
-
-	hmConfig = ./home.nix;
+  hmConfig = ./home.nix;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,25 +20,17 @@
     useXkbConfig = true;
   };
 
-	services.xserver = {
-		enable = true;
-		windowManager.i3 = {
-			enable = true;
-			extraPackages = with pkgs; [
-				dmenu
-				alacritty
-				i3status
-				i3lock
-				i3blocks
-			];
-		};
-	};
-	services.displayManager = {
-		defaultSession = "none+i3";
-	};
+  services.xserver = {
+    enable = true;
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = with pkgs; [ dmenu alacritty i3status i3lock i3blocks ];
+    };
+  };
+  services.displayManager = { defaultSession = "none+i3"; };
 
-	services.onedrive.enable = true;
-	
+  services.onedrive.enable = true;
+
   services.xserver.xkb.layout = "us";
   services.xserver.xkb.variant = "intl";
 
@@ -52,23 +40,17 @@
   };
 
   hardware.bluetooth = {
-		enable = true;
-  	powerOnBoot = true;
-	};
+    enable = true;
+    powerOnBoot = true;
+  };
 
   users.users.raphaelw = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      firefox
-    ];
+    packages = with pkgs; [ firefox ];
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    curl
-  ];
+  environment.systemPackages = with pkgs; [ vim curl ];
 
   system.stateVersion = "24.05";
 }
-

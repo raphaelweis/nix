@@ -6,24 +6,18 @@
   home.username = "raphaelw";
   home.homeDirectory = "/home/raphaelw";
 
-	home.packages = with pkgs; [
-		pavucontrol
-		discord
-		spotify
-		keepassxc
-		vscode
-	];
+  home.packages = with pkgs; [
+    pavucontrol
+    discord
+    spotify
+    keepassxc
+    vscode.fhs
+  ];
 
-  programs.git = {
-    enable = true;
-    userEmail = "raphael.weis@outlook.com";
-    userName = "Raphaël Weis";
+  custom = {
+    git.enable = true;
+    gh.enable = true;
   };
-
-	programs.gh = {
-		enable = true;
-		gitCredentialHelper.enable = true;
-	};
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
