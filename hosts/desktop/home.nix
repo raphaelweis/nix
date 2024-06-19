@@ -12,13 +12,14 @@
     spotify
     keepassxc
     vscode.fhs
-    dmenu
+    gnome.nautilus
   ];
 
   rFeatures = {
     i3.enable = true;
     firefox.enable = true;
     alacritty.enable = true;
+    zsh.enable = true;
     git.enable = true;
     gh.enable = true;
     nvim.enable = true;

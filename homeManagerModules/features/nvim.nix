@@ -6,6 +6,7 @@
   config = lib.mkIf config.rFeatures.nvim.enable {
     programs.nixvim = {
       enable = true;
+      vimAlias = true;
       defaultEditor = true;
     };
   };

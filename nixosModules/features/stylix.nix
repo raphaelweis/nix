@@ -8,13 +8,14 @@
       enable = true;
       image = ../../assets/wallpaper.png;
       base16Scheme =
-        "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+        "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
       fonts = {
         monospace = {
           package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
           name = "JetBrainsMono Nerd Font" ;
         };
       };
+      targets.plymouth.enable = false;
     };
   };
 }

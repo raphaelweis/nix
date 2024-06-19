@@ -1,56 +1,70 @@
 { config, lib, pkgs, inputs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
+  users.users."raphaelw" = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    shell = pkgs.zsh;
+  };
+
   hmConfig = ./home.nix;
 
-  rFeatures.stylix.enable = true;
+  rFeatures = {
+    i3.enable = true;
+    stylix.enable = true;
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [ vim ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 10;
+      };
+      efi.canTouchEfiVariables = true;
+      timeout = 10;
+    };
+  };
 
-  networking.hostName = "desktop";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "desktop";
+    networkmanager.enable = true;
+  };
 
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
 
-	services.xserver = { 
-		enable = true;
-		windowManager.i3.enable = true;
-	};
-	services.displayManager = {
-		defaultSession = "none+i3";
-	};
-
-  services.onedrive.enable = true;
-
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.variant = "intl";
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
+  programs.zsh.enable = true;
+  services = {
+    onedrive.enable = true;
+    xserver = {
+      xkb.layout = "us";
+      xkb.variant = "intl";
+    };
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
   };
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
-
-  users.users.raphaelw = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-  };
-
-  environment.systemPackages = with pkgs; [ vim curl ];
 
   system.stateVersion = "24.05";
 }
