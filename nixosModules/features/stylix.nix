@@ -12,9 +12,14 @@
       fonts = {
         monospace = {
           package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-          name = "JetBrainsMono Nerd Font" ;
+          name = "JetBrainsMono Nerd Font";
+        };
+        sizes = {
+          applications = 12;
+          desktop = 10;
         };
       };
+      cursor.size = 24;
       targets.plymouth.enable = false;
     };
   };
