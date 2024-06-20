@@ -6,7 +6,10 @@ in {
   };
 
   config = lib.mkIf config.rFeatures.i3.enable {
-    home.packages = with pkgs; [ wmctrl dmenu ];
+    home = {
+			packages = with pkgs; [ wmctrl dmenu ];
+			file.".background-image".source = ../../assets/wallpaper.png;
+		};
     xsession.windowManager.i3 = {
       enable = true;
       config = {
@@ -15,6 +18,10 @@ in {
         startup = [
           {
             command = "${pkgs.keepassxc}/bin/keepassxc";
+            notification = false;
+          }
+          {
+            command = "${pkgs.blueman}/bin/blueman-applet";
             notification = false;
           }
         ];

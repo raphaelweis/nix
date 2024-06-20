@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }: {
+{ pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   users.users."raphaelw" = {
@@ -10,8 +10,8 @@
   hmConfig = ./home.nix;
 
   rFeatures = {
+    fonts.enable = true;
     i3.enable = true;
-    stylix.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ vim ];
@@ -44,6 +44,7 @@
   programs.zsh.enable = true;
   services = {
     onedrive.enable = true;
+    blueman.enable = true;
     xserver = {
       xkb.layout = "us";
       xkb.variant = "intl";
@@ -62,7 +63,9 @@
     };
     bluetooth = {
       enable = true;
+      package = pkgs.bluez;
       powerOnBoot = true;
+      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
     };
   };
 
