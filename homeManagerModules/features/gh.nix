@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }: {
+{ lib, config, ... }: {
   options.rFeatures = {
     gh.enable = lib.mkEnableOption "enables and configures github-cli";
   };

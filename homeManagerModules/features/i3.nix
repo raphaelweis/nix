@@ -1,4 +1,4 @@
-{ lib, pkgs, config, inputs, ... }:
+{ lib, pkgs, config, vars, ... }:
 let mod = "Mod4";
 in {
   options.rFeatures = {
@@ -7,26 +7,21 @@ in {
 
   config = lib.mkIf config.rFeatures.i3.enable {
     home = {
-			packages = with pkgs; [ wmctrl dmenu ];
-			file.".background-image".source = ../../assets/wallpaper.png;
-		};
+      packages = with pkgs; [ dmenu maim xclip playerctl ];
+      file.".background-image".source = ../../assets/wallpaper.png;
+    };
     xsession.windowManager.i3 = {
       enable = true;
       config = {
         modifier = mod;
         defaultWorkspace = "workspace number 1";
-        startup = [
-          {
-            command = "${pkgs.keepassxc}/bin/keepassxc";
-            notification = false;
-          }
-          {
-            command = "${pkgs.blueman}/bin/blueman-applet";
-            notification = false;
-          }
-        ];
+        startup = [{
+          command = "${pkgs.keepassxc}/bin/keepassxc";
+          notification = false;
+        }];
         keybindings = {
           "${mod}+c" = "kill";
+          "Control+Shift+Mod1+l" = "exec i3-msg exit";
           "${mod}+m" = "fullscreen toggle";
 
           "${mod}+h" = "focus left";
@@ -37,7 +32,7 @@ in {
           "${mod}+Shift+j" = "move down";
           "${mod}+Shift+k" = "move up";
           "${mod}+Shift+l" = "move right";
-          "${mod}+s" = "split vertical, layout stacking";
+          "${mod}+s" = "split horizontal, layout stacking";
           "${mod}+v" = "split vertical";
           "${mod}+b" = "split horizontal";
           "${mod}+w" = "layout tabbed";
@@ -72,6 +67,8 @@ in {
             "exec --no-startup-id ${pkgs.gnome.nautilus}/bin/nautilus";
           "${mod}+Return" =
             "exec --no-startup-id ${pkgs.alacritty}/bin/alacritty";
+          "${mod}+Shift+s" =
+            "exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && ${pkgs.maim}/bin/maim --format png --select > ${vars.screenshotsDir}/screenshot_$NOW.png && ${pkgs.xclip}/bin/xclip -selection clip -t image/png ${vars.screenshotsDir}/screenshot_$NOW.png";
 
           "XF86AudioRaiseVolume" =
             "exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $refresh_i3_status";
@@ -81,6 +78,9 @@ in {
             "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3_status";
           "XF86AudioMicMute" =
             "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3_status";
+          "XF86AudioPlay" = "exec playerctl play-pause";
+          "XF86AudioPrev" = "exec playerctl previous";
+          "XF86AudioNext" = "exec playerctl next";
         };
         bars = [{ statusCommand = "i3status"; }];
       };

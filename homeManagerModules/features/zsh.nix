@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }: {
+{ lib, config, ... }: {
   options.rFeatures = {
     zsh.enable = lib.mkEnableOption "enables and configures zsh";
   };
@@ -11,7 +11,7 @@
       syntaxHighlighting.enable = true;
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = [ "git" "fzf" ];
         theme = "robbyrussell";
       };
     };

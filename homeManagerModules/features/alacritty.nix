@@ -6,8 +6,12 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        font.normal.family = "JetBrainsMonoNL NF";
+        font = {
+          size = 12;
+          normal.family = "JetBrainsMonoNL NF";
+        };
         colors.primary.background = "#1d2021";
+        env."WINIT_X11_SCALE_FACTOR" = "1";
       };
     };
   };

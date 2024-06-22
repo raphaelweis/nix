@@ -3,15 +3,17 @@
 
   users.users."raphaelw" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "kvm" "adbusers" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
   hmConfig = ./home.nix;
 
   rFeatures = {
+    gdm.enable = true;
     fonts.enable = true;
     i3.enable = true;
+    hyperland.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ vim ];
@@ -41,10 +43,12 @@
     useXkbConfig = true;
   };
 
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    adb.enable = true;
+  };
   services = {
     onedrive.enable = true;
-    blueman.enable = true;
     xserver = {
       xkb.layout = "us";
       xkb.variant = "intl";
@@ -52,14 +56,14 @@
     pipewire = {
       enable = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
   };
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     bluetooth = {
       enable = true;
