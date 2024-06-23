@@ -12,10 +12,14 @@
         name = "Adwaita-dark";
         package = pkgs.gnome.gnome-themes-extra;
       };
-      cursorTheme = {
-        name = "Capitaine Cursors (Gruvbox) - Black";
-        package = pkgs.capitaine-cursors-themed;
-      };
+    };
+    home.pointerCursor = {
+      name = "Capitaine Cursors (Gruvbox) - White";
+      package = pkgs.capitaine-cursors-themed;
+      size = 20;
+
+      gtk.enable = true;
+      x11.enable = true;
     };
   };
 }

@@ -4,7 +4,7 @@
   };
 
   config = lib.mkIf config.rFeatures.nvim.enable {
-    home.packages = with pkgs; [ nixfmt-classic prettierd ];
+    home.packages = with pkgs; [ nixfmt-classic nodePackages.prettier ];
     programs.nixvim = {
       enable = true;
       vimAlias = true;
@@ -34,15 +34,20 @@
         number = true;
         relativenumber = true;
         colorcolumn = "80";
+        signcolumn = "yes";
       };
+      highlightOverride.SignColumn.link = "Normal";
       plugins = {
         nvim-autopairs.enable = true;
         fugitive.enable = true;
         surround.enable = true;
         lualine.enable = true;
         treesitter.enable = true;
+        ts-autotag.enable = true;
         luasnip.enable = true;
         friendly-snippets.enable = true;
+        gitsigns.enable = true;
+        dressing.enable = true;
         telescope = {
           enable = true;
           keymaps = {
@@ -51,6 +56,7 @@
             "<leader>fs".action = "live_grep";
             "<leader>gc".action = "git_branches";
             "<leader>gs".action = "git_branches";
+            "<leader>tca".action = "git_branches";
           };
           settings.defaults.mappings = {
             i = {
@@ -60,11 +66,37 @@
                 "require('telescope.actions').move_selection_previous";
             };
           };
+          extensions.fzf-native.enable = true;
         };
         lsp = {
           enable = true;
-          inlayHints = true;
-          servers = { nixd.enable = true; };
+          keymaps = {
+            diagnostic = {
+              "<F2>" = "goto_next";
+              "<F14>" = "goto_prev";
+            };
+            lspBuf = {
+              "K" = "hover";
+              "gr" = "references";
+              "gd" = "definition";
+              "gi" = "implementation";
+              "gt" = "type_definition";
+              "<leader>ca" = "code_action";
+            };
+          };
+          servers = {
+            nixd.enable = true;
+            tsserver.enable = true;
+            html.enable = true;
+            cssls.enable = true;
+            jsonls.enable = true;
+            yamlls.enable = true;
+            eslint.enable = true;
+            pyright.enable = true;
+            dockerls.enable = true;
+            docker-compose-language-service.enable = true;
+            clangd.enable = true;
+          };
         };
         conform-nvim = {
           enable = true;
@@ -80,6 +112,8 @@
             jsonc = [ "prettier" ];
             yaml = [ "prettier" ];
             markdown = [ "prettier" ];
+            python = [ "black" ];
+            c = [ "clangd-format" ];
           };
         };
         nvim-tree = {
@@ -142,6 +176,10 @@
         {
           key = "<leader>e";
           action = "<CMD>NvimTreeToggle<CR>";
+        }
+        {
+          key = "<leader>;";
+          action = "<CMD>tab Git<CR>";
         }
       ];
     };
