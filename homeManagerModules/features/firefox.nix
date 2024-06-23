@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }: {
+{ lib, config, ... }: {
   options.rFeatures = {
     firefox.enable = lib.mkEnableOption "enables and configures firefox";
   };
