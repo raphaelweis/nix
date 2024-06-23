@@ -20,6 +20,7 @@
             operators = false;
             folds = false;
           };
+					transparent_mode = true;
         };
       };
       colorscheme = "gruvbox";
@@ -36,7 +37,6 @@
         colorcolumn = "80";
         signcolumn = "yes";
       };
-      highlightOverride.SignColumn.link = "Normal";
       plugins = {
         nvim-autopairs.enable = true;
         fugitive.enable = true;
