@@ -3,11 +3,12 @@
     hyprland.enable = lib.mkEnableOption "enables and configures hyprland";
   };
   config = lib.mkIf config.rFeatures.hyprland.enable {
-    home.packages = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xwaylandvideobridge
-			xdg-desktop-portal-gtk
-    ];
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+      configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
+    };
+    home.packages = with pkgs; [ xwaylandvideobridge ];
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {

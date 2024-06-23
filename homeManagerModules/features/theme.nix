@@ -14,7 +14,7 @@
       };
     };
     home.pointerCursor = {
-      name = "Capitaine Cursors (Gruvbox) - White";
+      name = "Capitaine Cursors - White";
       package = pkgs.capitaine-cursors-themed;
       size = 20;
 
