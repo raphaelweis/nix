@@ -32,7 +32,8 @@ in {
           "${mod}+Shift+j" = "move down";
           "${mod}+Shift+k" = "move up";
           "${mod}+Shift+l" = "move right";
-          "${mod}+s" = "split horizontal, layout stacking";
+          "${mod}+s" = "split horizontal, layout stacked";
+          "${mod}+t" = "split horizontal, layout tabbed";
           "${mod}+v" = "split vertical";
           "${mod}+b" = "split horizontal";
           "${mod}+w" = "layout tabbed";

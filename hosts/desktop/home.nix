@@ -15,6 +15,7 @@
       jdk17
       nodejs
       ripgrep
+			android-studio
     ];
     stateVersion = "24.05";
   };

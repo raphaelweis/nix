@@ -16,7 +16,7 @@
     hyperland.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ vim ];
+  environment.systemPackages = with pkgs; [ vim steam-run ];
 
   boot = {
     loader = {
@@ -46,6 +46,7 @@
   programs = {
     zsh.enable = true;
     adb.enable = true;
+    steam.enable = true;
   };
   services = {
     onedrive.enable = true;
