@@ -5,6 +5,7 @@
     username = vars.username;
     homeDirectory = vars.homeDir;
     packages = with pkgs; [
+      gcc
       htop
       pavucontrol
       discord

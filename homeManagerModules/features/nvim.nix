@@ -4,11 +4,19 @@
   };
 
   config = lib.mkIf config.rFeatures.nvim.enable {
-    home.packages = with pkgs; [ nixfmt-classic nodePackages.prettier ];
+    home.packages = with pkgs; [
+      gcc
+      nixfmt-classic
+      nodePackages.prettier
+      black
+      clang-tools
+      fd
+    ];
     programs.nixvim = {
       enable = true;
       vimAlias = true;
       defaultEditor = true;
+      withRuby = false;
 
       colorschemes.gruvbox = {
         enable = true;
@@ -116,7 +124,7 @@
             yaml = [ "prettier" ];
             markdown = [ "prettier" ];
             python = [ "black" ];
-            c = [ "clangd-format" ];
+            c = [ "clang-format" ];
           };
         };
         nvim-tree = {
