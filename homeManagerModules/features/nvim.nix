@@ -36,6 +36,7 @@
         relativenumber = true;
         colorcolumn = "80";
         signcolumn = "yes";
+				showtabline = 0;
       };
       plugins = {
         nvim-autopairs.enable = true;
@@ -76,12 +77,13 @@
               "<F14>" = "goto_prev";
             };
             lspBuf = {
-              "K" = "hover";
-              "gr" = "references";
-              "gd" = "definition";
-              "gi" = "implementation";
-              "gt" = "type_definition";
+              "<leader>K" = "hover";
+              "<leader>gr" = "references";
+              "<leader>gd" = "definition";
+              "<leader>gi" = "implementation";
+              "<leader>gt" = "type_definition";
               "<leader>ca" = "code_action";
+              "<leader>rn" = "rename";
             };
           };
           servers = {
