@@ -1,12 +1,4 @@
-{ lib, config, inputs, rUtils, ... }:
-let
-  vars = rec {
-    username = "raphaelw";
-    homeDir = "/home/${username}";
-    picturesDir = "${homeDir}/Pictures";
-    screenshotsDir = "${picturesDir}/Screenshots";
-  };
-in {
+{ lib, config, inputs, vars, rUtils, ... }: {
   options.hmConfig = lib.mkOption {
     description = "Home manager config path";
     type = lib.types.path;

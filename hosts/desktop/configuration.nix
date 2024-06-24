@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, vars, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
-  users.users."raphaelw" = {
+  users.users.${vars.username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "kvm" "adbusers" "networkmanager" ];
     shell = pkgs.zsh;
@@ -14,6 +14,7 @@
     fonts.enable = true;
     i3.enable = true;
     hyperland.enable = true;
+    docker.enable = true;
   };
 
   environment.systemPackages = with pkgs; [ vim steam-run ];

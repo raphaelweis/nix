@@ -13,9 +13,15 @@
   outputs = { ... }@inputs:
     let
       rUtils = import ./rUtils.nix;
+      vars = rec {
+        username = "raphaelw";
+        homeDir = "/home/${username}";
+        picturesDir = "${homeDir}/Pictures";
+        screenshotsDir = "${picturesDir}/Screenshots";
+      };
       mkSystem = config:
         inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs rUtils; };
+          specialArgs = { inherit inputs vars rUtils; };
           modules = [ config inputs.self.outputs.nixosModules.default ];
         };
     in {
