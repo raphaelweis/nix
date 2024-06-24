@@ -20,7 +20,7 @@
             operators = false;
             folds = false;
           };
-					transparent_mode = true;
+          transparent_mode = true;
         };
       };
       colorscheme = "gruvbox";
@@ -32,11 +32,12 @@
       opts = {
         tabstop = 2;
         shiftwidth = 2;
+        expandtab = true;
         number = true;
         relativenumber = true;
         colorcolumn = "80";
         signcolumn = "yes";
-				showtabline = 0;
+        showtabline = 0;
       };
       plugins = {
         nvim-autopairs.enable = true;
