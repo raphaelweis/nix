@@ -6,6 +6,7 @@
     homeDirectory = vars.homeDir;
     packages = with pkgs; [
       gcc
+      gnumake
       htop
       pavucontrol
       discord
@@ -15,6 +16,7 @@
       gnome.nautilus
       jdk17
       nodejs
+      ruby_3_3
       ripgrep
 			android-studio
     ];

@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, vars, ... }: {
   options.rFeatures = {
     zsh.enable = lib.mkEnableOption "enables and configures zsh";
   };
@@ -14,6 +14,11 @@
         plugins = [ "git" "fzf" ];
         theme = "robbyrussell";
       };
+      initExtra = # sh
+        ''
+          export CUCUMBER_PUBLISH_QUIET=true
+          export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin
+        '';
     };
   };
 }
