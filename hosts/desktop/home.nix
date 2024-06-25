@@ -34,6 +34,7 @@
     git.enable = true;
     gh.enable = true;
     nvim.enable = true;
+    tmux.enable = true;
   };
 
   programs.home-manager.enable = true;
