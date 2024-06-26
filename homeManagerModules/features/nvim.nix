@@ -201,6 +201,11 @@
           key = "<leader>sh";
           action = "<CMD>split<CR>";
         }
+        {
+          key = "<ESC>";
+          mode = "n";
+          action = "<CMD>nohlsearch<CR>";
+        }
       ];
     };
   };
