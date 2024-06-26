@@ -58,6 +58,7 @@
         friendly-snippets.enable = true;
         gitsigns.enable = true;
         dressing.enable = true;
+        tmux-navigator.enable = true;
         telescope = {
           enable = true;
           keymaps = {
@@ -191,6 +192,14 @@
         {
           key = "<leader>;";
           action = "<CMD>tab Git<CR>";
+        }
+        {
+          key = "<leader>sv";
+          action = "<CMD>vsplit<CR>";
+        }
+        {
+          key = "<leader>sh";
+          action = "<CMD>split<CR>";
         }
       ];
     };
