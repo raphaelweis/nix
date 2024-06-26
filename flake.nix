@@ -27,6 +27,7 @@
     in {
       nixosConfigurations = {
         desktop = mkSystem ./hosts/desktop/configuration.nix;
+        laptop = mkSystem ./hosts/laptop/configuration.nix;
       };
 
       nixosModules.default = ./nixosModules;
