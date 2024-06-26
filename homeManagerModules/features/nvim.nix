@@ -181,7 +181,7 @@
           };
         }
         {
-          key = "<C-S-i>";
+          key = "<leader>fm";
           action = "<CMD>lua require('conform').format()<CR>";
         }
         {

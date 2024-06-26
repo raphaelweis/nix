@@ -9,16 +9,13 @@
       terminal = "tmux-256color";
       keyMode = "vi";
       disableConfirmationPrompt = true;
-      plugins = with pkgs.tmuxPlugins; [
-        sensible
-        vim-tmux-navigator
-        gruvbox
-      ];
-      extraConfig = /*tmux*/ ''
-        set -a terminal-features 'alacritty:RGB'
-        set -g status on
-        set -g status-position "top"
-      '';
+      plugins = with pkgs.tmuxPlugins; [ sensible vim-tmux-navigator gruvbox ];
+      extraConfig = # tmux
+        ''
+          set -a terminal-features 'alacritty:RGB'
+          set -g status on
+          set -g status-position "top"
+        '';
     };
   };
 }
