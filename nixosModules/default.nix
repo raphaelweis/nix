@@ -21,6 +21,7 @@
     gdm.enable = lib.mkDefault true;
     fonts.enable = lib.mkDefault true;
     i3.enable = lib.mkDefault true;
+    libinput.enable = lib.mkDefault true;
     hyperland.enable = lib.mkDefault true;
     docker.enable = lib.mkDefault true;
     virtualization.enable = lib.mkDefault true;

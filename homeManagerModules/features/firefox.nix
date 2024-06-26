@@ -4,8 +4,8 @@
   };
 
   config = lib.mkIf config.rFeatures.firefox.enable {
-    programs.firefox = {
-      enable = true;
-    };
+    systemd.user.sessionVariables.MOZ_USE_XINPUT2 = "1";
+
+    programs.firefox = { enable = true; };
   };
 }
