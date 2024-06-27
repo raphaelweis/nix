@@ -19,6 +19,7 @@
 
   rFeatures = {
     gdm.enable = lib.mkDefault false;
+    light.enable = lib.mkDefault false;
     sddm.enable = lib.mkDefault true;
     kde.enable = true;
     fonts.enable = lib.mkDefault true;

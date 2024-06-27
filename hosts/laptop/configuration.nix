@@ -3,7 +3,10 @@
 
   hmConfig = ./home.nix;
 
-  rFeatures.networking.hostname = "rLaptop";
+  rFeatures = {
+    networking.hostname = "rLaptop";
+    light.enable = true;
+  };
 
   services.xserver.dpi = 180;
 
