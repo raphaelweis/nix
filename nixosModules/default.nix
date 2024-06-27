@@ -18,7 +18,9 @@
   services = { onedrive.enable = true; };
 
   rFeatures = {
-    gdm.enable = lib.mkDefault true;
+    gdm.enable = lib.mkDefault false;
+    sddm.enable = lib.mkDefault true;
+    kde.enable = true;
     fonts.enable = lib.mkDefault true;
     i3.enable = lib.mkDefault true;
     libinput.enable = lib.mkDefault true;
