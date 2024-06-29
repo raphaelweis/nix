@@ -38,9 +38,9 @@
         dwindle.force_split = 2;
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "discord"
-          "spotify"
-          "keepassxc"
+          "[workspace 4 silent] discord"
+          "[workspace 5 silent] spotify"
+          "[workspace 6 silent] keepassxc"
         ];
         bind = [
           "$mod, C, killactive"
@@ -80,9 +80,6 @@
           "noinitialfocus,class:^(xwaylandvideobridge)$"
           "maxsize 1 1,class:^(xwaylandvideobridge)$"
           "noblur,class:^(xwaylandvideobridge)$"
-          "workspace 4,class:^(discord)$"
-          "workspace 5,class:^(Spotify)$"
-          "workspace 6,class:^(org.keepassxc.KeePassXC)$"
         ];
       };
     };
