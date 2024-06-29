@@ -25,8 +25,8 @@
 
   rFeatures = {
     xdg.enable = lib.mkDefault true;
-    theme.enable = lib.mkDefault true;
-    i3.enable = lib.mkDefault true;
+    theme.enable = lib.mkDefault false;
+    i3.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
     firefox.enable = lib.mkDefault true;
