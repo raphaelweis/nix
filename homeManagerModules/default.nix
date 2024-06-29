@@ -39,5 +39,8 @@
     tmux.enable = lib.mkDefault true;
   };
 
-  programs.home-manager.enable = true;
+  programs = {
+    bash.enable = true;
+    home-manager.enable = true;
+  };
 }
