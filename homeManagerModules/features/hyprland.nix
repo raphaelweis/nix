@@ -1,6 +1,14 @@
 { lib, config, pkgs, ... }: {
   options.rFeatures = {
-    hyprland.enable = lib.mkEnableOption "enables and configures hyprland";
+    hyprland = {
+      enable = lib.mkEnableOption "enables and configures hyprland";
+      gdkScale = lib.mkOption {
+        type = lib.types.int;
+        default = 1;
+        description =
+          "sets the GDK_SCALE environnement variable for xwayland apps. Useful for HiDPI screens.";
+      };
+    };
   };
   config = lib.mkIf config.rFeatures.hyprland.enable {
     xdg.portal = {
@@ -36,7 +44,7 @@
         ];
         dwindle.force_split = 2;
         xwayland.force_zero_scaling = true;
-        env = [ "GDK_SCALE,2" ];
+        env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
