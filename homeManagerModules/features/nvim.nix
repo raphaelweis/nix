@@ -34,7 +34,10 @@
       colorscheme = "gruvbox";
       globals.mapleader = " ";
       clipboard = {
-        providers.xclip.enable = true;
+        providers = {
+          xclip.enable = true;
+          wl-copy.enable = true;
+        };
         register = "unnamedplus";
       };
       opts = {
@@ -45,7 +48,6 @@
         relativenumber = true;
         colorcolumn = "80";
         signcolumn = "yes";
-        showtabline = 0;
       };
       plugins = {
         nvim-autopairs.enable = true;
