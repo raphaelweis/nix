@@ -21,7 +21,7 @@
       enable = true;
       settings = {
         font = {
-          size = lib.mkDefault config.rFeatures.alacritty.fontSize;
+          size = lib.mkForce config.rFeatures.alacritty.fontSize;
           normal.family = "JetBrainsMonoNL NF";
         };
         mouse.hide_when_typing = true;
