@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "github:nix-community/nixvim";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = { ... }@inputs:

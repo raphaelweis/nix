@@ -1,6 +1,8 @@
 { inputs, lib, pkgs, rUtils, ... }: {
-  imports = [ inputs.home-manager.nixosModules.home-manager ]
-    ++ (rUtils.filesIn ./features);
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    inputs.stylix.nixosModules.stylix
+  ] ++ (rUtils.filesIn ./features);
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config = {
@@ -23,8 +25,9 @@
     gnome.enable = lib.mkDefault false;
     i3.enable = lib.mkDefault false;
     light.enable = lib.mkDefault false;
+    fonts.enable = lib.mkDefault false;
+    stylix.enable = lib.mkDefault true;
     sddm.enable = lib.mkDefault true;
-    fonts.enable = lib.mkDefault true;
     libinput.enable = lib.mkDefault true;
     hyperland.enable = lib.mkDefault true;
     docker.enable = lib.mkDefault true;

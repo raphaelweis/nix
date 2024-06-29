@@ -24,9 +24,9 @@
   };
 
   rFeatures = {
-    xdg.enable = lib.mkDefault true;
-    theme.enable = lib.mkDefault false;
     i3.enable = lib.mkDefault false;
+    theme.enable = lib.mkDefault true;
+    xdg.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
     firefox.enable = lib.mkDefault true;
@@ -37,6 +37,7 @@
     gh.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
+    stylix.enable = lib.mkDefault true;
   };
 
   programs = {

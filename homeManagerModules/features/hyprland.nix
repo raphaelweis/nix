@@ -5,8 +5,14 @@
   config = lib.mkIf config.rFeatures.hyprland.enable {
     xdg.portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-      configPackages = with pkgs; [ xdg-desktop-portal-hyprland ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
+      configPackages = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
     };
     home.packages = with pkgs; [ xwaylandvideobridge ];
     wayland.windowManager.hyprland = {
@@ -17,6 +23,9 @@
         input = {
           kb_layout = "us";
           kb_variant = "intl";
+          touchpad = {
+            natural_scroll = true;
+          };
         };
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
