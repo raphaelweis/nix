@@ -59,8 +59,23 @@
         luasnip.enable = true;
         friendly-snippets.enable = true;
         gitsigns.enable = true;
-        dressing.enable = true;
         tmux-navigator.enable = true;
+        dressing = {
+          enable = true;
+          settings.select = {
+            backend = [ "builtin" "telescope" "fzf_lua" "fzf" "nui" ];
+            builtin = {
+              relative = "cursor";
+              override = # lua
+                ''
+                  function(conf)
+                    conf.anchor = "NW"
+                    conf.row = 1
+                  end
+                '';
+            };
+          };
+        };
         telescope = {
           enable = true;
           keymaps = {
