@@ -6,7 +6,7 @@
   config = lib.mkIf config.rFeatures.user.enable {
     users.users.${vars.username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "kvm" "adbusers" "networkmanager" ];
+      extraGroups = [ "wheel" "kvm" "adbusers" "networkmanager" "input" ];
       shell = pkgs.zsh;
     };
   };

@@ -26,6 +26,7 @@
         };
         mouse.hide_when_typing = true;
         colors.primary.background = "#1d2021";
+        window.opacity = lib.mkForce 0.95;
         env."WINIT_X11_SCALE_FACTOR" =
           toString config.rFeatures.alacritty.winitX11ScaleFactor;
       };

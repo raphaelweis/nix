@@ -1,7 +1,5 @@
 { lib, config, pkgs, ... }: {
-  options.rFeatures = {
-    stylix.enable = lib.mkEnableOption "stylix global theming";
-  };
+  options.rFeatures.stylix.enable = lib.mkEnableOption "stylix global theming";
 
   config = lib.mkIf config.rFeatures.stylix.enable {
     stylix = {
