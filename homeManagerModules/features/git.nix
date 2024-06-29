@@ -1,6 +1,6 @@
-{ lib, config, inputs, ... }: {
+{ lib, config, ... }: {
   options.rFeatures = {
-    git.enable = lib.mkEnableOption "enables and configures git";
+    git.enable = lib.mkEnableOption "git the version manager";
   };
 
   config = lib.mkIf config.rFeatures.git.enable {
@@ -8,6 +8,7 @@
       enable = true;
       userEmail = "raphael.weis@outlook.com";
       userName = "Raphaël Weis";
+      extraConfig.pull.rebase = true;
     };
   };
 }
