@@ -4,9 +4,14 @@
   };
 
   config = lib.mkIf config.rFeatures.gdm.enable {
-    services.xserver.displayManager.gdm = {
-			enable = true;
-			banner = "Got a Benjamin and a Jackson all in my house like i'm Joe, okay";
-		};
+    services.xserver = {
+      enable = true;
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+        banner =
+          "Got a Benjamin and a Jackson all in my house like i'm Joe, okay";
+      };
+    };
   };
 }

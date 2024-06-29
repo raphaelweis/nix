@@ -20,14 +20,14 @@
   services = { onedrive.enable = true; };
 
   rFeatures = {
-    gdm.enable = lib.mkDefault false;
+    gdm.enable = lib.mkDefault true;
     kde.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
+    sddm.enable = lib.mkDefault false;
     i3.enable = lib.mkDefault false;
     light.enable = lib.mkDefault false;
     fonts.enable = lib.mkDefault false;
     stylix.enable = lib.mkDefault true;
-    sddm.enable = lib.mkDefault true;
     libinput.enable = lib.mkDefault true;
     hyperland.enable = lib.mkDefault true;
     docker.enable = lib.mkDefault true;
