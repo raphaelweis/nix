@@ -44,9 +44,11 @@
         ];
         dwindle.force_split = 2;
         xwayland.force_zero_scaling = true;
+        misc.disable_hyprland_logo = true;
         env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "hyprpaper"
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
           "sleep 5; keepassxc"
           "[workspace 4 silent] discord --start-minimized"

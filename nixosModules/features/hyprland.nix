@@ -1,9 +1,14 @@
 { lib, config, ... }: {
   options.rFeatures = {
-    hyperland.enable = lib.mkEnableOption "Hyprland, the wayland compositor";
+    hyprland.enable = lib.mkEnableOption "Hyprland, the wayland compositor";
   };
 
-  config = lib.mkIf config.rFeatures.hyperland.enable {
+  config = lib.mkIf config.rFeatures.hyprland.enable {
+    environment.loginShellInit = ''
+      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+        exec dbus-launch Hyprland
+      fi
+    '';
     programs.hyprland.enable = true;
   };
 }
