@@ -10,7 +10,10 @@
   config = lib.mkIf config.rFeatures.networking.enable {
     networking = {
       hostName = config.rFeatures.networking.hostname;
-      networkmanager.enable = true;
+      networkmanager = {
+        enable = true;
+        wifi.backend = "iwd";
+      };
     };
   };
 }
