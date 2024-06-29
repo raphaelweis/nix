@@ -17,7 +17,6 @@
     home.packages = with pkgs; [ xwaylandvideobridge playerctl ];
     wayland.windowManager.hyprland = {
       enable = true;
-      systemd.enable = true;
       settings = {
         "$mod" = "SUPER";
         general = {
@@ -36,11 +35,14 @@
           "windows, 1, 3, default, slide"
         ];
         dwindle.force_split = 2;
+        xwayland.force_zero_scaling = true;
+        env = [ "GDK_SCALE,2" ];
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "[workspace 4 silent] discord"
+          "hyprctl setcursor 'Capitaine Cursors - White' 24"
+          "sleep 5; keepassxc"
+          "[workspace 4 silent] discord --start-minimized"
           "[workspace 5 silent] spotify"
-          "[workspace 6 silent] keepassxc"
         ];
         bind = [
           "$mod, C, killactive"
@@ -80,6 +82,8 @@
           "noinitialfocus,class:^(xwaylandvideobridge)$"
           "maxsize 1 1,class:^(xwaylandvideobridge)$"
           "noblur,class:^(xwaylandvideobridge)$"
+          "workspace 4 silent,class:^(discord)$"
+          "workspace 5 silent,class:^(spotify)$"
         ];
       };
     };
