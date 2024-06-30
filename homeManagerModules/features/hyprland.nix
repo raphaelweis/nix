@@ -75,7 +75,7 @@
 
           "$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39"
 
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1@DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"

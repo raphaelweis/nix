@@ -39,6 +39,7 @@
     nvim.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
     stylix.enable = lib.mkDefault true;
+    dunst.enable = lib.mkDefault true;
   };
 
   programs = {
