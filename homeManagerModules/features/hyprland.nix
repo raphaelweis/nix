@@ -48,11 +48,13 @@
         env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "hyprpaper"
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
-          "sleep 5; keepassxc"
-          "[workspace 4 silent] discord --start-minimized"
-          "[workspace 5 silent] spotify"
+          "${pkgs.hyprpaper}/bin/hyprpaper"
+          "${pkgs.keepassxc}/bin/keepassxc"
+          "[workspace 1 silent] ${pkgs.firefox}/bin/firefox"
+          "[workspace 2 silent] ${pkgs.alacritty}/bin/alacritty"
+          "[workspace 4 silent] ${pkgs.discord}/bin/discord"
+          "[workspace 5 silent] ${pkgs.spotify}/bin/spotify"
         ];
         bind = [
           "$mod, C, killactive"
@@ -71,7 +73,10 @@
           "$mod, Q, exec, firefox"
           "$mod, RETURN, exec, alacritty"
           "$mod, E, exec, nautilus"
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
+
+          "$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39"
+
+          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1@DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
@@ -93,7 +98,7 @@
           "maxsize 1 1,class:^(xwaylandvideobridge)$"
           "noblur,class:^(xwaylandvideobridge)$"
           "workspace 4 silent,class:^(discord)$"
-          "workspace 5 silent,class:^(spotify)$"
+          "workspace 5 silent,class:^(Spotify)$"
         ];
       };
     };
