@@ -47,7 +47,6 @@
         misc.disable_hyprland_logo = true;
         env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
-          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
           "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.keepassxc}/bin/keepassxc"
