@@ -87,7 +87,7 @@ in {
       };
       extraConfig = ''
         focus_follows_mouse no
-				workspace_layout tabbed
+        workspace_layout tabbed
       '';
     };
   };

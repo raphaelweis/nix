@@ -4,6 +4,7 @@
   };
 
   config = lib.mkIf config.rFeatures.dunst.enable {
+    home.packages = with pkgs; [ libnotify ];
     services.dunst = {
       enable = true;
       iconTheme = {
