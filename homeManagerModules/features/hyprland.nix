@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, vars, ... }: {
   options.rFeatures = {
     hyprland = {
       enable = lib.mkEnableOption "enables and configures hyprland";
@@ -22,7 +22,17 @@
         xdg-desktop-portal-gtk
       ];
     };
-    home.packages = with pkgs; [ xwaylandvideobridge playerctl ];
+    home.packages = with pkgs; [
+      xwaylandvideobridge
+      playerctl
+      grim
+      slurp
+      wl-clipboard
+      grimblast
+      jq
+      libnotify
+      hyprpicker
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
@@ -48,6 +58,8 @@
         env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
+          "/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge"
+          "${pkgs.waybar}/bin/waybar"
           "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.keepassxc}/bin/keepassxc"
           "[workspace 1 silent] ${pkgs.firefox}/bin/firefox"
@@ -63,10 +75,12 @@
           "$mod, J, movefocus, d"
           "$mod, K, movefocus, u"
           "$mod, L, movefocus, r"
-          "$mod SHIFT, H, swapwindow, l"
-          "$mod SHIFT, J, swapwindow, d"
-          "$mod SHIFT, K, swapwindow, u"
-          "$mod SHIFT, L, swapwindow, r"
+          "$mod SHIFT, H, movewindoworgroup, l"
+          "$mod SHIFT, J, movewindoworgroup, d"
+          "$mod SHIFT, K, movewindoworgroup, u"
+          "$mod SHIFT, L, movewindoworgroup, r"
+          "$mod, T, togglegroup"
+          "ALT, TAB, changegroupactive, f"
 
           "$mod, P, exec, rofi -show run"
           "$mod, Q, exec, firefox"
@@ -74,6 +88,7 @@
           "$mod, E, exec, nautilus"
 
           "$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39"
+          "$mod SHIFT, S, exec, NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimblast --notify --freeze copysave area ${vars.screenshotsDir}/screenshot_$NOW.png"
 
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
