@@ -114,6 +114,9 @@
           "workspace 4 silent,class:^(discord)$"
           "workspace 5 silent,class:^(Spotify)$"
         ];
+        layerrule = [
+          "blur, waybar"
+        ];
       };
     };
   };

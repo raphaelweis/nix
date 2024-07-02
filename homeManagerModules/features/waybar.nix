@@ -11,7 +11,7 @@
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "hyprland/window" ];
         modules-right =
-          [ "tray" "pulseaudio" "network" "cpu" "memory" "disk" "battery" "clock" ];
+          [ "battery" "clock" ];
         "hyprland/workspaces" = {
           format = "{icon}";
           format-icons = {
@@ -28,12 +28,7 @@
           };
           persistent-workspaces = { "*" = 5; };
         };
-        pulseaudio.format = "VOL: {volume}%";
-        network.format = "NET: {ipaddr}";
-        cpu.format = "CPU: {usage}%";
-        memory.format = "MEM: {percentage}%";
-        disk.format = "DSK: {percentage_used}%";
-        bat.format = "BAT: {capacity}%";
+        battery.format = "BAT: {capacity}%";
         clock = {
           tooltip-format = ''
             <big>{:%Y %B}</big>
@@ -51,10 +46,10 @@
 
           window#waybar {
             background-color: 
-              rgba(${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b}, 0.95);
+              rgba(${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b}, 0.90);
             border: 2px solid 
               rgb(${base0D-rgb-r}, ${base0D-rgb-g}, ${base0D-rgb-b});
-            border-radius: 10px;
+            border-radius: 5px;
           }
 
           #workspaces button.active {
