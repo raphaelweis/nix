@@ -13,6 +13,7 @@
       targets = {
         nixvim.enable = false;
         waybar.enable = false;
+        rofi.enable = false;
       };
       cursor = {
         name = "Capitaine Cursors - White";

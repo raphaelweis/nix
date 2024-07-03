@@ -83,6 +83,7 @@
           "ALT, TAB, changegroupactive, f"
 
           "$mod, P, exec, rofi -show run"
+          "ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
           "$mod, Q, exec, firefox"
           "$mod, RETURN, exec, alacritty"
           "$mod, E, exec, nautilus"
@@ -104,7 +105,8 @@
             "$mod, ${ws}, workspace, ${toString (x + 1)}"
             "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
           ]) 10));
-        bindr = [ "SUPER, SUPER_L, exec, rofi -show drun || pkill rofi" ];
+        bindr =
+          [ "SUPER, SUPER_L, exec, rofi -show drun -show-icons || pkill rofi" ];
         windowrulev2 = [
           "opacity 0.0 override,class:^(xwaylandvideobridge)$"
           "noanim,class:^(xwaylandvideobridge)$"
@@ -114,9 +116,7 @@
           "workspace 4 silent,class:^(discord)$"
           "workspace 5 silent,class:^(Spotify)$"
         ];
-        layerrule = [
-          "blur, waybar"
-        ];
+        layerrule = [ "blur, waybar" ];
       };
     };
   };
