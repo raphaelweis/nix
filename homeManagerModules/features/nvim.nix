@@ -48,6 +48,7 @@
         relativenumber = true;
         colorcolumn = "80";
         signcolumn = "yes";
+        hlsearch = false;
       };
       plugins = {
         nvim-autopairs.enable = true;
