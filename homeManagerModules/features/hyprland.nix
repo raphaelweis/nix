@@ -66,6 +66,7 @@
           "[workspace 2 silent] ${pkgs.alacritty}/bin/alacritty"
           "[workspace 4 silent] ${pkgs.discord}/bin/discord"
           "[workspace 5 silent] ${pkgs.spotify}/bin/spotify"
+          "[workspace 6 silent] ${pkgs.spotify}/bin/thunderbird"
         ];
         bind = [
           "$mod, C, killactive"
@@ -115,6 +116,7 @@
           "noblur,class:^(xwaylandvideobridge)$"
           "workspace 4 silent,class:^(discord)$"
           "workspace 5 silent,class:^(Spotify)$"
+          "workspace 6 silent,class:^(thunderbird)$"
         ];
         layerrule = [ "blur, waybar" ];
       };
