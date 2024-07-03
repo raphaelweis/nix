@@ -20,7 +20,7 @@
         c = config.lib.stylix.colors;
       in {
         "*" = {
-          bg0 = mkLiteral "#${c.base00}";
+          bg0 = mkLiteral "#${c.base00}E6";
           bg1 = mkLiteral "#${c.base01}";
           fg0 = mkLiteral "#${c.base06}";
           border = mkLiteral "#${c.base0D}";
