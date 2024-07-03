@@ -28,7 +28,10 @@
           };
           persistent-workspaces = { "*" = 5; };
         };
-        battery.format = "BAT: {capacity}%";
+        battery = {
+        format = "BAT: {capacity}%";
+        interval = 1;
+        };
         clock = {
           tooltip-format = ''
             <big>{:%Y %B}</big>
@@ -56,15 +59,16 @@
             color: #${base09};
           }
 
-          #tray
-          #pulseaudio,
-          #network,
-          #cpu,
-          #memory,
-          #disk,
           #battery,
           #clock {
             padding: 0 8px;
+          }
+
+          #battery.discharging {
+            color: rgb(${base07-rgb-r}, ${base07-rgb-g}, ${base07-rgb-b});
+          }
+          #battery.charging {
+            color: rgb(${base0C-rgb-r}, ${base0C-rgb-g}, ${base0C-rgb-b});
           }
         '';
     };
