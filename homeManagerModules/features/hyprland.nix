@@ -42,24 +42,25 @@
           gaps_in = 2.5;
           gaps_out = 5;
         };
-        decoration.rounding = 5;
         input = {
           kb_layout = "us";
           kb_variant = "intl";
           touchpad.natural_scroll = true;
         };
         animation = [
-          "workspaces, 1, 1, default, slide"
-          "windows, 1, 3, default, slide"
+          "workspaces, 1, 0.5, default, slide"
+          "windows, 1, 1, default, popin"
         ];
-        dwindle.force_split = 2;
+        dwindle = {
+          force_split = 2;
+          no_gaps_when_only = 1;
+        };
         xwayland.force_zero_scaling = true;
         misc.disable_hyprland_logo = true;
         env = [ "GDK_SCALE,${toString config.rFeatures.hyprland.gdkScale}" ];
         exec-once = [
           "hyprctl setcursor 'Capitaine Cursors - White' 24"
           "/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge"
-          "${pkgs.waybar}/bin/waybar"
           "${pkgs.hyprpaper}/bin/hyprpaper"
           "${pkgs.keepassxc}/bin/keepassxc"
           "[workspace 1 silent] ${pkgs.firefox}/bin/firefox"
@@ -84,7 +85,8 @@
           "ALT, TAB, changegroupactive, f"
 
           "$mod, P, exec, rofi -show run"
-          "ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command \"echo -n '{result}' | wl-copy\""
+          ''
+            ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy"''
           "$mod, Q, exec, firefox"
           "$mod, RETURN, exec, alacritty"
           "$mod, E, exec, nautilus"
@@ -108,12 +110,16 @@
           ]) 10));
         bindr =
           [ "SUPER, SUPER_L, exec, rofi -show drun -show-icons || pkill rofi" ];
+        bindm =
+          [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
         windowrulev2 = [
           "opacity 0.0 override,class:^(xwaylandvideobridge)$"
           "noanim,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"
           "maxsize 1 1,class:^(xwaylandvideobridge)$"
           "noblur,class:^(xwaylandvideobridge)$"
+          "rounding 5 ,floating:1"
+          "bordersize 2,floating:1"
           "workspace 4 silent,class:^(discord)$"
           "workspace 5 silent,class:^(Spotify)$"
           "workspace 6 silent,class:^(thunderbird)$"

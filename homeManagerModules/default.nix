@@ -31,7 +31,7 @@
     theme.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
-    waybar.enable = lib.mkDefault true;
+    waybar.enable = lib.mkDefault false;
     rofi.enable = lib.mkDefault true;
     firefox.enable = lib.mkDefault true;
     alacritty.enable = lib.mkDefault true;
