@@ -9,6 +9,7 @@
     };
     nixvim.url = "github:nix-community/nixvim";
     stylix.url = "github:danth/stylix";
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = { ... }@inputs:

@@ -1,5 +1,6 @@
-{ rUtils, pkgs, lib, vars, ... }: {
-  imports = rUtils.filesIn ./features;
+{ inputs, rUtils, pkgs, lib, vars, ... }: {
+  imports = [ inputs.ags.homeManagerModules.default ]
+    ++ (rUtils.filesIn ./features);
 
   home = {
     username = vars.username;
@@ -41,6 +42,7 @@
     stylix.enable = lib.mkDefault true;
     dunst.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
+    ags.enable = lib.mkDefault true;
   };
 
   programs = {
