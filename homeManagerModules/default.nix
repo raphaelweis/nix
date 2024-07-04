@@ -21,6 +21,8 @@
       ripgrep
       android-studio
       google-chrome
+      lunar-client
+      brave
     ];
   };
 
