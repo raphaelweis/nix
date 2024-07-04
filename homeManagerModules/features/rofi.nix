@@ -1,6 +1,11 @@
 { lib, config, pkgs, ... }: {
-  options.rFeatures = {
-    rofi.enable = lib.mkEnableOption "enables and configures rofi";
+  options.rFeatures.rofi = {
+    enable = lib.mkEnableOption "enables and configures rofi";
+    width = lib.mkOption {
+      type = lib.types.int;
+      default = 20;
+      description = "The width to set for the rofi window, as a percentage of the full screen width.";
+    };
   };
   config = lib.mkIf config.rFeatures.rofi.enable {
     programs.rofi = {
@@ -20,26 +25,23 @@
         c = config.lib.stylix.colors;
       in {
         "*" = {
-          bg0 = mkLiteral "#${c.base00}E6";
-          bg1 = mkLiteral "#${c.base01}";
-          fg0 = mkLiteral "#${c.base06}";
-          border = mkLiteral "#${c.base0D}";
           background-color = mkLiteral "transparent";
-          text-color = mkLiteral "@fg0";
+          text-color = mkLiteral "#${c.base06}";
         };
 
         "window" = {
-          background-color = mkLiteral "@bg0";
+          background-color = mkLiteral "#${c.base00}E6";
           border = mkLiteral "2px";
-          border-color = mkLiteral "@border";
+          border-color = mkLiteral "#${c.base0D}";
           border-radius = mkLiteral "10px";
+          width = mkLiteral "20%";
         };
 
         "element" = {
           padding = mkLiteral "0.5em";
           spacing = mkLiteral "1em";
         };
-        "element selected".background-color = mkLiteral "@bg1";
+        "element selected".background-color = mkLiteral "#${c.base01}";
 
         "element-icon".size = mkLiteral "3em";
 
