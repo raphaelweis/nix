@@ -115,7 +115,7 @@
             };
           };
           servers = {
-            nixd.enable = true;
+            nil-ls.enable = true;
             tsserver.enable = true;
             html.enable = true;
             cssls.enable = true;
