@@ -34,7 +34,7 @@
           border = mkLiteral "2px";
           border-color = mkLiteral "#${c.base0D}";
           border-radius = mkLiteral "10px";
-          width = mkLiteral "20%";
+          width = mkLiteral "${toString config.rFeatures.rofi.width}%";
         };
 
         "element" = {

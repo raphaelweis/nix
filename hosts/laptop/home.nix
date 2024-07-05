@@ -6,7 +6,7 @@
     };
     hyprland.gdkScale = 2;
     tmux.withBattery = true;
-    rofi.width = 40;
+    rofi.width = 50;
   };
 
   home.stateVersion = "24.05";
