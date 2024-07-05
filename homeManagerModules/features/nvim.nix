@@ -49,6 +49,7 @@
         colorcolumn = "80";
         signcolumn = "yes";
         hlsearch = false;
+        splitright = true;
       };
       plugins = {
         nvim-autopairs.enable = true;
@@ -168,6 +169,20 @@
                 "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
               "<C-k>" =
                 "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+            };
+          };
+        };
+        harpoon = {
+          enable = true;
+          keymaps = {
+            addFile = "<leader>a";
+            toggleQuickMenu = "<leader>yf";
+            cmdToggleQuickMenu = "<leader>yt";
+            navFile = {
+              "1" = "<leader>u";
+              "2" = "<leader>i";
+              "3" = "<leader>o";
+              "4" = "<leader>p";
             };
           };
         };
