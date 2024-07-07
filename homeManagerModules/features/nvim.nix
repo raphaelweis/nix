@@ -18,20 +18,15 @@
       defaultEditor = true;
       withRuby = false;
 
-      colorschemes.gruvbox = {
+      colorschemes.kanagawa = {
         enable = true;
         settings = {
-          contrast = "hard";
-          italic = {
-            strings = false;
-            emphasis = false;
-            operators = false;
-            folds = false;
-          };
-          transparent_mode = true;
+          compile = true;
+          keywordStyle.italic = false;
+          colors.theme.all.ui.bg_gutter = "none";
         };
       };
-      colorscheme = "gruvbox";
+      colorscheme = "kanagawa";
       globals.mapleader = " ";
       clipboard = {
         providers = {
@@ -116,7 +111,7 @@
             };
           };
           servers = {
-            nil-ls.enable = true;
+            nixd.enable = true;
             tsserver.enable = true;
             html.enable = true;
             cssls.enable = true;

@@ -17,18 +17,9 @@
       keyMode = "vi";
       disableConfirmationPrompt = true;
       plugins = let
-        basePlugins = with pkgs.tmuxPlugins; [
-          sensible
-          vim-tmux-navigator
-          gruvbox
-        ];
-      in basePlugins ++ lib.optional config.rFeatures.tmux.withBattery {
-        plugin = pkgs.tmuxPlugins.battery;
-        extraConfig = # tmux
-          ''
-            set-option -g status-right "#[bg=colour237,fg=colour239 nobold, nounderscore, noitalics]#[bg=colour239,fg=colour246] #{battery_percentage}  %Y-%m-%d  %H:%M #[bg=colour239,fg=colour248,nobold,noitalics,nounderscore]#[bg=colour248,fg=colour237] #h "
-          '';
-      };
+        basePlugins = with pkgs.tmuxPlugins; [ sensible vim-tmux-navigator ];
+      in basePlugins ++ lib.optional config.rFeatures.tmux.withBattery
+      pkgs.tmuxPlugins.battery;
       extraConfig = # tmux
         ''
           set -a terminal-features 'alacritty:RGB'
