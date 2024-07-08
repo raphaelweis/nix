@@ -1,10 +1,11 @@
-{ lib, config, inputs, vars, rUtils, ... }: {
+{ lib, config, inputs, vars, pkgs, rUtils, ... }: {
   options.hmConfig = lib.mkOption {
     description = "Home manager config path";
     type = lib.types.path;
   };
 
   config = {
+    environment.systemPackages = with pkgs; [ home-manager ];
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
@@ -13,7 +14,6 @@
         ${vars.username} = {
           imports = [
             (import config.hmConfig)
-            inputs.nixvim.homeManagerModules.nixvim
             inputs.self.outputs.homeManagerModules.default
           ];
         };

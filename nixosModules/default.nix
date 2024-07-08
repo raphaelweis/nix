@@ -5,11 +5,6 @@
   ] ++ (rUtils.filesIn ./features);
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  nixpkgs.config = {
-    android_sdk.accept_license = true;
-    allowUnfree = true;
-  };
-
   environment.systemPackages = with pkgs; [ vim steam-run ];
 
   programs = {
