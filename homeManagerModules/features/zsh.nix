@@ -16,8 +16,9 @@
       };
       initExtra = # sh
         ''
+          export ANDROID_HOME=${vars.homeDir}/Android/Sdk
           export CUCUMBER_PUBLISH_QUIET=true
-          export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin
+          export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin:${vars.homeDir}/Android/Sdk/platform-tools
         '';
     };
   };
