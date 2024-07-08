@@ -1,8 +1,5 @@
-{ inputs, lib, pkgs, rUtils, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-    inputs.stylix.nixosModules.stylix
-  ] ++ (rUtils.filesIn ./features);
+{ lib, pkgs, rUtils, ... }: {
+  imports = rUtils.filesIn ./features;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [ vim steam-run ];

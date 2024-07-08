@@ -15,6 +15,8 @@
           imports = [
             (import config.hmConfig)
             inputs.self.outputs.homeManagerModules.default
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.ags.homeManagerModules.default
           ];
         };
       };

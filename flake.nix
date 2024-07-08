@@ -31,13 +31,24 @@
         inputs.nixpkgs.lib.nixosSystem {
           inherit pkgs;
           specialArgs = { inherit inputs vars rUtils; };
-          modules = [ config inputs.self.outputs.nixosModules.default ];
+          modules = [
+            config
+            inputs.self.outputs.nixosModules.default
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+          ];
         };
       mkHome = config:
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs vars rUtils; };
-          modules = [ config inputs.self.outputs.homeManagerModules.default ];
+          modules = [
+            config
+            inputs.self.outputs.homeManagerModules.default
+            inputs.stylix.homeManagerModules.stylix
+            inputs.nixvim.homeManagerModules.nixvim
+            inputs.ags.homeManagerModules.default
+          ];
         };
     in {
       nixosConfigurations = {

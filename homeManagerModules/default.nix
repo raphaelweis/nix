@@ -1,9 +1,5 @@
-{ inputs, rUtils, pkgs, lib, vars, ... }: {
-  imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    inputs.stylix.homeManagerModules.stylix
-    inputs.ags.homeManagerModules.default
-  ] ++ (rUtils.filesIn ./features);
+{ rUtils, pkgs, lib, vars, ... }: {
+  imports = rUtils.filesIn ./features;
 
   home = {
     username = vars.username;
