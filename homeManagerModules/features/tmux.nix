@@ -18,8 +18,13 @@
       disableConfirmationPrompt = true;
       plugins = let
         basePlugins = with pkgs.tmuxPlugins; [ sensible vim-tmux-navigator ];
-      in basePlugins ++ lib.optional config.rFeatures.tmux.withBattery
-      pkgs.tmuxPlugins.battery;
+      in basePlugins ++ lib.optional config.rFeatures.tmux.withBattery {
+        plugin = pkgs.tmuxPlugins.battery;
+        extraConfig = # tmux
+          ''
+            set -g status-right '#{battery_color_status_fg}#[bg=default]#{battery_percentage}#[default] #h %H:%M %a %h-%d'
+          '';
+      };
       extraConfig = # tmux
         ''
           set -a terminal-features 'alacritty:RGB'
