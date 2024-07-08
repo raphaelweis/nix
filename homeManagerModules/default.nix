@@ -45,6 +45,7 @@
     dunst.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
     ags.enable = lib.mkDefault true;
+    dconf.enable = lib.mkDefault true;
   };
 
   programs = {
