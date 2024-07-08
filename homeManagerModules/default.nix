@@ -18,7 +18,6 @@
       jdk17
       ruby_3_3
       ripgrep
-      android-studio
       google-chrome
       lunar-client
       brave
@@ -46,6 +45,7 @@
     ags.enable = lib.mkDefault true;
     dconf.enable = lib.mkDefault true;
     node.enable = lib.mkDefault true;
+    android.enable = lib.mkDefault true;
   };
 
   programs = {
