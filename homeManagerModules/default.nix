@@ -16,7 +16,6 @@
       vscode.fhs
       gnome.nautilus
       jdk17
-      nodejs
       ruby_3_3
       ripgrep
       android-studio
@@ -46,6 +45,7 @@
     thunderbird.enable = lib.mkDefault true;
     ags.enable = lib.mkDefault true;
     dconf.enable = lib.mkDefault true;
+    node.enable = lib.mkDefault true;
   };
 
   programs = {
