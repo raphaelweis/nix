@@ -2,6 +2,7 @@
   rFeatures = {
     tmux.withBattery = true;
     rofi.width = 50;
+    android.enable = false;
     alacritty = {
       fontSize = 10;
       winitX11ScaleFactor = 2;
