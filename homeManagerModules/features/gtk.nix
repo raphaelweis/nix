@@ -1,8 +1,6 @@
 { lib, config, pkgs, ... }: {
-  options.rFeatures = {
-    theme.enable = lib.mkEnableOption "theme configuration elements";
-  };
-  config = lib.mkIf config.rFeatures.theme.enable {
+  options.rFeatures.gtk.enable = lib.mkEnableOption "gtk (UI toolkit)";
+  config = lib.mkIf config.rFeatures.gtk.enable {
     gtk = {
       enable = true;
       iconTheme = {

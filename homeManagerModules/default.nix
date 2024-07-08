@@ -28,7 +28,7 @@
 
   rFeatures = {
     i3.enable = lib.mkDefault false;
-    theme.enable = lib.mkDefault true;
+    gtk.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
     waybar.enable = lib.mkDefault false;
