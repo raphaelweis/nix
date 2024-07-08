@@ -13,7 +13,6 @@
       gnumake
       htop
       pavucontrol
-      discord
       spotify
       keepassxc
       vscode.fhs
