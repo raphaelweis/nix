@@ -10,6 +10,7 @@
     nixvim.url = "github:nix-community/nixvim";
     stylix.url = "github:danth/stylix";
     ags.url = "github:Aylur/ags";
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = { ... }@inputs:
@@ -23,6 +24,7 @@
 
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
+        overlays = [ inputs.nixgl.overlay ];
         config.allowUnfree = true;
       };
 

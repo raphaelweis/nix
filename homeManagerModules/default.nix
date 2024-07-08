@@ -1,6 +1,11 @@
 { rUtils, pkgs, lib, vars, ... }: {
   imports = rUtils.filesIn ./features;
 
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
   home = {
     username = vars.username;
     homeDirectory = vars.homeDir;
