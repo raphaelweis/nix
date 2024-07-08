@@ -5,7 +5,6 @@
 
   config = lib.mkIf config.rFeatures.nvim.enable {
     home.packages = with pkgs; [
-      gcc
       nixfmt-classic
       nodePackages.prettier
       black

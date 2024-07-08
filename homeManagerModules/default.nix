@@ -10,7 +10,6 @@
     username = vars.username;
     homeDirectory = vars.homeDir;
     packages = with pkgs; [
-      gcc
       gnumake
       htop
       pavucontrol

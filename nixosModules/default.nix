@@ -2,7 +2,7 @@
   imports = rUtils.filesIn ./features;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [ vim steam-run ];
+  environment.systemPackages = with pkgs; [ vim steam-run gcc ];
 
   programs = {
     zsh.enable = true;
