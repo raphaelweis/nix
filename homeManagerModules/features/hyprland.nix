@@ -85,14 +85,20 @@
       xwayland {
         force_zero_scaling=true
       }
-      
-      env=GDK_SCALE,1
+
+      env=GDK_SCALE, ${toString config.rFeatures.hyprland.gdkScale}
+
       exec-once=hyprctl setcursor 'Capitaine Cursors - White' 24
       exec-once=/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge
       exec-once=${pkgs.hyprpaper}/bin/hyprpaper
       exec-once=${pkgs.keepassxc}/bin/keepassxc
       exec-once=[workspace 1 silent] ${pkgs.firefox}/bin/firefox
-      exec-once=[workspace 2 silent] ${pkgs.alacritty}/bin/alacritty
+      exec-once=[workspace 2 silent] ${
+        if config.rFeatures.hyprland.isOnNixos then
+          "alacritty"
+        else
+          "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"
+      }
       exec-once=[workspace 4 silent] ${pkgs.discord}/bin/discord
       exec-once=[workspace 5 silent] ${pkgs.spotify}/bin/spotify
       exec-once=[workspace 6 silent] ${pkgs.thunderbird}/bin/thunderbird
@@ -116,7 +122,12 @@
       bind=$mod, P, exec, rofi -show run
       bind=ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy"
       bind=$mod, Q, exec, firefox
-      bind=$mod, RETURN, exec, ${if config.rFeatures.hyprland.isOnNixos then "alacritty" else "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"}
+      bind=$mod, RETURN, exec, ${
+        if config.rFeatures.hyprland.isOnNixos then
+          "alacritty"
+        else
+          "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"
+      }
       bind=$mod, E, exec, nautilus
       bind=$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39
       bind=$mod SHIFT, S, exec, NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimblast --notify --freeze copysave area ${vars.screenshotsDir}/screenshot_$NOW.png

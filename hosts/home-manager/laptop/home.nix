@@ -8,7 +8,7 @@
       winitX11ScaleFactor = 2;
     };
     hyprland = {
-      enable = false;
+      enable = true;
       gdkScale = 2;
       isOnNixos = false;
     };
