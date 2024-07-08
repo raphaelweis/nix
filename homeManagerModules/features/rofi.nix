@@ -4,7 +4,8 @@
     width = lib.mkOption {
       type = lib.types.int;
       default = 20;
-      description = "The width to set for the rofi window, as a percentage of the full screen width.";
+      description =
+        "The width to set for the rofi window, as a percentage of the full screen width.";
     };
   };
   config = lib.mkIf config.rFeatures.rofi.enable {
@@ -30,7 +31,7 @@
         };
 
         "window" = {
-          background-color = mkLiteral "#${c.base00}E6";
+          background-color = mkLiteral "#${c.base01}E6";
           border = mkLiteral "2px";
           border-color = mkLiteral "#${c.base0D}";
           border-radius = mkLiteral "10px";
@@ -41,7 +42,7 @@
           padding = mkLiteral "0.5em";
           spacing = mkLiteral "1em";
         };
-        "element selected".background-color = mkLiteral "#${c.base01}";
+        "element selected".background-color = mkLiteral "#${c.base02}";
 
         "element-icon".size = mkLiteral "3em";
 
