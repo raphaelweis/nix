@@ -92,6 +92,7 @@
       exec-once=/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge
       exec-once=${pkgs.hyprpaper}/bin/hyprpaper
       exec-once=${pkgs.keepassxc}/bin/keepassxc
+      exec-once=onedrive --monitor
       exec-once=[workspace 1 silent] ${pkgs.firefox}/bin/firefox
       exec-once=[workspace 2 silent] ${
         if config.rFeatures.hyprland.isOnNixos then
@@ -118,6 +119,7 @@
       bind=$mod SHIFT, K, movewindoworgroup, u
       bind=$mod SHIFT, L, movewindoworgroup, r
       bind=$mod, T, togglegroup
+      bind=$mod, F, togglefloating
       bind=ALT, TAB, changegroupactive, f
       bind=$mod, P, exec, rofi -show run
       bind=ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy"
