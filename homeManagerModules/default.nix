@@ -14,8 +14,6 @@
       spotify
       keepassxc
       gnome.nautilus
-      google-chrome
-      brave
     ];
   };
 
