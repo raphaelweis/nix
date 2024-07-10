@@ -17,15 +17,10 @@
       defaultEditor = true;
       withRuby = false;
 
-      colorschemes.kanagawa = {
+      colorschemes.onedark = {
         enable = true;
-        settings = {
-          compile = true;
-          keywordStyle.italic = false;
-          colors.theme.all.ui.bg_gutter = "none";
-        };
+        settings.style = "darker";
       };
-      colorscheme = "kanagawa";
       globals.mapleader = " ";
       clipboard = {
         providers = {
@@ -44,6 +39,7 @@
         signcolumn = "yes";
         hlsearch = false;
         splitright = true;
+        undofile = true;
       };
       plugins = {
         nvim-autopairs.enable = true;

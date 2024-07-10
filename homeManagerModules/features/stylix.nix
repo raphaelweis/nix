@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, vars, ... }: {
   options.rFeatures = {
     stylix.enable = lib.mkEnableOption "stylix global theming";
   };
@@ -8,8 +8,7 @@
       enable = true;
       polarity = "dark";
       image = ../../assets/wallpaper.png;
-      base16Scheme =
-        "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
+      base16Scheme = vars.base16Theme;
       targets = {
         nixvim.enable = false;
         waybar.enable = false;
