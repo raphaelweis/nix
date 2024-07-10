@@ -4,6 +4,7 @@
     rofi.width = 50;
     android.enable = false;
     firefox.enable = false;
+    xdg.enableMimeApps = false;
     alacritty = {
       fontSize = 10;
       winitX11ScaleFactor = 2;
