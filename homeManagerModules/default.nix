@@ -10,18 +10,11 @@
     username = vars.username;
     homeDirectory = vars.homeDir;
     packages = with pkgs; [
-      gnumake
-      htop
       pavucontrol
       spotify
       keepassxc
-      vscode.fhs
       gnome.nautilus
-      jdk17
-      ruby_3_3
-      ripgrep
       google-chrome
-      lunar-client
       brave
     ];
   };

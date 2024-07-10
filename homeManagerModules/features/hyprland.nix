@@ -18,7 +18,7 @@
   };
   config = lib.mkIf config.rFeatures.hyprland.enable {
     xdg.portal = {
-      enable = true;
+      enable = config.rFeatures.hyprland.isOnNixos;
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
