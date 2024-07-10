@@ -140,6 +140,7 @@
         nvim-tree = {
           enable = true;
           disableNetrw = true;
+          view.width = "100%";
         };
         cmp = {
           enable = true;
