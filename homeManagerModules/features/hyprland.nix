@@ -90,19 +90,20 @@
 
       exec-once=hyprctl setcursor 'Capitaine Cursors - White' 24
       exec-once=/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge
+      exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=${pkgs.hyprpaper}/bin/hyprpaper
       exec-once=${pkgs.keepassxc}/bin/keepassxc
       exec-once=onedrive --monitor
-      exec-once=[workspace 1 silent] ${pkgs.firefox}/bin/firefox
+      exec-once=[workspace 1 silent] firefox
       exec-once=[workspace 2 silent] ${
         if config.rFeatures.hyprland.isOnNixos then
           "alacritty"
         else
           "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"
       }
-      exec-once=[workspace 4 silent] ${pkgs.discord}/bin/discord
-      exec-once=[workspace 5 silent] ${pkgs.spotify}/bin/spotify
-      exec-once=[workspace 6 silent] ${pkgs.thunderbird}/bin/thunderbird
+      exec-once=[workspace 4 silent] discord
+      exec-once=[workspace 5 silent] spotify
+      exec-once=[workspace 6 silent] thunderbird
 
       animation=workspaces, 1, 0.5, default, slide
       animation=windows, 1, 1, default, popin
