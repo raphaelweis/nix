@@ -8,7 +8,7 @@
       enable = true;
 			enableBashIntegration = true;
 			enableZshIntegration = true;
-      changeDirWidgetCommand = "fd --type d";
+      changeDirWidgetCommand = "fd --type d . ~";
     };
   };
 }
