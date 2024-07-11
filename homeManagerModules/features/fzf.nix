@@ -6,8 +6,8 @@
   config = lib.mkIf config.rFeatures.fzf.enable {
     programs.fzf = {
       enable = true;
-			enableBashIntegration = true;
-			enableZshIntegration = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
       changeDirWidgetCommand = "fd --type d . ~";
     };
   };

@@ -29,7 +29,10 @@ in {
         music = null;
         templates = null;
         publicShare = null;
-        extraConfig = { XDG_SCREENSHOTS_DIR = "${picturesDir}/Screenshots"; };
+        extraConfig = {
+          XDG_SCREENSHOTS_DIR = "${picturesDir}/Screenshots";
+          XDG_BIN_DIR = "${config.home.homeDirectory}/.local/bin";
+        };
       };
       mimeApps = {
         enable = config.rFeatures.xdg.enableMimeApps;

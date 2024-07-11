@@ -11,6 +11,28 @@
 
   config = lib.mkIf config.rFeatures.tmux.enable {
     home.packages = with pkgs; [ acpi ];
+    home.file."${config.home.homeDirectory}/.local/bin".text = # bash
+      ''
+        #!/usr/bin/env bash
+        # thanks prime
+
+        selected=$(find ~/ | fzf)
+
+        if [[ -z $selected ]]; then
+        	exit 0
+        fi
+
+        selected_name=$(basename "$selected")
+
+        if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
+        	tmux new-session -s "$selected_name" -c "$selected"
+        	exit 0
+        fi
+
+        tmux new-session -A -s "$selected_name" -c "$selected" -d &> /dev/null
+        tmux switch-client -t "$selected_name"
+        # tmux switch-client -t "$(tmux new-session -APd -s "$selected_name" -c "$selected")"
+      '';
     programs.tmux = {
       enable = true;
       terminal = "tmux-256color";
@@ -31,6 +53,7 @@
           set -g status on
           set -g status-position "top"
           set -g mouse on
+          set -g status-left-length 20
           bind c new-window -c "#{pane_current_path}"
           bind '"' split-window -c "#{pane_current_path}"
           bind % split-window -h -c "#{pane_current_path}"
