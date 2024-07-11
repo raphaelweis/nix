@@ -10,6 +10,8 @@
       black
       clang-tools
       fd
+      shfmt
+      shellcheck
     ];
     programs.nixvim = {
       enable = true;
@@ -52,6 +54,7 @@
         friendly-snippets.enable = true;
         gitsigns.enable = true;
         tmux-navigator.enable = true;
+        oil.enable = true;
         dressing = {
           enable = true;
           settings.select = {
@@ -112,11 +115,18 @@
             cssls.enable = true;
             jsonls.enable = true;
             yamlls.enable = true;
-            eslint.enable = true;
             pyright.enable = true;
             dockerls.enable = true;
             docker-compose-language-service.enable = true;
             clangd.enable = true;
+            bashls.enable = true;
+            eslint = {
+              enable = true;
+              onAttach.function = # lua
+                ''
+                  vim.keymap.set("n", "<leader>fm", "<CMD>EslintFixAll<CR>")
+                '';
+            };
           };
         };
         conform-nvim = {
@@ -135,12 +145,10 @@
             markdown = [ "prettier" ];
             python = [ "black" ];
             c = [ "clang-format" ];
+            sh = [ "shfmt" ];
+            bash = [ "shfmt" ];
+            zsh = [ "shfmt" ];
           };
-        };
-        nvim-tree = {
-          enable = true;
-          disableNetrw = true;
-          view.width = "100%";
         };
         cmp = {
           enable = true;
