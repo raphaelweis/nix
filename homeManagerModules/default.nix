@@ -13,7 +13,7 @@
       pavucontrol
       spotify
       keepassxc
-      gnome.nautilus
+      nautilus
     ];
   };
 
