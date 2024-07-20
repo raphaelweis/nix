@@ -48,13 +48,20 @@
         fugitive.enable = true;
         surround.enable = true;
         lualine.enable = true;
-        treesitter.enable = true;
         ts-autotag.enable = true;
         luasnip.enable = true;
         friendly-snippets.enable = true;
         gitsigns.enable = true;
         tmux-navigator.enable = true;
         oil.enable = true;
+        treesitter = {
+          enable = true;
+          settings = {
+            highlight.enable = true;
+            incremental_selection.enable = true;
+            indent.enable = true;
+          };
+        };
         dressing = {
           enable = true;
           settings.select = {
