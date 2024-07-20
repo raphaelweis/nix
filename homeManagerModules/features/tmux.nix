@@ -11,28 +11,31 @@
 
   config = lib.mkIf config.rFeatures.tmux.enable {
     home.packages = with pkgs; [ acpi ];
-    home.file."${config.home.homeDirectory}/.local/bin".text = # bash
-      ''
-        #!/usr/bin/env bash
-        # thanks prime
+    home.file."${config.home.homeDirectory}/.local/bin/tmux-sessionizer" = {
+      text = # bash
+        ''
+          #!/usr/bin/env bash
+          # thanks prime
 
-        selected=$(find ~/ | fzf)
+          selected=$(find ~/ | fzf)
 
-        if [[ -z $selected ]]; then
-        	exit 0
-        fi
+          if [[ -z $selected ]]; then
+          	exit 0
+          fi
 
-        selected_name=$(basename "$selected")
+          selected_name=$(basename "$selected")
 
-        if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
-        	tmux new-session -s "$selected_name" -c "$selected"
-        	exit 0
-        fi
+          if [[ -z $TMUX ]] && [[ -z $(pgrep tmux) ]]; then
+          	tmux new-session -s "$selected_name" -c "$selected"
+          	exit 0
+          fi
 
-        tmux new-session -A -s "$selected_name" -c "$selected" -d &> /dev/null
-        tmux switch-client -t "$selected_name"
-        # tmux switch-client -t "$(tmux new-session -APd -s "$selected_name" -c "$selected")"
-      '';
+          tmux new-session -A -s "$selected_name" -c "$selected" -d &> /dev/null
+          tmux switch-client -t "$selected_name"
+          # tmux switch-client -t "$(tmux new-session -APd -s "$selected_name" -c "$selected")"
+        '';
+      executable = true;
+    };
     programs.tmux = {
       enable = true;
       terminal = "tmux-256color";
