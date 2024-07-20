@@ -13,8 +13,8 @@
       };
       settings = {
         global = {
-          offset = "0x15";
-          origin = "top-center";
+          offset = "15x15";
+          origin = "bottom-right";
           corner_radius = 5;
           transparency = 10;
         };
