@@ -2,6 +2,7 @@
   rFeatures = {
     tmux.withBattery = true;
     rofi.width = 50;
+    nvim.enable = false;
     android.enable = false;
     firefox.enable = false;
     xdg.enableMimeApps = false;
@@ -10,7 +11,7 @@
       winitX11ScaleFactor = 2;
     };
     hyprland = {
-      enable = true;
+      enable = false;
       gdkScale = 2;
       isOnNixos = false;
     };
