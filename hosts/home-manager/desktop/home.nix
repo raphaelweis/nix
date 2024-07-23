@@ -5,7 +5,7 @@
     android.enable = false;
     firefox.enable = false;
     xdg.enableMimeApps = false;
-    nvim.enable = false;
+    # nvim.enable = false;
   };
 
   home.stateVersion = "24.05";

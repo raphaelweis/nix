@@ -66,7 +66,7 @@
             config
             inputs.self.outputs.homeManagerModules.default
             inputs.stylix.homeManagerModules.stylix
-            inputs.nixvim.homeManagerModules.nixvim
+            # inputs.nixvim.homeManagerModules.nixvim
             inputs.ags.homeManagerModules.default
           ];
         };

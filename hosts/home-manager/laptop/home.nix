@@ -2,7 +2,7 @@
   rFeatures = {
     tmux.withBattery = true;
     rofi.width = 50;
-    nvim.enable = false;
+    # nvim.enable = false;
     android.enable = false;
     firefox.enable = false;
     xdg.enableMimeApps = false;

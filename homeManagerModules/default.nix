@@ -21,16 +21,16 @@
     i3.enable = lib.mkDefault false;
     gtk.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
-    hyprland.enable = lib.mkDefault true;
+    hyprland.enable = lib.mkDefault false;
     waybar.enable = lib.mkDefault false;
     rofi.enable = lib.mkDefault true;
     firefox.enable = lib.mkDefault true;
-    alacritty.enable = lib.mkDefault true;
-    zsh.enable = lib.mkDefault true;
+    alacritty.enable = lib.mkDefault false;
+    zsh.enable = lib.mkDefault false;
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gh.enable = lib.mkDefault true;
-    nvim.enable = lib.mkDefault false;
+    # nvim.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     stylix.enable = lib.mkDefault true;
     dunst.enable = lib.mkDefault true;
@@ -42,7 +42,8 @@
   };
 
   programs = {
-    bash.enable = true;
+    bash.enable = false;
+    neovim.enable = false;
     home-manager.enable = true;
   };
 }
