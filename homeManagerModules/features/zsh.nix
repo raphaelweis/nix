@@ -21,7 +21,7 @@
           export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin:${vars.homeDir}/Android/Sdk/platform-tools:$HOME/.local/bin
 
           bindkey -s "^[s" "tmux-sessionizer\n"
-	  alias vim='nvim'
+	        alias vim='nvim'
         '';
     };
   };

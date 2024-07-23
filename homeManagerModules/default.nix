@@ -30,7 +30,7 @@
     fzf.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
     gh.enable = lib.mkDefault true;
-    nvim.enable = lib.mkDefault true;
+    nvim.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     stylix.enable = lib.mkDefault true;
     dunst.enable = lib.mkDefault true;

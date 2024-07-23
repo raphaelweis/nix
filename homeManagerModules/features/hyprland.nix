@@ -17,19 +17,7 @@
     };
   };
   config = lib.mkIf config.rFeatures.hyprland.enable {
-    xdg.portal = {
-      enable = config.rFeatures.hyprland.isOnNixos;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-      ];
-      configPackages = with pkgs; [
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-gtk
-      ];
-    };
     home.packages = with pkgs; [
-      xwaylandvideobridge
       playerctl
       grim
       slurp
@@ -89,7 +77,8 @@
       env=GDK_SCALE, ${toString config.rFeatures.hyprland.gdkScale}
 
       exec-once=hyprctl setcursor 'Capitaine Cursors - White' 24
-      exec-once=/etc/profiles/per-user/${vars.username}/bin/xwaylandvideobridge
+      exec-once=xwaylandvideobridge
+      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=${pkgs.hyprpaper}/bin/hyprpaper
       exec-once=${pkgs.keepassxc}/bin/keepassxc
