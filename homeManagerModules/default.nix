@@ -31,7 +31,7 @@
     git.enable = lib.mkDefault false;
     gh.enable = lib.mkDefault false;
     # nvim.enable = lib.mkDefault false;
-    tmux.enable = lib.mkDefault true;
+    tmux.enable = lib.mkDefault false;
     stylix.enable = lib.mkDefault true;
     dunst.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
