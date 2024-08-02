@@ -27,7 +27,7 @@
     firefox.enable = lib.mkDefault true;
     alacritty.enable = lib.mkDefault false;
     zsh.enable = lib.mkDefault false;
-    fzf.enable = lib.mkDefault true;
+    fzf.enable = lib.mkDefault false;
     git.enable = lib.mkDefault false;
     gh.enable = lib.mkDefault false;
     # nvim.enable = lib.mkDefault false;
