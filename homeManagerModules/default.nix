@@ -28,8 +28,8 @@
     alacritty.enable = lib.mkDefault false;
     zsh.enable = lib.mkDefault false;
     fzf.enable = lib.mkDefault true;
-    git.enable = lib.mkDefault true;
-    gh.enable = lib.mkDefault true;
+    git.enable = lib.mkDefault false;
+    gh.enable = lib.mkDefault false;
     # nvim.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     stylix.enable = lib.mkDefault true;
