@@ -5,7 +5,7 @@
 
   config = lib.mkIf config.rFeatures.stylix.enable {
     stylix = {
-      enable = true;
+      enable = false;
       polarity = "dark";
       image = ../../assets/wallpaper.png;
       base16Scheme = vars.base16Theme;
