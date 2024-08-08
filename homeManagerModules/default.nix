@@ -23,7 +23,7 @@
     xdg.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault false;
     waybar.enable = lib.mkDefault false;
-    rofi.enable = lib.mkDefault true;
+    rofi.enable = lib.mkDefault false;
     firefox.enable = lib.mkDefault true;
     alacritty.enable = lib.mkDefault false;
     zsh.enable = lib.mkDefault false;
