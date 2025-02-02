@@ -4,16 +4,16 @@
     rofi.width = 50;
     # nvim.enable = false;
     android.enable = false;
-    firefox.enable = false;
-    xdg.enableMimeApps = false;
+    firefox.enable = true;
+    xdg.enableMimeApps = true;
     alacritty = {
       fontSize = 10;
       winitX11ScaleFactor = 2;
     };
     hyprland = {
-      enable = false;
+      enable = true;
       gdkScale = 2;
-      isOnNixos = false;
+      isOnNixos = true;
     };
   };
 

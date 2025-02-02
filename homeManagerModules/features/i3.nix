@@ -65,7 +65,7 @@ in {
           "${mod}+q" = "exec --no-startup-id ${pkgs.firefox}/bin/firefox";
           "${mod}+p" = "exec --no-startup-id ${pkgs.dmenu}/bin/dmenu_run";
           "${mod}+e" =
-            "exec --no-startup-id ${pkgs.gnome.nautilus}/bin/nautilus";
+            "exec --no-startup-id ${pkgs.nautilus}/bin/nautilus";
           "${mod}+Return" =
             "exec --no-startup-id ${pkgs.alacritty}/bin/alacritty";
           "${mod}+Shift+s" =

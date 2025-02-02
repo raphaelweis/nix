@@ -17,8 +17,8 @@
     kde.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
     i3.enable = lib.mkDefault false;
-    light.enable = lib.mkDefault false;
-    fonts.enable = lib.mkDefault false;
+    light.enable = lib.mkDefault true;
+    fonts.enable = lib.mkDefault true;
     stylix.enable = lib.mkDefault true;
     sddm.enable = lib.mkDefault false;
     libinput.enable = lib.mkDefault true;
@@ -32,5 +32,6 @@
     networking.enable = lib.mkDefault true;
     pipewire.enable = lib.mkDefault true;
     user.enable = lib.mkDefault true;
+    gnupg.enable = lib.mkDefault true;
   };
 }

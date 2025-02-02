@@ -22,7 +22,7 @@
       settings = {
         font = {
           size = lib.mkForce config.rFeatures.alacritty.fontSize;
-          normal.family = "JetBrainsMonoNL NF";
+          normal.family = "JetBrainsMono NF";
         };
         mouse.hide_when_typing = true;
         window = {

@@ -6,7 +6,7 @@
 
   config = lib.mkIf config.rFeatures.fonts.enable {
     fonts = {
-      packages = [ (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
+      packages = [ pkgs.nerd-fonts.jetbrains-mono ];
       fontconfig = {
         enable = true;
         defaultFonts.monospace = [ "JetBrainsMonoNL NF" ];
