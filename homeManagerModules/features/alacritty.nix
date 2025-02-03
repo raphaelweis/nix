@@ -20,10 +20,9 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        # font = {
-        #   size = lib.mkForce config.rFeatures.alacritty.fontSize;
-        #   normal.family = "JetBrainsMono NF";
-        # };
+        font = {
+          size = lib.mkForce config.rFeatures.alacritty.fontSize;
+        };
         mouse.hide_when_typing = true;
         window = {
           opacity = lib.mkForce 1;

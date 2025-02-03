@@ -13,6 +13,7 @@
         efi.canTouchEfiVariables = true;
         timeout = 10;
       };
+      supportedFilesystems = [ "ntfs" ];
     };
   };
 }

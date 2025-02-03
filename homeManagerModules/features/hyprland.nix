@@ -27,10 +27,9 @@
       libnotify
       hyprpicker
     ];
-    home.file."${config.xdg.configHome}/hypr/hyprland.conf".text = let
-      c = config.lib.stylix.colors;
-      # hyprlang
-    in ''
+    home.file."${config.xdg.configHome}/hypr/hyprland.conf".text = 
+    #hyprlang 
+      ''
       $mod=SUPER
 
       dwindle {
@@ -39,21 +38,8 @@
 
       general {
         border_size=2
-        col.active_border=rgb(${c.base0D})
-        col.inactive_border=rgb(${c.base03})
-        gaps_in=2.5
-        gaps_out=5
-      }
-
-      group {
-        groupbar {
-          col.active=rgb(${c.base0D})
-          col.inactive=rgb(${c.base03})
-          text_color=rgb(${c.base05})
-        }
-        col.border_active=rgb(${c.base0D})
-        col.border_inactive=rgb(${c.base03})
-        col.border_locked_active=rgb(${c.base0C})
+        gaps_in=0
+        gaps_out=0
       }
 
       input {
@@ -65,7 +51,6 @@
       }
 
       misc {
-        background_color=rgb(${c.base00})
         disable_hyprland_logo=true
       }
 
@@ -75,21 +60,7 @@
 
       env=GDK_SCALE, ${toString config.rFeatures.hyprland.gdkScale}
 
-      exec-once=hyprctl setcursor 'Capitaine Cursors - White' 24
-      exec-once=xwaylandvideobridge
-      exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-      exec-once=/usr/lib/polkit-kde-authentication-agent-1
-      exec-once=${pkgs.hyprpaper}/bin/hyprpaper
-      exec-once=[workspace 1 silent] firefox
-      exec-once=[workspace 2 silent] ${
-        if config.rFeatures.hyprland.isOnNixos then
-          "alacritty"
-        else
-          "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"
-      }
-      exec-once=[workspace 4 silent] discord
-      exec-once=[workspace 5 silent] spotify
-      exec-once=[workspace 6 silent] thunderbird
+      exec-once = systemctl --user start hyprpaper.service
 
       animation=workspaces, 1, 0.5, default, slide
       animation=windows, 1, 1, default, popin
@@ -110,13 +81,8 @@
       bind=ALT, TAB, changegroupactive, f
       bind=$mod, P, exec, rofi -show run
       bind=ALT, SPACE, exec, rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | wl-copy"
-      bind=$mod, Q, exec, firefox
-      bind=$mod, RETURN, exec, ${
-        if config.rFeatures.hyprland.isOnNixos then
-          "alacritty"
-        else
-          "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel alacritty"
-      }
+      bind=$mod, Q, exec, zen
+      bind=$mod, RETURN, exec, alacritty      
       bind=$mod, E, exec, nautilus
       bind=$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39
       bind=$mod SHIFT, S, exec, NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimblast --notify --freeze copysave area ${vars.screenshotsDir}/screenshot_$NOW.png
@@ -151,16 +117,12 @@
       bindm=$mod, mouse:273, resizewindow
       bindr=SUPER, SUPER_L, exec, rofi -show drun -show-icons || pkill rofi
 
-      windowrulev2=opacity 0.0 override,class:^(xwaylandvideobridge)$
-      windowrulev2=noanim,class:^(xwaylandvideobridge)$
-      windowrulev2=noinitialfocus,class:^(xwaylandvideobridge)$
-      windowrulev2=maxsize 1 1,class:^(xwaylandvideobridge)$
-      windowrulev2=noblur,class:^(xwaylandvideobridge)$
       windowrulev2=rounding 5 ,floating:1
       windowrulev2=bordersize 2,floating:1
       windowrulev2=workspace 4 silent,class:^(discord)$
       windowrulev2=workspace 5 silent,class:^(Spotify)$
       windowrulev2=workspace 6 silent,class:^(thunderbird)$
+      windowrulev2 = noborder, onworkspace:w[t1]
     '';
   };
 }

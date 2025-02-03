@@ -7,7 +7,7 @@
     programs.waybar = {
       enable = true;
       settings = [{
-        margin = "5 5 0 5";
+        margin = "0 0 0 0";
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "hyprland/window" ];
         modules-right =
@@ -50,9 +50,10 @@
           window#waybar {
             background-color: 
               rgba(${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b}, 0.90);
-            border: 2px solid 
-              rgb(${base0D-rgb-r}, ${base0D-rgb-g}, ${base0D-rgb-b});
-            border-radius: 5px;
+            border: none;
+            border-radius: 0px;
+            margin: 0;
+            padding: 0;
           }
 
           #workspaces button.active {

@@ -37,10 +37,10 @@ in {
       mimeApps = {
         enable = config.rFeatures.xdg.enableMimeApps;
         defaultApplications = {
-          "text/html" = [ "firefox.desktop" ];
-          "x-scheme-handler/http" = [ "firefox.desktop" ];
-          "x-scheme-handler/https" = [ "firefox.desktop" ];
-          "x-scheme-handler/ftp" = [ "firefox.desktop" ];
+          "text/html" = [ "zen.desktop" ];
+          "x-scheme-handler/http" = [ "zen.desktop" ];
+          "x-scheme-handler/https" = [ "zen.desktop" ];
+          "x-scheme-handler/ftp" = [ "zen.desktop" ];
         };
       };
     };

@@ -1,4 +1,4 @@
-{ rUtils, pkgs, lib, vars, ... }: {
+{ rUtils, inputs, pkgs, lib, vars, ... }: {
   imports = rUtils.filesIn ./features;
 
   nix = {
@@ -19,7 +19,8 @@
       nautilus
       vscode-fhs
       ghostty
-    ];
+      chntpw
+    ] ++ [ inputs.zen-browser.packages.${pkgs.system}.default ];
   };
 
   rFeatures = {
@@ -27,6 +28,7 @@
     gtk.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
     hyprland.enable = lib.mkDefault true;
+    hyprpaper.enable = lib.mkDefault true;
     waybar.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
     firefox.enable = lib.mkDefault true;
@@ -43,11 +45,11 @@
     dconf.enable = lib.mkDefault true;
     node.enable = lib.mkDefault true;
     android.enable = lib.mkDefault false;
+    nixvim.enable = lib.mkDefault true;
   };
 
   programs = {
     bash.enable = true;
-    neovim.enable = true;
     home-manager.enable = true;
   };
 }

@@ -10,6 +10,11 @@
     stylix.url = "github:danth/stylix";
     ags.url = "github:Aylur/ags";
     nixgl.url = "github:nix-community/nixGL";
+    nixvim.url = "github:nix-community/nixvim";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {...} @ inputs: let
@@ -18,24 +23,7 @@
       homeDir = "/home/${username}";
       picturesDir = "${homeDir}/Pictures";
       screenshotsDir = "${picturesDir}/Screenshots";
-      base16Theme = {
-        base00 = "010409";
-        base01 = "0d1117";
-        base02 = "151b23";
-        base03 = "212830";
-        base04 = "3d444d";
-        base05 = "656c76";
-        base06 = "9198a1";
-        base07 = "f0f6fc";
-        base08 = "ffa198";
-        base09 = "79c0ff";
-        base0A = "e3b341";
-        base0B = "56d364";
-        base0C = "ffa657";
-        base0D = "e2c5ff";
-        base0E = "ffbedd";
-        base0F = "ffc2b2";
-      };
+      base16Theme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     };
 
     pkgs = import inputs.nixpkgs {
@@ -64,6 +52,7 @@
           config
           inputs.self.outputs.homeManagerModules.default
           inputs.stylix.homeManagerModules.stylix
+      	  inputs.nixvim.homeManagerModules.nixvim
           inputs.ags.homeManagerModules.default
         ];
       };

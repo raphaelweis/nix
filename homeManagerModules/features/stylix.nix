@@ -12,6 +12,11 @@
       targets = {
         waybar.enable = false;
         rofi.enable = false;
+      	neovim.enable = false;
+	      nixvim.enable = false;
+        firefox.enable = false;
+        hyprland.enable = true;
+        hyprpaper.enable = true;
       };
       cursor = {
         name = "macOS";
