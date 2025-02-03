@@ -3,6 +3,7 @@
     lib.mkEnableOption "NixVim (Neovim configuration framework)";
 
   config = lib.mkIf config.rFeatures.nixvim.enable {
+    home.packages = with pkgs; [ ripgrep ];
     programs.nixvim = {
       enable = true;
       globals = {
@@ -31,6 +32,13 @@
         scrolloff = 5;
         termguicolors = true;
       };
+      keymaps = [
+        {
+          mode = "n";
+          key = "<ESC>";
+          action = "<CMD>nohlsearch<CR>";
+        }
+      ];
       colorscheme = "gruvbox";
       colorschemes.gruvbox = {
         enable = true;
@@ -49,6 +57,16 @@
             "<leader>sf" = "find_files";
             "<leader>sh" = "help_tags";
             "<leader>sg" = "live_grep";
+          };
+        };
+        mini = {
+          enable = true;
+          mockDevIcons = true;
+          modules = {
+            comment = {};
+            pairs = {};
+            surround = {};
+            icons = {};
           };
         };
       };

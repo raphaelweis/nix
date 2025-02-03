@@ -12,22 +12,6 @@
         modules-center = [ "hyprland/window" ];
         modules-right =
           [ "battery" "clock" ];
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            "1" = "WEB";
-            "2" = "COD";
-            "3" = "W03";
-            "4" = "DIS";
-            "5" = "SPO";
-            "6" = "THU";
-            "7" = "W07";
-            "8" = "W08";
-            "9" = "W09";
-            "10" = "W10";
-          };
-          persistent-workspaces = { "*" = 5; };
-        };
         battery = {
         format = "BAT: {capacity}%";
         interval = 1;
@@ -44,20 +28,32 @@
       #css 
         ''
           * {
-            font-family: "JetBrainsMonoNL NF";
+            font-family: "JetBrainsMono NF";
+            font-size: 10;
+          }
+
+          button {
+            all: initial;
           }
 
           window#waybar {
             background-color: 
-              rgba(${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b}, 0.90);
+              rgba(${base00-rgb-r}, ${base00-rgb-g}, ${base00-rgb-b}, 0.95);
             border: none;
             border-radius: 0px;
-            margin: 0;
-            padding: 0;
+          }
+
+          window#waybar > box {
+            padding: 4px;
+          }
+
+          #workspaces button {
+            padding: 0 8px;
           }
 
           #workspaces button.active {
             color: #${base09};
+            font-weight: bold;
           }
 
           #battery,

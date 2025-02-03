@@ -5,7 +5,7 @@
   config = lib.mkIf config.rFeatures.ags.enable {
     programs.ags = {
       enable = true;
-      extraPackages = with pkgs; [ gtksourceview webkitgtk accountsservice ];
+      extraPackages = with pkgs; [ gtksourceview accountsservice ];
     };
   };
 }

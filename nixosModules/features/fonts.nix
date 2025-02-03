@@ -9,7 +9,7 @@
       packages = [ pkgs.nerd-fonts.jetbrains-mono ];
       fontconfig = {
         enable = true;
-        defaultFonts.monospace = [ "JetBrainsMonoNL NF" ];
+        defaultFonts.monospace = [ "JetBrainsMono NF" ];
       };
     };
   };

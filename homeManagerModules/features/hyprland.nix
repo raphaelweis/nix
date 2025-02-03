@@ -27,9 +27,10 @@
       libnotify
       hyprpicker
     ];
-    home.file."${config.xdg.configHome}/hypr/hyprland.conf".text = 
-    #hyprlang 
-      ''
+    home.file."${config.xdg.configHome}/hypr/hyprland.conf".text = let
+      c = config.lib.stylix.colors;
+      #hyprlang 
+    in  ''
       $mod=SUPER
 
       dwindle {
@@ -37,9 +38,18 @@
       }
 
       general {
-        border_size=2
+        border_size=1
         gaps_in=0
         gaps_out=0
+        col.active_border=rgb(${c.base0C})
+      }
+
+      decoration {
+        shadow {
+          enabled=false
+        }
+        dim_inactive = false
+        dim_strength = 0.25
       }
 
       input {

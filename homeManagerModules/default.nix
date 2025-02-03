@@ -41,7 +41,7 @@
     stylix.enable = lib.mkDefault true;
     dunst.enable = lib.mkDefault true;
     thunderbird.enable = lib.mkDefault true;
-    ags.enable = lib.mkDefault true;
+    ags.enable = lib.mkDefault false;
     dconf.enable = lib.mkDefault true;
     node.enable = lib.mkDefault true;
     android.enable = lib.mkDefault false;
