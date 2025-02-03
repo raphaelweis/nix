@@ -15,10 +15,6 @@ in {
       config = {
         modifier = mod;
         defaultWorkspace = "workspace number 1";
-        startup = [{
-          command = "${pkgs.keepassxc}/bin/keepassxc";
-          notification = false;
-        }];
         keybindings = {
           "${mod}+c" = "kill";
           "Control+Shift+Mod1+l" = "exec i3-msg exit";

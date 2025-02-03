@@ -9,7 +9,6 @@
     adb.enable = true;
     steam.enable = true;
   };
-  services.onedrive.enable = true;
   security.polkit.enable = true;
 
   rFeatures = {

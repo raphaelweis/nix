@@ -80,8 +80,6 @@
       exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
       exec-once=/usr/lib/polkit-kde-authentication-agent-1
       exec-once=${pkgs.hyprpaper}/bin/hyprpaper
-      exec-once=${pkgs.keepassxc}/bin/keepassxc
-      exec-once=onedrive --monitor
       exec-once=[workspace 1 silent] firefox
       exec-once=[workspace 2 silent] ${
         if config.rFeatures.hyprland.isOnNixos then

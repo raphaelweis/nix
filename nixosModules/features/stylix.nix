@@ -12,15 +12,15 @@
         nixvim.enable = false;
       };
       cursor = {
-        name = "Capitaine Cursors - White";
-        package = pkgs.capitaine-cursors-themed;
+        name = "macOS";
+        package = pkgs.apple-cursor;
         size = 24;
       };
       fonts = {
         sizes.applications = 10;
         monospace = {
-          package = (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; });
-          name = "JetBrainsMonoNL NF";
+          package = pkgs.nerd-fonts.jetbrains-mono;
+          name = "JetBrainsMono NF";
         };
         emoji = {
           package = pkgs.noto-fonts-emoji;
