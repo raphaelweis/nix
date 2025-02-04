@@ -9,7 +9,6 @@
       base16Scheme = vars.base16Theme;
       targets = {
         console.enable = false;
-        nixvim.enable = false;
       };
       cursor = {
         name = "macOS";

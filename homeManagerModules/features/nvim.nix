@@ -31,6 +31,7 @@
         inccommand = "split";
         scrolloff = 5;
         termguicolors = true;
+        clipboard = "unnamedplus";
       };
       keymaps = [
         {
