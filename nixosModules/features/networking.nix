@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures.networking = {
     enable = lib.mkEnableOption "Network configuration for the system";
     hostname = lib.mkOption {

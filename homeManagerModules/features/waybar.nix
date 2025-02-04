@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
     waybar.enable = lib.mkEnableOption "waybar, the wayland status bar";
   };
@@ -6,26 +12,31 @@
     home.packages = with pkgs; [ font-awesome ];
     programs.waybar = {
       enable = true;
-      settings = [{
-        margin = "0 0 0 0";
-        modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ "hyprland/window" ];
-        modules-right =
-          [ "battery" "clock" ];
-        battery = {
-        format = "BAT: {capacity}%";
-        interval = 1;
-        };
-        clock = {
-          tooltip-format = ''
-            <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>
-          '';
-          format = "{:%a %d-%m-%Y %H:%M}";
-        };
-      }];
-      style = with config.lib.stylix.colors;
-      #css 
+      settings = [
+        {
+          margin = "0 0 0 0";
+          modules-left = [ "hyprland/workspaces" ];
+          modules-center = [ "hyprland/window" ];
+          modules-right = [
+            "battery"
+            "clock"
+          ];
+          battery = {
+            format = "BAT: {capacity}%";
+            interval = 1;
+          };
+          clock = {
+            tooltip-format = ''
+              <big>{:%Y %B}</big>
+              <tt><small>{calendar}</small></tt>
+            '';
+            format = "{:%a %d-%m-%Y %H:%M}";
+          };
+        }
+      ];
+      style =
+        with config.lib.stylix.colors;
+        #css
         ''
           * {
             font-family: "JetBrainsMono NF";

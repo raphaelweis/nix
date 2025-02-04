@@ -1,6 +1,6 @@
-{ lib, config, ... }: {
-  options.rFeatures.thunderbird.enable =
-    lib.mkEnableOption "Thunderbird (email client)";
+{ lib, config, ... }:
+{
+  options.rFeatures.thunderbird.enable = lib.mkEnableOption "Thunderbird (email client)";
 
   config = lib.mkIf config.rFeatures.thunderbird.enable {
     programs.thunderbird = {

@@ -1,7 +1,7 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
-    locale.enable =
-      lib.mkEnableOption "Keyboard and locale configuration for the system.";
+    locale.enable = lib.mkEnableOption "Keyboard and locale configuration for the system.";
   };
 
   config = lib.mkIf config.rFeatures.locale.enable {

@@ -1,4 +1,10 @@
-{ lib, config, vars, ... }: {
+{
+  lib,
+  config,
+  vars,
+  ...
+}:
+{
   options.rFeatures = {
     docker.enable = lib.mkEnableOption "Enables and configures docker";
   };

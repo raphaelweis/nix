@@ -1,8 +1,22 @@
-{ lib, pkgs, rUtils, ... }: {
+{
+  lib,
+  pkgs,
+  rUtils,
+  ...
+}:
+{
   imports = rUtils.filesIn ./features;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [ vim steam-run gcc udisks ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  environment.systemPackages = with pkgs; [
+    vim
+    steam-run
+    gcc
+    udisks
+  ];
 
   programs = {
     zsh.enable = true;

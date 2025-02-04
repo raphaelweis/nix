@@ -1,4 +1,13 @@
-{ lib, config, inputs, vars, pkgs, rUtils, ... }: {
+{
+  lib,
+  config,
+  inputs,
+  vars,
+  pkgs,
+  rUtils,
+  ...
+}:
+{
   options.hmConfig = lib.mkOption {
     description = "Home manager config path";
     type = lib.types.path;

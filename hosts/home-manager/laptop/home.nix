@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   rFeatures = {
     tmux.withBattery = true;
     rofi.width = 50;

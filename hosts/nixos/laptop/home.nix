@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   rFeatures = {
     alacritty = {
       fontSize = 10;

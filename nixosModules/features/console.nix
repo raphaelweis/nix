@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
     console = {
       enable = lib.mkEnableOption "Console (TTY) configuration for the system";

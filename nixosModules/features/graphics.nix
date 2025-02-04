@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     graphics.enable = lib.mkEnableOption "common graphics options";
   };

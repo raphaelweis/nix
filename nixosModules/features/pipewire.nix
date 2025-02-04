@@ -1,7 +1,12 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
-    pipewire.enable =
-      lib.mkEnableOption "Pipewire configuration for the system";
+    pipewire.enable = lib.mkEnableOption "Pipewire configuration for the system";
   };
 
   config = lib.mkIf config.rFeatures.pipewire.enable {

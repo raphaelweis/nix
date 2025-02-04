@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
     sddm.enable = lib.mkEnableOption "sddm nixos configuration";
   };

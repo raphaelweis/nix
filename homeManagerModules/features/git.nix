@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     git.enable = lib.mkEnableOption "git the version manager";
   };

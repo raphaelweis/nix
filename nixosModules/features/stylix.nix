@@ -1,4 +1,11 @@
-{ lib, config, pkgs, vars, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  vars,
+  ...
+}:
+{
   options.rFeatures.stylix.enable = lib.mkEnableOption "stylix global theming";
 
   config = lib.mkIf config.rFeatures.stylix.enable {

@@ -1,17 +1,22 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   picturesDir = "${config.home.homeDirectory}/Pictures";
   documentsDir = "${config.home.homeDirectory}/Documents";
   downloadDir = "${config.home.homeDirectory}/Downloads";
   videosDir = "${config.home.homeDirectory}/Videos";
-in {
+in
+{
   options.rFeatures.xdg = {
     enable = lib.mkEnableOption "enables and configures xdg directories";
     enableMimeApps = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description =
-        "Whether to enable automatic generation of the mimeapps.list file.";
+      description = "Whether to enable automatic generation of the mimeapps.list file.";
     };
   };
   config = lib.mkIf config.rFeatures.xdg.enable {

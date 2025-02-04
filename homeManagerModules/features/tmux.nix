@@ -1,11 +1,16 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures.tmux = {
     enable = lib.mkEnableOption "enables and configures tmux";
     withBattery = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description =
-        "Whether to display the current battery charge level in tmux status bar.";
+      description = "Whether to display the current battery charge level in tmux status bar.";
     };
   };
 
@@ -41,15 +46,18 @@
       terminal = "tmux-256color";
       keyMode = "vi";
       disableConfirmationPrompt = true;
-      plugins = let
-        basePlugins = with pkgs.tmuxPlugins; [ sensible vim-tmux-navigator ];
-      in basePlugins ++ lib.optional config.rFeatures.tmux.withBattery {
-        plugin = pkgs.tmuxPlugins.battery;
-        extraConfig = # tmux
-          ''
-            set -g status-right '#{battery_color_status_fg}#[bg=default]#{battery_percentage}#[default] #h %H:%M %a %h-%d'
-          '';
-      };
+      plugins =
+        let
+          basePlugins = with pkgs.tmuxPlugins; [ sensible ];
+        in
+        basePlugins
+        ++ lib.optional config.rFeatures.tmux.withBattery {
+          plugin = pkgs.tmuxPlugins.battery;
+          extraConfig = # tmux
+            ''
+              set -g status-right '#{battery_color_status_fg}#[bg=default]#{battery_percentage}#[default] #h %H:%M %a %h-%d'
+            '';
+        };
       extraConfig = # tmux
         ''
           set -a terminal-features 'alacritty:RGB'
@@ -60,6 +68,12 @@
           bind c new-window -c "#{pane_current_path}"
           bind '"' split-window -c "#{pane_current_path}"
           bind % split-window -h -c "#{pane_current_path}"
+
+          # nvim smart-splits integration
+          bind-key -n C-h if -F "#{@pane-is-vim}" 'send-keys C-h'  'select-pane -L'
+          bind-key -n C-j if -F "#{@pane-is-vim}" 'send-keys C-j'  'select-pane -D'
+          bind-key -n C-k if -F "#{@pane-is-vim}" 'send-keys C-k'  'select-pane -U'
+          bind-key -n C-l if -F "#{@pane-is-vim}" 'send-keys C-l'  'select-pane -R'
         '';
     };
   };

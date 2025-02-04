@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures.alacritty = {
     enable = lib.mkEnableOption "the alacritty terminal emulator";
     fontSize = lib.mkOption {
@@ -31,8 +32,7 @@
             y = 4;
           };
         };
-        env."WINIT_X11_SCALE_FACTOR" =
-          toString config.rFeatures.alacritty.winitX11ScaleFactor;
+        env."WINIT_X11_SCALE_FACTOR" = toString config.rFeatures.alacritty.winitX11ScaleFactor;
       };
     };
   };

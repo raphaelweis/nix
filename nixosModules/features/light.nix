@@ -1,6 +1,11 @@
-{ lib, config, vars, ... }: {
-  options.rFeatures.light.enable =
-    lib.mkEnableOption "light, the backlight control program";
+{
+  lib,
+  config,
+  vars,
+  ...
+}:
+{
+  options.rFeatures.light.enable = lib.mkEnableOption "light, the backlight control program";
 
   config = lib.mkIf config.rFeatures.light.enable {
     users.users.${vars.username}.extraGroups = [ "video" ];

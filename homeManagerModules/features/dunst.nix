@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
     dunst.enable = lib.mkEnableOption "dunst the notification daemon";
   };

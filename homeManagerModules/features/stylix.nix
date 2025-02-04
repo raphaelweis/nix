@@ -1,4 +1,11 @@
-{ lib, config, pkgs, vars, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  vars,
+  ...
+}:
+{
   options.rFeatures = {
     stylix.enable = lib.mkEnableOption "stylix global theming";
   };
@@ -15,7 +22,7 @@
         firefox.enable = true;
         hyprland.enable = true;
         hyprpaper.enable = true;
-	      nixvim.enable = false;
+        nixvim.enable = false;
       };
       cursor = {
         name = "macOS";

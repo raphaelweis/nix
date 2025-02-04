@@ -1,13 +1,26 @@
-{ lib, pkgs, config, vars, ... }:
-let mod = "Mod4";
-in {
+{
+  lib,
+  pkgs,
+  config,
+  vars,
+  ...
+}:
+let
+  mod = "Mod4";
+in
+{
   options.rFeatures = {
     i3.enable = lib.mkEnableOption "enables and configures i3";
   };
 
   config = lib.mkIf config.rFeatures.i3.enable {
     home = {
-      packages = with pkgs; [ dmenu maim xclip playerctl ];
+      packages = with pkgs; [
+        dmenu
+        maim
+        xclip
+        playerctl
+      ];
       file.".background-image".source = ../../assets/wallpaper.png;
     };
     xsession.windowManager.i3 = {
@@ -60,26 +73,21 @@ in {
 
           "${mod}+q" = "exec --no-startup-id ${pkgs.firefox}/bin/firefox";
           "${mod}+p" = "exec --no-startup-id ${pkgs.dmenu}/bin/dmenu_run";
-          "${mod}+e" =
-            "exec --no-startup-id ${pkgs.nautilus}/bin/nautilus";
-          "${mod}+Return" =
-            "exec --no-startup-id ${pkgs.alacritty}/bin/alacritty";
+          "${mod}+e" = "exec --no-startup-id ${pkgs.nautilus}/bin/nautilus";
+          "${mod}+Return" = "exec --no-startup-id ${pkgs.alacritty}/bin/alacritty";
           "${mod}+Shift+s" =
             "exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && ${pkgs.maim}/bin/maim --format png --select > ${vars.screenshotsDir}/screenshot_$NOW.png && ${pkgs.xclip}/bin/xclip -selection clip -t image/png ${vars.screenshotsDir}/screenshot_$NOW.png";
 
           "XF86AudioRaiseVolume" =
             "exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && $refresh_i3_status";
-          "XF86AudioLowerVolume" =
-            "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && $refresh_i3_status";
-          "XF86AudioMute" =
-            "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3_status";
-          "XF86AudioMicMute" =
-            "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3_status";
+          "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && $refresh_i3_status";
+          "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $refresh_i3_status";
+          "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $refresh_i3_status";
           "XF86AudioPlay" = "exec playerctl play-pause";
           "XF86AudioPrev" = "exec playerctl previous";
           "XF86AudioNext" = "exec playerctl next";
         };
-        bars = [{ statusCommand = "i3status"; }];
+        bars = [ { statusCommand = "i3status"; } ];
       };
       extraConfig = ''
         focus_follows_mouse no

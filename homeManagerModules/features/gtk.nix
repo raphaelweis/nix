@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures.gtk.enable = lib.mkEnableOption "gtk (UI toolkit)";
   config = lib.mkIf config.rFeatures.gtk.enable {
     gtk = {

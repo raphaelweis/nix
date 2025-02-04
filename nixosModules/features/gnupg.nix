@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     gnupg.enable = lib.mkEnableOption "enables and configures gnupg";
   };

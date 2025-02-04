@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     node.enable = lib.mkEnableOption "enables and configures fzf";
   };

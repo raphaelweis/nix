@@ -1,7 +1,12 @@
-{ lib, config, vars, ... }: {
+{
+  lib,
+  config,
+  vars,
+  ...
+}:
+{
   options.rFeatures = {
-    virtualization.enable =
-      lib.mkEnableOption "Enables and configures virtualization with virt-manager";
+    virtualization.enable = lib.mkEnableOption "Enables and configures virtualization with virt-manager";
   };
 
   config = lib.mkIf config.rFeatures.virtualization.enable {

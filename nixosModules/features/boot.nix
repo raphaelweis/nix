@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     boot.enable = lib.mkEnableOption "systemdboot as the bootloader";
   };

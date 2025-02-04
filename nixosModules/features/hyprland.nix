@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options.rFeatures = {
     hyprland.enable = lib.mkEnableOption "Hyprland, the wayland compositor";
   };

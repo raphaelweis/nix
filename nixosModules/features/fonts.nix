@@ -1,7 +1,12 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
-    fonts.enable =
-      lib.mkEnableOption "Font and fontconfig configuration for the system.";
+    fonts.enable = lib.mkEnableOption "Font and fontconfig configuration for the system.";
   };
 
   config = lib.mkIf config.rFeatures.fonts.enable {

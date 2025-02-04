@@ -1,4 +1,10 @@
-{ lib, config, pkgs, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
   options.rFeatures = {
     bluetooth.enable = lib.mkEnableOption "Enables and configures bluetooth";
   };
@@ -8,7 +14,11 @@
       enable = true;
       package = pkgs.bluez;
       powerOnBoot = true;
-      settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+      settings = {
+        General = {
+          Enable = "Source,Sink,Media,Socket";
+        };
+      };
     };
   };
 }
