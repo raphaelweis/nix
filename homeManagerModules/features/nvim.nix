@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -11,12 +12,14 @@
     home.packages = with pkgs; [
       # External tools
       ripgrep
+      tree-sitter
 
       # Formatters
       nixfmt-rfc-style
     ];
     programs.nixvim = {
       enable = true;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       globals = {
         mapleader = " ";
         loaded_node_provider = 0;
@@ -44,11 +47,24 @@
         termguicolors = true;
         clipboard = "unnamedplus";
       };
+      diagnostics = {
+        virtual_text = true;
+      };
       colorscheme = "gruvbox";
-      colorschemes.gruvbox = {
-        enable = true;
-        settings = {
-          contrast = "hard";
+      # colorscheme = "catppuccin";
+      colorschemes = {
+        gruvbox = {
+          enable = true;
+          lazyLoad.enable = false;
+          settings = {
+            contrast = "hard";
+          };
+        };
+        catppuccin = {
+          enable = true;
+          settings = {
+            flavour = "mocha";
+          };
         };
       };
       plugins = {
@@ -72,10 +88,16 @@
             pairs = { };
             surround = { };
             icons = { };
+            files = { };
           };
         };
         lualine = {
           enable = true;
+          luaConfig = {
+            post = ''
+              vim.api.nvim_set_hl(0, "StatusLine", { reverse = false })
+            '';
+          };
         };
         smart-splits = {
           enable = true;
@@ -104,6 +126,81 @@
               "4" = "<leader>p";
             };
           };
+        };
+        treesitter = {
+          enable = true;
+          settings = {
+            highlight = {
+              enable = true;
+            };
+            indent = {
+              enable = true;
+            };
+          };
+        };
+        lsp = {
+          enable = true;
+          servers = {
+            nixd.enable = true;
+          };
+          keymaps = {
+            diagnostic = {
+              "<leader>dn" = "goto_next";
+              "<leader>dp" = "goto_prev";
+            };
+            lspBuf = {
+              "<leader>rn" = "rename";
+              "<leader>ca" = "code_action";
+              "gd" = "definition";
+              "gD" = "declaration";
+              "gi" = "implementation";
+              "gt" = "type_definition";
+              "K" = "hover";
+            };
+          };
+        };
+        cmp = {
+          enable = true;
+          autoEnableSources = true;
+          settings = {
+            sources = [
+              { name = "nvim_lsp"; }
+              { name = "path"; }
+              { name = "buffer"; }
+              { name = "luasnip"; }
+            ];
+            mapping = {
+              __raw = ''
+                cmp.mapping.preset.insert({
+                  ["<C-n>"] = cmp.mapping.select_next_item(),
+                  ["<C-p>"] = cmp.mapping.select_prev_item(),
+                  ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                  ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                  ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                  ["<C-Space>"] = cmp.mapping.complete({}),
+                  ["<C-l>"] = cmp.mapping(function()
+                    if luasnip.expand_or_locally_jumpable() then
+                      luasnip.expand_or_jump()
+                    end
+                  end, { "i", "s" }),
+                  ["<C-h>"] = cmp.mapping(function()
+                    if luasnip.locally_jumpable(-1) then
+                      luasnip.jump(-1)
+                    end
+                  end, { "i", "s" }),
+                })
+              '';
+            };
+            snippet = {
+              expand = "function(args) require('luasnip').lsp_expand(args.body) end";
+            };
+          };
+        };
+        luasnip = {
+          enable = true;
+        };
+        friendly-snippets = {
+          enable = true;
         };
       };
       keymaps = [
@@ -159,6 +256,23 @@
           mode = "n";
           key = "<leader>;";
           action = "<CMD>tab Git<CR>";
+        }
+        {
+          mode = "n";
+          key = "<leader>td";
+          action.__raw = ''
+            function() 
+              vim.diagnostic.config({
+                virtual_text = not vim.diagnostic.config().virtual_text,
+                virtual_lines = not vim.diagnostic.config().virtual_lines
+              })
+            end
+          '';
+        }
+        {
+          mode = "n";
+          key = "<leader>e";
+          action.__raw = ''require("mini.files").open'';
         }
       ];
     };

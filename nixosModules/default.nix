@@ -11,6 +11,7 @@
     "nix-command"
     "flakes"
   ];
+
   environment.systemPackages = with pkgs; [
     vim
     steam-run
@@ -24,6 +25,21 @@
     steam.enable = true;
   };
   security.polkit.enable = true;
+
+  services.udev = {
+    enable = true;
+    extraRules =
+      let
+        # Info for current phone pixel 8.
+        idVendor = "18d1";
+        idProduct = "4ee7";
+      in
+      ''
+        SUBSYSTEM=="usb", ATTR{idVendor}=="${idVendor}", MODE="[]", GROUP="adbusers", TAG+="uaccess"
+        SUBSYSTEM=="usb", ATTR{idVendor}=="${idVendor}", ATTR{idProduct}=="${idProduct}", SYMLINK+="android_adb"
+        SUBSYSTEM=="usb", ATTR{idVendor}=="${idVendor}", ATTR{idProduct}=="${idProduct}", SYMLINK+="android_fastboot"
+      '';
+  };
 
   rFeatures = {
     gdm.enable = lib.mkDefault false;

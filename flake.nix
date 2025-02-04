@@ -15,6 +15,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs =
@@ -30,8 +31,13 @@
 
       pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
-        overlays = [ inputs.nixgl.overlay ];
-        config.allowUnfree = true;
+        overlays = [
+          inputs.nixgl.overlay
+        ];
+        config = {
+          allowUnfree = true;
+          android_sdk.accept_license = true;
+        };
       };
 
       rUtils = import ./rUtils.nix;

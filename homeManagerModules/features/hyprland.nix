@@ -76,6 +76,7 @@
         ];
         exec-once = [
           "systemctl --user start hyprpaper.service"
+          "discord"
         ];
         animation = [
           "workspaces, 1, 0.5, default, slide"
@@ -132,7 +133,6 @@
           "bordersize 2,floating:1"
           "workspace 4 silent,class:^(discord)$"
           "workspace 5 silent,class:^(Spotify)$"
-          "workspace 6 silent,class:^(thunderbird)$"
           "noborder, onworkspace:w[t1]"
         ];
       };

@@ -27,13 +27,13 @@
       };
       initExtra = # bash
         ''
-                    export ANDROID_HOME=${vars.homeDir}/Android/Sdk
-                    export CUCUMBER_PUBLISH_QUIET=true
-                    export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin:${vars.homeDir}/Android/Sdk/platform-tools:$HOME/.local/bin
-                    export EDITOR=nvim
+          export ANDROID_HOME=${vars.homeDir}/Android/Sdk
+          export CUCUMBER_PUBLISH_QUIET=true
+          export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin:${vars.homeDir}/Android/Sdk/platform-tools:$HOME/.local/bin
+          export EDITOR=nvim
 
-                    bindkey -s "^[s" "tmux-sessionizer\n"
-          	        alias vim='nvim'
+          bindkey -s "^[s" "tmux-sessionizer\n"
+          alias vim='nvim'
         '';
     };
   };

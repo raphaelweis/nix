@@ -20,6 +20,11 @@
       !include ${vars.homeDir}/.config/nix/github_token.txt
     '';
   };
+  home.file."${vars.homeDir}/.config/nixpkgs/config.nix".text =
+    #nix
+    ''
+      { allowUnfree = true; }
+    '';
 
   home = {
     username = vars.username;
@@ -33,6 +38,15 @@
         vscode-fhs
         ghostty
         chntpw
+        libreoffice
+        hunspell
+        hunspellDicts.fr-any
+        hunspellDicts.en-us-large
+        hunspellDicts.de_DE
+        android-studio
+        openjdk17
+        nodejs_22
+        discord
       ]
       ++ [ inputs.zen-browser.packages.${pkgs.system}.default ];
   };
@@ -58,8 +72,8 @@
     ags.enable = lib.mkDefault false;
     dconf.enable = lib.mkDefault true;
     node.enable = lib.mkDefault true;
-    android.enable = lib.mkDefault false;
     nixvim.enable = lib.mkDefault true;
+    starship.enable = lib.mkDefault true;
   };
 
   programs = {
