@@ -75,6 +75,7 @@
           "GDK_SCALE, ${toString config.rFeatures.hyprland.gdkScale}"
         ];
         exec-once = [
+          "fcitx5 -d"
           "systemctl --user start hyprpaper.service"
           "discord"
         ];
@@ -86,7 +87,7 @@
           [
             "$mod, C, killactive"
             "$mod, M, fullscreen"
-            "CTRL ALT SHIFT, L, exit"
+            "$mod SHIFT, M, exit"
             "$mod, H, movefocus, l"
             "$mod, J, movefocus, d"
             "$mod, K, movefocus, u"

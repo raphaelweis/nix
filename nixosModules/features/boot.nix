@@ -1,15 +1,17 @@
 { lib, config, ... }:
 {
   options.rFeatures = {
-    boot.enable = lib.mkEnableOption "systemdboot as the bootloader";
+    boot.enable = lib.mkEnableOption "grub as the bootloader";
   };
 
   config = lib.mkIf config.rFeatures.boot.enable {
     boot = {
       loader = {
-        systemd-boot = {
+        grub = {
           enable = true;
-          configurationLimit = 10;
+          device = "nodev";
+          useOSProber = true;
+          efiSupport = true;
         };
         efi.canTouchEfiVariables = true;
         timeout = 10;

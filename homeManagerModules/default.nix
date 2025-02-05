@@ -47,6 +47,7 @@
         openjdk17
         nodejs_22
         discord
+        postman
       ]
       ++ [ inputs.zen-browser.packages.${pkgs.system}.default ];
   };
