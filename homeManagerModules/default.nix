@@ -50,6 +50,9 @@
         postman
       ]
       ++ [ inputs.zen-browser.packages.${pkgs.system}.default ];
+    sessionVariables = {
+      ANDROID_AVD_HOME = "${vars.homeDir}/.config/.android/avd";
+    };
   };
 
   rFeatures = {

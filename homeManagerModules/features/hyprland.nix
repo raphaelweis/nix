@@ -129,6 +129,10 @@
         bindr = [
           "SUPER, SUPER_L, exec, rofi -show drun -show-icons || pkill rofi"
         ];
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
+        ];
         windowrulev2 = [
           "rounding 5 ,floating:1"
           "bordersize 2,floating:1"

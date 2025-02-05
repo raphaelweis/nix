@@ -29,11 +29,12 @@
         ''
           export ANDROID_HOME=${vars.homeDir}/Android/Sdk
           export CUCUMBER_PUBLISH_QUIET=true
-          export PATH=$PATH:${vars.homeDir}/.local/share/gem/ruby/3.3.0/bin:${vars.homeDir}/Android/Sdk/platform-tools:$HOME/.local/bin
+          export PATH=$PATH:${vars.homeDir}/Android/Sdk/platform-tools:${vars.homeDir}/Android/Sdk/emulator:$HOME/.local/bin
           export EDITOR=nvim
 
           bindkey -s "^[s" "tmux-sessionizer\n"
           alias vim='nvim'
+          alias ta='tmux attach'
         '';
     };
   };
