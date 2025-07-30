@@ -1,83 +1,35 @@
 {
-  description = "Raphaël's NixOS configurations";
+  description = "Flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix.url = "github:danth/stylix";
-    ags.url = "github:Aylur/ags";
-    nixgl.url = "github:nix-community/nixGL";
-    nixvim.url = "github:nix-community/nixvim";
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs =
-    { ... }@inputs:
+  outputs = { self, nixpkgs }: 
     let
-      vars = rec {
-        username = "raphaelw";
-        homeDir = "/home/${username}";
-        picturesDir = "${homeDir}/Pictures";
-        screenshotsDir = "${picturesDir}/Screenshots";
-        base16Theme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-      };
+	system = "x86_64-linux";
+	pkgs = import nixpkgs { inherit system; };
 
-      pkgs = import inputs.nixpkgs {
+	# This derivation safely adds the firmware to the Nix store
+	customFirmware = pkgs.stdenv.mkDerivation {
+	  name = "custom-firmware";
+	  src = ./firmware;
+	  installPhase = ''
+	    mkdir -p $out/lib/firmware
+	    cp $src/TAS2XXX38BB.bin $out/lib/firmware/
+	    cp $src/TIAS2781RCA4.bin $out/lib/firmware/
+	  '';
+	};
+    in {
+      nixosConfigurations.patpat = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        overlays = [
-          inputs.nixgl.overlay
+        modules = [
+          ./configuration.nix
+          {
+            hardware.firmware = [ customFirmware ];
+          }
         ];
-        config = {
-          allowUnfree = true;
-          android_sdk.accept_license = true;
-        };
       };
-
-      rUtils = import ./rUtils.nix;
-      mkSystem =
-        config:
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit pkgs;
-          specialArgs = { inherit inputs vars rUtils; };
-          modules = [
-            config
-            inputs.self.outputs.nixosModules.default
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-          ];
-        };
-      mkHome =
-        config:
-        inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs vars rUtils; };
-          modules = [
-            config
-            inputs.self.outputs.homeManagerModules.default
-            inputs.stylix.homeManagerModules.stylix
-            inputs.nixvim.homeManagerModules.nixvim
-            inputs.ags.homeManagerModules.default
-          ];
-        };
-    in
-    {
-      nixosConfigurations = {
-        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix;
-        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix;
-      };
-      homeConfigurations = {
-        desktop = mkHome ./hosts/home-manager/desktop/home.nix;
-        laptop = mkHome ./hosts/home-manager/laptop/home.nix;
-      };
-
-      nixosModules.default = ./nixosModules;
-      homeManagerModules.default = ./homeManagerModules;
     };
 }
+
