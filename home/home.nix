@@ -5,8 +5,14 @@
 		inputs.zen-browser.homeModules.twilight
 	];
 
-	home.username = username;
-	home.homeDirectory = "/home/${username}";
+	home = {
+		username = username;
+		homeDirectory = "/home/${username}";
+		packages = [
+			pkgs.discord
+			pkgs.spotify
+		];
+	};
 
 	programs.git = {
 		enable = true;
