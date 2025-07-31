@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, slim7-ssdt, ... }:
 
 {
   imports =
@@ -13,6 +13,25 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.prepend = lib.mkOrder 0 [
+  	"${pkgs.fetchurl {
+      url = "https://gitlab.freedesktop.org/drm/amd/uploads/9fe228c7aa403b78c61fb1e29b3b35e3/slim7-ssdt";
+      sha256 = "sha256-Ef4QTxdjt33OJEPLAPEChvvSIXx3Wd/10RGvLfG5JUs=";
+      name = "slim7-ssdt";
+    }}"
+  ];
+  boot.kernelParams = [ 
+    "rtc_cmos.use_acpi_alarm=1" 
+    "amd_pstate=active" 
+	"amd_pstate.shared_mem=1"
+    "nohibernate"
+
+	# https://www.phoronix.com/news/Linux-Splitlock-Hurts-Gaming
+    "split_lock_detect=off"
+    "acpi_sleep=nonvs"
+  ];
+
+  # hardware.cpu.amd.updateMicrocode = true;
 
   networking.hostName = "patpat"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -69,7 +88,6 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    gh
     git
   ];
 
