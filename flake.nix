@@ -36,22 +36,6 @@
 		nixosConfigurations = {
 			patpat = mkSystem "patpat" "x86_64-linux" "raphaelw";
 		};
-		# nixosConfigurations.patpat = inputs.nixpkgs.lib.nixosSystem {
-		# 	system = "x86_64-linux";
-		# 	modules = [
-		# 		./configuration.nix
-		# 		{
-		# 			hardware.firmware = [ customFirmware ];
-		# 		}
-		# 		inputs.home-manager.nixosModules.home-manager
-		# 		{
-		# 			home-manager.useGlobalPkgs = true;
-		# 			home-manager.useUserPackages = true;
-		# 			home-manager.users.raphaelw = ./home.nix;
-		# 			home-manager.extraSpecialArgs = { inherit inputs; };
-		# 		}
-		# 	];
-		# };
 	};
 }
 
