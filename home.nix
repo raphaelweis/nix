@@ -1,12 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
 	imports = [
 		inputs.zen-browser.homeModules.twilight
 	];
 
-	# Home Manager needs a bit of information about you and the
-	# paths it should manage.
 	home.username = "raphaelw";
 	home.homeDirectory = "/home/raphaelw";
 
@@ -20,6 +18,19 @@
 	programs.gh = {
 		enable = true;
 		gitCredentialHelper.enable = true;
+	};
+
+	programs.zsh = {
+		enable = true;
+		autosuggestion.enable = true;
+		syntaxHighlighting.enable = true;
+		historySubstringSearch.enable = true;
+		enableCompletion = true;
+		defaultKeymap = "emacs";
+		initContent = lib.mkOrder 500 ''
+			autoload -U colors && colors
+			PS1="%{$fg[magenta]%}%~%{$fg[red]%} %{$reset_color%}$%b "
+			'';
 	};
 
 	programs.neovim = {

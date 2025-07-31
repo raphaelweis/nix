@@ -80,9 +80,11 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [];
+	shell = pkgs.zsh;
   };
 
   programs.firefox.enable = true;
+  programs.zsh.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
