@@ -18,8 +18,14 @@
 	i18n.defaultLocale = "en_US.UTF-8";
 
 	services = {
+		xserver.enable = true;
 		displayManager.gdm.enable = true;
 		desktopManager.gnome.enable = true;
+		gvfs.enable = true;
+		gnome = {
+			core-apps.enable = true;
+			gnome-online-accounts.enable = true;
+		};
 		pipewire = {
 			enable = true;
 			pulse.enable = true;
@@ -37,6 +43,7 @@
 	programs = {
 		firefox.enable = true;
 		zsh.enable = true;
+		geary.enable = false;
 	};
 
 	environment.systemPackages = with pkgs; [ vim ];

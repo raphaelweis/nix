@@ -8,15 +8,17 @@
 	home = {
 		username = username;
 		homeDirectory = "/home/${username}";
-		packages = [
-			pkgs.discord
-			pkgs.spotify
+		packages = with pkgs; [
+			discord
+			spotify
+			wl-clipboard
+			xclip
 
 			# fonts
-			pkgs.dejavu_fonts
+			dejavu_fonts
 
 			# gnome extensions
-			pkgs.gnomeExtensions.hide-top-bar
+			gnomeExtensions.hide-top-bar
 		];
 	};
 
@@ -77,6 +79,7 @@
 			cursor-style = "block";
 			cursor-style-blink = "false";
 			gtk-titlebar-hide-when-maximized = "true";
+			maximize = true;
 		};
 	};
 
@@ -87,6 +90,11 @@
 			sansSerif = ["DejaVu Sans"];	
 			monospace = ["DejaVu Sans Mono"];	
 		};
+	};
+
+	programs.vscode = {
+		enable = true;
+	  	package = pkgs.vscode.fhs;
 	};
 
 	programs.zen-browser.enable = true;
