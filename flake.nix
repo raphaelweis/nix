@@ -11,6 +11,10 @@
 			url = "github:0xc000022070/zen-browser-flake";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nvim-vague = {
+			url = "github:vague2k/vague.nvim";
+			flake = false;
+		};
 	};
 
 	outputs = { ... }@inputs: 
@@ -24,7 +28,7 @@
 
 		mkSystem = name: system: username:
 			inputs.nixpkgs.lib.nixosSystem {
-				inherit system;
+				inherit system pkgs;
 				specialArgs = { inherit inputs username; };
 				modules = [
 					./hosts/generic.nix

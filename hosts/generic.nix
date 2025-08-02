@@ -2,10 +2,9 @@
 {
 
 	home-manager = {
-		useGlobalPkgs = true;
 		useUserPackages = true;
 		users.${username} = ../home/home.nix;
-		extraSpecialArgs = { inherit inputs pkgs username; };
+		extraSpecialArgs = { inherit inputs username; };
 	};
 
 	networking = {
@@ -49,6 +48,5 @@
 	environment.systemPackages = with pkgs; [ vim ];
 
 	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	nixpkgs.config.allowUnfree = true;
 }
 

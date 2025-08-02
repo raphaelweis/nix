@@ -57,10 +57,27 @@
         "type": "github"
       }
     },
+    "nvim-vague": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1753917476,
+        "narHash": "sha256-zx3QOoNiYNJQj4lurg1vva1msp20CQd+bjIGGw9BJnk=",
+        "owner": "vague2k",
+        "repo": "vague.nvim",
+        "rev": "f8cfad64aa46980edfb6fdd4d171359b5fe6b68b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vague2k",
+        "repo": "vague.nvim",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nvim-vague": "nvim-vague",
         "zen-browser": "zen-browser"
       }
     },
