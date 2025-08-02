@@ -1,4 +1,4 @@
-{ username, config, pkgs, lib, inputs, ... }:
+{ username, config, pkgs, lib, inputs, system, ... }:
 
 {
 	imports = [
@@ -19,26 +19,11 @@
 			nodejs
 			tree-sitter
 
-
 			# fonts
 			dejavu_fonts
 
 			# gnome extensions
 			gnomeExtensions.hide-top-bar
-		];
-	};
-
-	nixpkgs = {
-		config = { allowUnfree = true; };
-		overlays = [
-			(final: prev: {
-				vimPlugins = prev.vimPlugins // {
-					nvim-vague = prev.vimUtils.buildVimPlugin {
-						name = "nvim-vague";
-						src = inputs.nvim-vague;
-					};
-				};
-			})
 		];
 	};
 
@@ -206,6 +191,24 @@
 		enable = true;
 	  	package = pkgs.vscode.fhs;
 	};
+
+	wayland.windowManager.sway = {
+		enable = true;
+		wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
+			config = rec {
+				modifier = "Mod4";
+				terminal = "ghostty"; 
+				keybindings = let
+					modifier = config.wayland.windowManager.sway.config.modifier;
+				in lib.mkOptionDefault {
+					"${modifier}+Q" = "exec zen";
+					"${modifier}+c" = "kill";
+					"${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
+				};
+			};
+	};
+
+	services.gnome-keyring.enable = true;
 
 	programs.zen-browser.enable = true;
 

@@ -1,10 +1,10 @@
-{ inputs, pkgs, username, ... }:
+{ inputs, pkgs, username, system, ... }:
 {
-
 	home-manager = {
 		useUserPackages = true;
+		useGlobalPkgs = true;
 		users.${username} = ../home/home.nix;
-		extraSpecialArgs = { inherit inputs username; };
+		extraSpecialArgs = { inherit inputs username system; };
 	};
 
 	networking = {
@@ -24,12 +24,17 @@
 		gnome = {
 			core-apps.enable = true;
 			gnome-online-accounts.enable = true;
+			gnome-keyring.enable = true;
 		};
 		pipewire = {
 			enable = true;
 			pulse.enable = true;
 		};
 		libinput.enable = true;
+	};
+
+	security = {
+		polkit.enable = true;
 	};
 
 
@@ -43,6 +48,7 @@
 		firefox.enable = true;
 		zsh.enable = true;
 		geary.enable = false;
+		sway.enable = true;
 	};
 
 	environment.systemPackages = with pkgs; [ vim ];

@@ -22,6 +22,16 @@
 		pkgs = import inputs.nixpkgs { 
 			system = "x86_64-linux"; 
 			config = { allowUnfree = true; };
+			overlays = [
+				(final: prev: {
+					vimPlugins = prev.vimPlugins // {
+						nvim-vague = prev.vimUtils.buildVimPlugin {
+							name = "nvim-vague";
+							src = inputs.nvim-vague;
+						};
+					};
+				})
+			];
 		};
 
 		username = "raphaelw";
@@ -29,7 +39,7 @@
 		mkSystem = name: system: username:
 			inputs.nixpkgs.lib.nixosSystem {
 				inherit system pkgs;
-				specialArgs = { inherit inputs username; };
+				specialArgs = { inherit inputs username system; };
 				modules = [
 					./hosts/generic.nix
 					./hosts/${name}/configuration.nix
