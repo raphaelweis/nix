@@ -36,20 +36,22 @@
 
 		username = "raphaelw";
 
-		mkSystem = name: system: username:
+		mkSystem = pathToConfig: system:
 			inputs.nixpkgs.lib.nixosSystem {
 				inherit system pkgs;
 				specialArgs = { inherit inputs username system; };
 				modules = [
-					./hosts/generic.nix
-					./hosts/${name}/configuration.nix
+					pathToConfig
+					inputs.self.outputs.nixosModules.default
 					inputs.home-manager.nixosModules.home-manager
 				];
 			};
 	in {
 		nixosConfigurations = {
-			patpat = mkSystem "patpat" "x86_64-linux" "raphaelw";
+			laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "x86_64-linux";
 		};
+		nixosModules.default = ./nixosModules;
+		homeManagerModules.default = ./homeManagerModules;
 	};
 }
 

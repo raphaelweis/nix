@@ -2,6 +2,8 @@
 {
 	imports = [ ./hardware-configuration.nix ];
 
+	rw.homeManagerConfig = ./home.nix;
+
 	# Use the systemd-boot EFI boot loader.
 	boot = {
 		loader = {

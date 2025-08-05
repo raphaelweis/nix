@@ -6,8 +6,11 @@
 	];
 
 	home = {
-		username = username;
-		homeDirectory = "/home/${username}";
+		pointerCursor = {
+			name = "macOS";
+			package = pkgs.apple-cursor;
+			size = 24;
+		};
 		packages = with pkgs; [
 			discord
 			spotify
@@ -18,6 +21,9 @@
 			gcc
 			nodejs
 			tree-sitter
+			playerctl
+			brightnessctl
+			pavucontrol
 
 			# fonts
 			dejavu_fonts
@@ -67,17 +73,25 @@
 		clock24 = true;
 		terminal = "screen-256color";
 		newSession = true;
+		plugins = with pkgs.tmuxPlugins; [
+			vim-tmux-navigator
+		];
 		extraConfig = ''
 			set-option -sg escape-time 10
 	      	set-option -g focus-events on
 			set-option -g status-position top
+
+			# keybinds
+			bind c new-window -c "#{pane_current_path}"
+			bind '"' split-window -c "#{pane_current_path}"
+			bind % split-window -h -c "#{pane_current_path}"
 
 			# style
 			set -g status-position top
 			set -g status-justify absolute-centre
 			set -g status-style 'fg=color7 bg=default'
 			set -g status-right ""
-			set -g status-right '#(cd #{pane_current_path} && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && echo " $(git rev-parse --abbrev-ref HEAD)") %H:%M'
+			set -g status-right '#(cd #{pane_current_path} && git rev-parse --is-inside-work-tree >/dev/null 2>&1 && echo " $(git rev-parse --abbrev-ref HEAD)")'
 			set -g status-left '[#S]'
 			set -g status-left-style 'fg=color8'
 			set -g status-right-length 0
@@ -146,6 +160,7 @@
 				type = "lua";
 				config = ''vim.keymap.set("n", "<leader>;", "<CMD>tab Git<CR>", { desc = "Open Fugitive in a new tab" })'';
 			}
+			vim-tmux-navigator
 		];
 		extraLuaConfig = ''
 			vim.g.mapleader = " " 
@@ -198,12 +213,41 @@
 			config = rec {
 				modifier = "Mod4";
 				terminal = "ghostty"; 
+				gaps.smartBorders = "on";
+				window = {
+					border = 1;
+					titlebar = false;
+				};
+				input = {
+					"type:keyboard" = {
+						xkb_layout = "us(intl)";
+					};
+					"type:touchpad" = {
+						dwt = "enabled";
+						tap = "enabled";
+						natural_scroll = "enabled";
+						scroll_factor = "0.5";
+					};
+				};
 				keybindings = let
 					modifier = config.wayland.windowManager.sway.config.modifier;
 				in lib.mkOptionDefault {
+					# Window and app controls
 					"${modifier}+Q" = "exec zen";
 					"${modifier}+c" = "kill";
 					"${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
+					"ALT+TAB" = "workspace back_and_forth";
+
+					# XF86 controls
+					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+					"XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+					"XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+					"XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+					"XF86MonBrightnessUp" = "exec brightnessctl set 10%+";
+					"XF86AudioPlay" = "exec playerctl play-pause";
+					"XF86AudioNext" = "exec playerctl next";
+					"XF86AudioPrev" = "exec playerctl previous";
 				};
 			};
 	};
