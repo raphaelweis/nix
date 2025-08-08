@@ -49,6 +49,9 @@
 			rtkit.enable = true;
 		};
 
+		hardware = {
+			bluetooth.enable = true;
+		};
 
 		users.users.${username} = {
 			isNormalUser = true;

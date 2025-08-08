@@ -24,6 +24,8 @@
 			playerctl
 			brightnessctl
 			pavucontrol
+			rlwrap
+			chntpw
 
 			# fonts
 			dejavu_fonts
@@ -31,6 +33,12 @@
 			# gnome extensions
 			gnomeExtensions.hide-top-bar
 		];
+	};
+
+	dconf.settings = {
+		"org/gnome/desktop/interface" = {
+			color-scheme = "prefer-dark";
+		};
 	};
 
 	programs.git = {
@@ -187,9 +195,10 @@
 			font-size = 14;
 			shell-integration-features = "no-cursor";
 			cursor-style = "block";
-			cursor-style-blink = "false";
-			gtk-titlebar-hide-when-maximized = "true";
+			cursor-style-blink = false;
+			gtk-titlebar-hide-when-maximized = true;
 			maximize = true;
+			gtk-single-instance = true;
 		};
 	};
 
@@ -209,47 +218,54 @@
 
 	wayland.windowManager.sway = {
 		enable = true;
-		wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps
-			config = rec {
-				modifier = "Mod4";
-				terminal = "ghostty"; 
-				gaps.smartBorders = "on";
-				window = {
-					border = 1;
-					titlebar = false;
+		wrapperFeatures.gtk = true;
+		config = rec {
+			modifier = "Mod4";
+			terminal = "ghostty"; 
+			gaps.smartBorders = "on";
+			window = {
+				border = 1;
+				titlebar = false;
+			};
+			input = {
+				"type:keyboard" = {
+					xkb_layout = "us(intl)";
 				};
-				input = {
-					"type:keyboard" = {
-						xkb_layout = "us(intl)";
-					};
-					"type:touchpad" = {
-						dwt = "enabled";
-						tap = "enabled";
-						natural_scroll = "enabled";
-						scroll_factor = "0.5";
-					};
+				"type:touchpad" = {
+					dwt = "enabled";
+					tap = "enabled";
+					natural_scroll = "enabled";
+					scroll_factor = "0.5";
 				};
-				keybindings = let
-					modifier = config.wayland.windowManager.sway.config.modifier;
-				in lib.mkOptionDefault {
-					# Window and app controls
-					"${modifier}+Q" = "exec zen";
-					"${modifier}+c" = "kill";
-					"${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
-					"ALT+TAB" = "workspace back_and_forth";
-
-					# XF86 controls
-					"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
-					"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
-					"XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
-					"XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-					"XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
-					"XF86MonBrightnessUp" = "exec brightnessctl set 10%+";
-					"XF86AudioPlay" = "exec playerctl play-pause";
-					"XF86AudioNext" = "exec playerctl next";
-					"XF86AudioPrev" = "exec playerctl previous";
+				"type:pointer" = {
+					accel_profile = "flat";
+					pointer_accel = "0.5";
 				};
 			};
+			startup = [
+				{ command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"; }
+			];
+			keybindings = let
+				modifier = config.wayland.windowManager.sway.config.modifier;
+			in lib.mkOptionDefault {
+				# Window and app controls
+				"${modifier}+Q" = "exec zen";
+				"${modifier}+c" = "kill";
+				"${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
+				"ALT+TAB" = "workspace back_and_forth";
+
+				# XF86 controls
+				"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+				"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+				"XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+				"XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+				"XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
+				"XF86MonBrightnessUp" = "exec brightnessctl set 10%+";
+				"XF86AudioPlay" = "exec playerctl play-pause";
+				"XF86AudioNext" = "exec playerctl next";
+				"XF86AudioPrev" = "exec playerctl previous";
+			};
+		};
 	};
 
 	services.gnome-keyring.enable = true;

@@ -49,6 +49,7 @@
 	in {
 		nixosConfigurations = {
 			laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "x86_64-linux";
+			desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "x86_64-linux";
 		};
 		nixosModules.default = ./nixosModules;
 		homeManagerModules.default = ./homeManagerModules;
