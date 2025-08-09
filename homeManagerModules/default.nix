@@ -26,6 +26,8 @@
 			pavucontrol
 			rlwrap
 			chntpw
+			hyprpicker
+			wl-clipboard
 
 			# fonts
 			dejavu_fonts
@@ -223,6 +225,7 @@
 			modifier = "Mod4";
 			terminal = "ghostty"; 
 			gaps.smartBorders = "on";
+			defaultWorkspace = "workspace number 1";
 			window = {
 				border = 1;
 				titlebar = false;
@@ -247,12 +250,19 @@
 			];
 			keybindings = let
 				modifier = config.wayland.windowManager.sway.config.modifier;
+				terminal = config.wayland.windowManager.sway.config.terminal;
+				browser = "zen";
+				run = "tofi-run | xargs swaymsg exec --";
+				drun = "tofi-drun | xargs swaymsg exec --";
 			in lib.mkOptionDefault {
 				# Window and app controls
-				"${modifier}+Q" = "exec zen";
+				"${modifier}+q" = "exec ${browser}";
 				"${modifier}+c" = "kill";
-				"${modifier}+Return" = "exec ${config.wayland.windowManager.sway.config.terminal}";
+				"${modifier}+Return" = "exec ${terminal}";
 				"ALT+TAB" = "workspace back_and_forth";
+				"ALT+SPACE" = "exec ${run}";
+				"--release Super_L" = "exec ${drun}";
+				"${modifier}+Shift+c" = "exec hyprpicker -a";
 
 				# XF86 controls
 				"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
@@ -265,6 +275,22 @@
 				"XF86AudioNext" = "exec playerctl next";
 				"XF86AudioPrev" = "exec playerctl previous";
 			};
+		};
+	};
+
+	programs.tofi = {
+		enable = true;
+		settings = {
+			width = "100%";
+			height = "100%";
+			border-width = 0;
+			outline-width = 0;
+			padding-left = "35%";
+			padding-top = "35%";
+			result-spacing = "25";
+			num-results = "5";
+			font = "monospace";
+			background-color = "#000A";
 		};
 	};
 

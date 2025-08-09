@@ -1,5 +1,9 @@
 { inputs, config, lib, pkgs, username, system, ... }:
 {
+	imports = [
+		./boot.nix
+	];
+
 	options.rw.homeManagerConfig = lib.mkOption {
 		description = "Home manager config path for host specific settings.";
 		type = lib.types.path;

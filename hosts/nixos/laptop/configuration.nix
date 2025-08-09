@@ -4,12 +4,7 @@
 
 	rw.homeManagerConfig = ./home.nix;
 
-	# Use the systemd-boot EFI boot loader.
 	boot = {
-		loader = {
-			systemd-boot.enable = true;
-			efi.canTouchEfiVariables = true;
-		};
 		initrd.prepend = lib.mkOrder 0 [
 			"${pkgs.fetchurl {
 				url = "https://gitlab.freedesktop.org/drm/amd/uploads/9fe228c7aa403b78c61fb1e29b3b35e3/slim7-ssdt";
