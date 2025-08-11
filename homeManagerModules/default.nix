@@ -233,6 +233,13 @@
 				border = 1;
 				titlebar = false;
 			};
+			output = {
+				eDP-1 = {
+					mode = "2944x1840@60Hz";
+					scale = "2";
+					bg = "${../assets/the_solo_traveller_wallpaper_laptop.png} fill";
+				};
+			};
 			input = {
 				"type:keyboard" = {
 					xkb_layout = "us(intl)";
