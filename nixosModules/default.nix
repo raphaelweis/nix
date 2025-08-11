@@ -57,6 +57,10 @@
 			bluetooth.enable = true;
 		};
 
+		powerManagement = {
+			enable = true;
+		};
+
 		users.users.${username} = {
 			isNormalUser = true;
 			extraGroups = [ "wheel" ];
@@ -73,5 +77,9 @@
 		environment.systemPackages = with pkgs; [ vim ];
 
 		nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+		rw = {
+			boot.enable = lib.mkDefault true;
+		};
 	};
 }

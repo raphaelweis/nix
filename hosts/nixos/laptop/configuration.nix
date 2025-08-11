@@ -24,6 +24,12 @@
 		];
 	};
 
+	services = {
+		# enable tlp on laptop to increase battery life.
+		tlp.enable = true;
+		power-profiles-daemon.enable = false; # required for tlp to work.
+	};
+
 	hardware = {
 		cpu.amd.updateMicrocode = true;
 
