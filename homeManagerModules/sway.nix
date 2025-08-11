@@ -48,8 +48,6 @@
 					{ command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"; }
 				];
 				keybindings = let
-					modifier = config.wayland.windowManager.sway.config.modifier;
-					terminal = config.wayland.windowManager.sway.config.terminal;
 					browser = "zen";
 					run = "tofi-run | xargs swaymsg exec --";
 					drun = "tofi-drun | xargs swaymsg exec --";

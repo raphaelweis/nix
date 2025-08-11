@@ -7,6 +7,9 @@
 		home.packages = with pkgs; [
 			ripgrep
 			tree-sitter
+
+			# LSPs
+			nixd
 		];
 		programs.neovim = {
 			enable = true;
@@ -49,6 +52,7 @@
 						require('telescope').load_extension('fzf')
 					'';
 				}
+				plenary-nvim
 				{
 					plugin = nvim-treesitter;
 					type = "lua";
@@ -76,6 +80,13 @@
 						'';
 				}
 				vim-tmux-navigator
+				{
+					plugin = nvim-lspconfig;
+					type = "lua";
+					config = ''
+						vim.lsp.enable('nixd');
+					'';
+				}
 			];
 			extraLuaConfig = ''
 				vim.g.mapleader = " " 
@@ -86,6 +97,7 @@
 				vim.opt.clipboard:append("unnamedplus")
 				vim.opt.swapfile = false
 				vim.opt.signcolumn = "yes"
+				vim.opt.winborder = 'rounded'
 
 				vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>", { desc = "Remove highlight after search"})
 				vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Go up 1 screen line" })
