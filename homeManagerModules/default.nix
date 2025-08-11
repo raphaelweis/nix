@@ -132,7 +132,7 @@
 				type = "lua";
 				config = ''
 					require("vague").setup({
-						transparent = true
+						transparent = false
 					})
 					vim.cmd("colorscheme vague")
 				'';
@@ -192,7 +192,7 @@
 		enable = true;
 		settings = {
 			theme = "Adwaita Dark";
-			background = "#1C1C1F";
+			background = "#141415";
 			font-family = "DejaVu Sans Mono";
 			font-size = 14;
 			shell-integration-features = "no-cursor";
@@ -201,6 +201,9 @@
 			gtk-titlebar-hide-when-maximized = true;
 			maximize = true;
 			gtk-single-instance = true;
+			keybind = [
+				"ctrl+enter=unbind"
+			];
 		};
 	};
 
@@ -281,6 +284,8 @@
 	programs.tofi = {
 		enable = true;
 		settings = {
+			# Directly providing the path to the font file massively improves startup time.
+			font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
 			width = "100%";
 			height = "100%";
 			border-width = 0;
@@ -289,8 +294,12 @@
 			padding-top = "35%";
 			result-spacing = "25";
 			num-results = "5";
-			font = "monospace";
+			selection-color = "#ffffff";
+			selection-background = "#285577";
+			selection-background-padding = "4,10";
 			background-color = "#000A";
+			text-color = "#888888";
+			input-color = "#ffffff";
 		};
 	};
 
