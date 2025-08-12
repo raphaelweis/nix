@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
 	options.rw = {
 		ghostty.enable = lib.mkEnableOption "ghostty configuration.";
@@ -9,7 +9,7 @@
 			settings = {
 				theme = "Adwaita Dark";
 				background = "#141415";
-				font-family = "DejaVu Sans Mono";
+				font-family = "JetBrainsMonoNL Nerd Font";
 				font-size = 14;
 				shell-integration-features = "no-cursor";
 				cursor-style = "block";

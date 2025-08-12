@@ -24,6 +24,8 @@
 
 			# fonts
 			dejavu_fonts
+			nerd-fonts.jetbrains-mono
+			nerd-fonts.fira-code
 
 			# gnome extensions
 			gnomeExtensions.hide-top-bar

@@ -31,7 +31,11 @@
 					type = "lua";
 					config = ''
 						require("vague").setup({
-							transparent = false
+							transparent = false,
+							italic = false,
+							style = {
+								comments = "none",
+							},
 						})
 						vim.cmd("colorscheme vague")
 					'';
@@ -88,7 +92,7 @@
 					'';
 				}
 			];
-			extraLuaConfig = ''
+			extraLuaConfig = /* lua */ ''
 				vim.g.mapleader = " " 
 				vim.opt.number = true
 				vim.opt.relativenumber = true
