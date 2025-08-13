@@ -26,7 +26,12 @@
 
   services = {
     # enable tlp on laptop to increase battery life.
-    tlp.enable = true;
+    tlp = {
+      enable = true;
+      settings = {
+        DEVICES_TO_ENABLE_ON_STARTUP = "wifi bluetooth";
+      };
+    };
     power-profiles-daemon.enable = false; # required for tlp to work.
   };
 
@@ -36,22 +41,20 @@
     # Fix for the speakers not working.
     firmware = [
       (pkgs.runCommandNoCC "subwoofers" { } ''
-        		 		mkdir -p $out/lib/firmware/
-        				cp ${
-              pkgs.fetchurl {
-                url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TAS2XXX38BB.bin";
-                sha256 = "sha256-qyZxBlnWEnrgbh0crgFf//pKZMTtCqh+CkA+pUNU/+E=";
-                name = "TAS2XXX38BB.bin";
-              }
-            } $out/lib/firmware/TAS2XXX38BB.bin
-        				cp ${
-              pkgs.fetchurl {
-                url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TIAS2781RCA4.bin";
-                sha256 = "sha256-Zj7mwS8DsBinZ8BYvcySc753Aq/xid7vAeQOH/oir6Q=";
-                name = "TIAS2781RCA4.bin";
-              }
-            } $out/lib/firmware/TIAS2781RCA4.bin
-        			'')
+        mkdir -p $out/lib/firmware/ cp${
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TAS2XXX38BB.bin";
+            sha256 = "sha256-qyZxBlnWEnrgbh0crgFf//pKZMTtCqh+CkA+pUNU/+E=";
+            name = "TAS2XXX38BB.bin";
+          }
+        } $out/lib/firmware/TAS2XXX38BB.bin cp${
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TIAS2781RCA4.bin";
+            sha256 = "sha256-Zj7mwS8DsBinZ8BYvcySc753Aq/xid7vAeQOH/oir6Q=";
+            name = "TIAS2781RCA4.bin";
+          }
+        } $out/lib/firmware/TIAS2781RCA4.bin
+      '')
       pkgs.wireless-regdb
     ];
   };
