@@ -14,6 +14,9 @@
 
       # Formatters
       nixfmt-rfc-style
+      stylua
+      clang-tools
+      shfmt
     ];
     programs.neovim = {
       enable = true;
@@ -42,11 +45,11 @@
           config = # lua
             ''
               require("vague").setup({
-                transparent = false,
-                italic = false,
-                style = {
-                  comments = "none",
-                },
+              	transparent = false,
+              	italic = false,
+              	style = {
+              		comments = "none",
+              	},
               })
               vim.cmd("colorscheme vague")
             '';
@@ -66,7 +69,7 @@
           type = "lua";
           config = # lua
             ''
-              require('telescope').load_extension('fzf')
+              require("telescope").load_extension("fzf")
             '';
         }
         {
@@ -75,10 +78,10 @@
           config = # lua
             ''
               require("nvim-treesitter.configs").setup({
-                auto_install = false,
-                highlight = {
-                  enable = true,
-                },
+              	auto_install = false,
+              	highlight = {
+              		enable = true,
+              	},
               })
             '';
         }
@@ -104,30 +107,30 @@
           type = "lua";
           config = # lua
             ''
-              local cmp = require('cmp')
+              local cmp = require("cmp")
               cmp.setup({
-                sources  = {
-                  { name = 'nvim_lsp' },
-                  { name = 'buffer' },
-                  { name = 'path' },
-                },
-                window  = {
-                  completion = cmp.config.window.bordered(),
-                  documentation = cmp.config.window.bordered(),
-                },
-                completion = {
-                  completeopt = 'menu,menuone,noinsert',
-                },
-                mapping = cmp.mapping.preset.insert({
-                  ['<C-n>'] = cmp.mapping.select_next_item(),
-                  ['<C-p>'] = cmp.mapping.select_prev_item(),
-                  ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-                })
+              	sources = {
+              		{ name = "nvim_lsp" },
+              		{ name = "buffer" },
+              		{ name = "path" },
+              	},
+              	window = {
+              		completion = cmp.config.window.bordered(),
+              		documentation = cmp.config.window.bordered(),
+              	},
+              	completion = {
+              		completeopt = "menu,menuone,noinsert",
+              	},
+              	mapping = cmp.mapping.preset.insert({
+              		["<C-n>"] = cmp.mapping.select_next_item(),
+              		["<C-p>"] = cmp.mapping.select_prev_item(),
+              		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+              	}),
               })
 
-              local capabilities = require('cmp_nvim_lsp').default_capabilities()
-              vim.lsp.config('*', {
-                capabilities = capabilities,
+              local capabilities = require("cmp_nvim_lsp").default_capabilities()
+              vim.lsp.config("*", {
+              	capabilities = capabilities,
               })
             '';
         }
@@ -136,8 +139,8 @@
           type = "lua";
           config = # lua
             ''
-              vim.lsp.enable('nixd')
-              vim.lsp.enable('clangd')
+              vim.lsp.enable("nixd")
+              vim.lsp.enable("clangd")
             '';
         }
         {
@@ -146,19 +149,43 @@
           config = # lua
             ''
               require("conform").setup({
-                formatters_by_ft = {
-                  nix = { "nixfmt" },
-                  c = { "clang-format" },
-                  lua = { "stylua" },
-                },
+              	formatters_by_ft = {
+              		nix = { "nixfmt", "injected" },
+              		c = { "clang-format" },
+              		lua = { "stylua" },
+                  sh = { "shfmt" },
+              	},
+              	formatters = {
+              		injected = {
+              			options = {
+              				lang_to_ft = {
+              					lua = "lua",
+                        bash = "sh",
+              				},
+              			},
+              		},
+              	},
               })
               vim.keymap.set("n", "<leader>fm", require("conform").format, { desc = "Format current file" })
+            '';
+        }
+        {
+          plugin = lualine-nvim;
+          type = "lua";
+          config = # lua
+            ''
+              require("lualine").setup({
+              	options = {
+              		component_separators = { left = "|", right = "|" },
+              		section_separators = { left = "", right = "" },
+              	},
+              })
             '';
         }
       ];
       extraLuaConfig = # lua
         ''
-          vim.g.mapleader = " " 
+          vim.g.mapleader = " "
           vim.opt.number = true
           vim.opt.relativenumber = true
           vim.opt.tabstop = 2
@@ -174,16 +201,16 @@
 
           vim.lsp.inlay_hint.enable(true)
 
-          vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>", { desc = "Remove highlight after search"})
+          vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>", { desc = "Remove highlight after search" })
           vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Go up 1 screen line" })
-          vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Go down 1 screen line" }) 
+          vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Go down 1 screen line" })
 
-          vim.keymap.set('n', 'td', function()
-            local new_config = not vim.diagnostic.config().virtual_lines
-            vim.diagnostic.config({ 
-              virtual_lines = not vim.diagnostic.config().virtual_lines,
-              virtual_text = not vim.diagnostic.config().virtual_text,
-            })
+          vim.keymap.set("n", "td", function()
+          	local new_config = not vim.diagnostic.config().virtual_lines
+          	vim.diagnostic.config({
+          		virtual_lines = not vim.diagnostic.config().virtual_lines,
+          		virtual_text = not vim.diagnostic.config().virtual_text,
+          	})
           end, { desc = "Toggle diagnostic virtual lines" })
         '';
     };
