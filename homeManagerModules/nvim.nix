@@ -22,6 +22,9 @@
 			plugins = with pkgs.vimPlugins; [
 				vim-tmux-navigator
 				nvim-treesitter.withAllGrammars
+				cmp-nvim-lsp
+				cmp-buffer
+				cmp-path
 				{ 
 					plugin = nvim-autopairs;
 					type = "lua";
@@ -86,7 +89,6 @@
 						vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
 						'';
 				}
-				cmp-nvim-lsp
 				{
 					plugin = nvim-cmp;
 					type = "lua";
@@ -96,6 +98,7 @@
 							sources  = {
 								{ name = 'nvim_lsp' },
 								{ name = 'buffer' },
+								{ name = 'path' },
 							},
 							window  = {
 								completion = cmp.config.window.bordered(),
@@ -125,6 +128,10 @@
 						vim.lsp.enable('clangd')
 					'';
 				}
+				{
+					plugin = conform-nvim;
+					type = "lua";
+				}
 			];
 			extraLuaConfig = /* lua */ ''
 				vim.g.mapleader = " " 
@@ -137,9 +144,21 @@
 				vim.opt.signcolumn = "yes"
 				vim.opt.winborder = "rounded"
 
+				vim.diagnostic.config({ virtual_text = true })
+				
+				vim.lsp.inlay_hint.enable(true)
+
 				vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>", { desc = "Remove highlight after search"})
 				vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Go up 1 screen line" })
 				vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Go down 1 screen line" }) 
+
+				vim.keymap.set('n', 'td', function()
+					local new_config = not vim.diagnostic.config().virtual_lines
+					vim.diagnostic.config({ 
+						virtual_lines = not vim.diagnostic.config().virtual_lines,
+						virtual_text = not vim.diagnostic.config().virtual_text,
+					})
+				end, { desc = "Toggle diagnostic virtual lines" })
 			'';
 		};
 	};
