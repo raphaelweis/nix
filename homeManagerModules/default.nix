@@ -1,4 +1,4 @@
-{ username, config, pkgs, lib, inputs, system, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
 	imports = [
@@ -43,7 +43,7 @@
 		defaultFonts = {
 			serif = ["DejaVu Serif"];	
 			sansSerif = ["DejaVu Sans"];	
-			monospace = ["DejaVu Sans Mono"];	
+			monospace = ["JetBrainsMonoNL Nerd Font"];	
 		};
 	};
 
@@ -51,6 +51,13 @@
 		vscode = {
 			enable = true;
 			package = pkgs.vscode.fhs;
+		};
+		alacritty = {
+			enable = true;
+		};
+		nix-index = {
+			enable = true;
+			enableZshIntegration = true;
 		};
 		zen-browser.enable = true;
 	};

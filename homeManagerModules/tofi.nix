@@ -8,7 +8,7 @@
 			enable = true;
 			settings = {
 				# Directly providing the path to the font file massively improves startup time.
-				font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
+				font = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono/JetBrainsMonoNLNerdFont-Regular.ttf";
 				width = "100%";
 				height = "100%";
 				border-width = 0;

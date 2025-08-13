@@ -36,6 +36,7 @@
 					"type:touchpad" = {
 						dwt = "enabled";
 						tap = "enabled";
+						drag_lock = "disabled";
 						natural_scroll = "enabled";
 						scroll_factor = "0.5";
 					};

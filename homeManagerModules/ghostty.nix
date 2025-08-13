@@ -9,7 +9,7 @@
 			settings = {
 				theme = "Adwaita Dark";
 				background = "#141415";
-				font-family = "JetBrainsMonoNL Nerd Font";
+				font-family = "monospace";
 				font-size = 14;
 				shell-integration-features = "no-cursor";
 				cursor-style = "block";
