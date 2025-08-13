@@ -13,6 +13,7 @@
     ./sway.nix
     ./ghostty.nix
     ./tofi.nix
+    ./tmux.nix
   ];
 
   home = {
@@ -77,6 +78,7 @@
     sway.enable = lib.mkDefault true;
     ghostty.enable = lib.mkDefault true;
     tofi.enable = lib.mkDefault true;
+    tmux.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";
