@@ -39,24 +39,27 @@
     cpu.amd.updateMicrocode = true;
 
     # Fix for the speakers not working.
-    firmware = [
-      (pkgs.runCommandNoCC "subwoofers" { } ''
-        mkdir -p $out/lib/firmware/ cp${
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TAS2XXX38BB.bin";
-            sha256 = "sha256-qyZxBlnWEnrgbh0crgFf//pKZMTtCqh+CkA+pUNU/+E=";
-            name = "TAS2XXX38BB.bin";
-          }
-        } $out/lib/firmware/TAS2XXX38BB.bin cp${
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TIAS2781RCA4.bin";
-            sha256 = "sha256-Zj7mwS8DsBinZ8BYvcySc753Aq/xid7vAeQOH/oir6Q=";
-            name = "TIAS2781RCA4.bin";
-          }
-        } $out/lib/firmware/TIAS2781RCA4.bin
-      '')
-      pkgs.wireless-regdb
-    ];
+    firmware =
+      let
+        tas = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TAS2XXX38BB.bin";
+          sha256 = "sha256-qyZxBlnWEnrgbh0crgFf//pKZMTtCqh+CkA+pUNU/+E=";
+          name = "TAS2XXX38BB.bin";
+        };
+        tia = pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/darinpp/yoga-slim-7/main/lib/firmware/TIAS2781RCA4.bin";
+          sha256 = "sha256-Zj7mwS8DsBinZ8BYvcySc753Aq/xid7vAeQOH/oir6Q=";
+          name = "TIAS2781RCA4.bin";
+        };
+      in
+      [
+        (pkgs.runCommandNoCC "subwoofers" { } ''
+          mkdir -p $out/lib/firmware/
+          cp ${tas} $out/lib/firmware/TAS2XXX38BB.bin
+          cp ${tia} $out/lib/firmware/TIAS2781RCA4.bin
+        '')
+        pkgs.wireless-regdb
+      ];
   };
 
   system.stateVersion = "25.05";

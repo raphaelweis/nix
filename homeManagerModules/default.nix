@@ -72,6 +72,11 @@
     gnome-keyring.enable = true;
   };
 
+  systemd.user.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    NIXOS_OZONE_WL = 1;
+  };
+
   rw = {
     devenv.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
