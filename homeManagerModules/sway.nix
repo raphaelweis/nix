@@ -64,7 +64,7 @@
             "ALT+TAB" = "workspace back_and_forth";
             "ALT+SPACE" = "exec ${run}";
             "--release Super_L" = "exec ${drun}";
-            "${modifier}+Shift+c" = "exec hyprpicker -a";
+            "${modifier}+Shift+c" = "exec hyprpicker -al";
 
             # XF86 controls
             "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
@@ -77,6 +77,39 @@
             "XF86AudioNext" = "exec playerctl next";
             "XF86AudioPrev" = "exec playerctl previous";
           };
+        bars = [
+          {
+            command = "${pkgs.sway}/bin/swaybar";
+            statusCommand = "${pkgs.i3status}/bin/i3status";
+            fonts = {
+              names = [ "monospace" ];
+              style = "Regular";
+              size = "8";
+            };
+            colors =
+              let
+                bg = "#1c1c24";
+                black = "#252530";
+                orange = "#f3be7c";
+                white = "#cdcdcd";
+                dark_grey = "#252530";
+              in
+              {
+                background = bg;
+                focusedStatusline = white;
+                focusedWorkspace = {
+                  text = black;
+                  background = orange;
+                  border = orange;
+                };
+                inactiveWorkspace = {
+                  text = white;
+                  background = dark_grey;
+                  border = dark_grey;
+                };
+              };
+          }
+        ];
       };
     };
   };

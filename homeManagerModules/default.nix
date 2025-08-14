@@ -20,6 +20,7 @@
     ./fzf.nix
     ./fonts.nix
     ./alacritty.nix
+    ./i3status.nix
   ];
 
   home = {
@@ -73,6 +74,7 @@
     fzf.enable = lib.mkDefault true;
     fonts.enable = lib.mkDefault true;
     alacritty.enable = lib.mkDefault true;
+    i3status.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";

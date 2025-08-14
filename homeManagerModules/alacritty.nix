@@ -30,6 +30,9 @@
           };
           size = 12;
         };
+        mouse =  {
+          hide_when_typing = true;
+        };
         colors = {
           primary = {
             background = "#141415";
