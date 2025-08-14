@@ -32,6 +32,14 @@
         cmp-buffer
         cmp-path
         {
+          plugin = gitsigns-nvim;
+          type = "lua";
+          config = # lua
+            ''
+              require("gitsigns").setup()
+            '';
+        }
+        {
           plugin = nvim-autopairs;
           type = "lua";
           config = # lua
@@ -125,7 +133,7 @@
               		["<C-n>"] = cmp.mapping.select_next_item(),
               		["<C-p>"] = cmp.mapping.select_prev_item(),
               		["<C-y>"] = cmp.mapping.confirm({ select = true }),
-                  ["<C-space>"] = cmp.mapping.complete({})
+              		["<C-space>"] = cmp.mapping.complete({}),
               	}),
               })
 
@@ -154,14 +162,14 @@
               		nix = { "nixfmt", "injected" },
               		c = { "clang-format" },
               		lua = { "stylua" },
-                  sh = { "shfmt" },
+              		sh = { "shfmt" },
               	},
               	formatters = {
               		injected = {
               			options = {
               				lang_to_ft = {
               					lua = "lua",
-                        bash = "sh",
+              					bash = "sh",
               				},
               			},
               		},
