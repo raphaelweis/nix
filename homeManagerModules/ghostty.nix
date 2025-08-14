@@ -7,7 +7,6 @@
     programs.ghostty = {
       enable = true;
       settings = {
-        command = "tmux attach";
         confirm-close-surface = false;
         theme = "vague";
         font-family = "monospace";

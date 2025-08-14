@@ -8,12 +8,18 @@
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
-    ./devenv.nix
+    ./cmdline.nix
     ./nvim.nix
     ./sway.nix
     ./ghostty.nix
     ./tofi.nix
     ./tmux.nix
+    ./zsh.nix
+    ./git.nix
+    ./gh.nix
+    ./fzf.nix
+    ./fonts.nix
+    ./alacritty.nix
   ];
 
   home = {
@@ -27,14 +33,7 @@
       spotify
       pavucontrol
       chntpw
-
-      # fonts
-      dejavu_fonts
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.fira-code
-
-      # gnome extensions
-      gnomeExtensions.hide-top-bar
+      postman
     ];
   };
 
@@ -44,22 +43,10 @@
     };
   };
 
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      serif = [ "DejaVu Serif" ];
-      sansSerif = [ "DejaVu Sans" ];
-      monospace = [ "JetBrainsMonoNL Nerd Font" ];
-    };
-  };
-
   programs = {
     vscode = {
       enable = true;
       package = pkgs.vscode.fhs;
-    };
-    alacritty = {
-      enable = true;
     };
     nix-index = {
       enable = true;
@@ -68,22 +55,24 @@
     zen-browser.enable = true;
   };
 
-  services = {
-    gnome-keyring.enable = true;
-  };
-
   systemd.user.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     NIXOS_OZONE_WL = 1;
   };
 
   rw = {
-    devenv.enable = lib.mkDefault true;
+    cmdline.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
     sway.enable = lib.mkDefault true;
     ghostty.enable = lib.mkDefault true;
     tofi.enable = lib.mkDefault true;
     tmux.enable = lib.mkDefault true;
+    zsh.enable = lib.mkDefault true;
+    git.enable = lib.mkDefault true;
+    gh.enable = lib.mkDefault true;
+    fzf.enable = lib.mkDefault true;
+    fonts.enable = lib.mkDefault true;
+    alacritty.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";

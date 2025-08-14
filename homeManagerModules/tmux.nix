@@ -19,6 +19,7 @@
         ''
           set-option -sg escape-time 10
           set-option -g focus-events on
+          set-option -a terminal-features 'alacritty:RGB'
 
           # keybinds
           bind c new-window -c "#{pane_current_path}"

@@ -15,7 +15,7 @@
       wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
-        terminal = "ghostty";
+        terminal = "alacritty";
         gaps.smartBorders = "on";
         defaultWorkspace = "workspace number 1";
         window = {

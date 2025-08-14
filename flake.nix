@@ -38,10 +38,8 @@
         ];
       };
 
-      username = "raphaelw";
-
       mkSystem =
-        pathToConfig:
+        pathToConfig: username:
         inputs.nixpkgs.lib.nixosSystem {
           inherit system pkgs;
           specialArgs = { inherit inputs username system; };
@@ -54,8 +52,8 @@
     in
     {
       nixosConfigurations = {
-        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix;
-        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix;
+        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "raphaelw";
+        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "raphaelw";
       };
       nixosModules.default = ./nixosModules;
       homeManagerModules.default = ./homeManagerModules;
