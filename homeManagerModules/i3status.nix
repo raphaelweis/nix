@@ -29,8 +29,11 @@
           enable = true;
           position = 3;
           settings = {
+            format = "%status %percentage";
             last_full_capacity = true;
             format_percentage = "%.00f%s";
+            low_threshold = "20";
+            threshold_type = "percentage";
           };
         };
         "tztime local" = {

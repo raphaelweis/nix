@@ -55,12 +55,15 @@
             browser = "zen";
             run = "tofi-run | xargs swaymsg exec --";
             drun = "tofi-drun | xargs swaymsg exec --";
+            file_manager = "nautilus";
           in
           lib.mkOptionDefault {
             # Window and app controls
             "${modifier}+q" = "exec ${browser}";
             "${modifier}+c" = "kill";
             "${modifier}+Return" = "exec ${terminal}";
+            "${modifier}+e" = "exec ${file_manager}";
+            "${modifier}+Shift+e" = "layout toggle split";
             "ALT+TAB" = "workspace back_and_forth";
             "ALT+SPACE" = "exec ${run}";
             "--release Super_L" = "exec ${drun}";
@@ -92,7 +95,6 @@
                 black = "#252530";
                 orange = "#f3be7c";
                 white = "#cdcdcd";
-                dark_grey = "#252530";
               in
               {
                 background = bg;
@@ -104,8 +106,8 @@
                 };
                 inactiveWorkspace = {
                   text = white;
-                  background = dark_grey;
-                  border = dark_grey;
+                  background = bg;
+                  border = bg;
                 };
               };
           }
