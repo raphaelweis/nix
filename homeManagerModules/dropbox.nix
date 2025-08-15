@@ -1,12 +1,23 @@
-{ lib, config, ... }:
+{ lib, pkgs, ... }:
 {
   options.rw = {
     dropbox.enable = lib.mkEnableOption "dropbox daemon configuration.";
   };
   config = {
-    services.dropbox = {
-      enable = true;
-      path = "${config.home.homeDirectory}/Dropbox";
+    home.packages = with pkgs; [
+      dropbox
+    ];
+    systemd.user.services.dropbox = {
+      Unit = {
+        Description = "Dropbox service";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.dropbox}/bin/dropbox";
+        Restart = "on-failure";
+      };
     };
   };
 }

@@ -85,7 +85,10 @@
       sway.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [ vim ];
+    environment.systemPackages = with pkgs; [
+      vim
+      killall
+    ];
 
     nix.settings.experimental-features = [
       "nix-command"

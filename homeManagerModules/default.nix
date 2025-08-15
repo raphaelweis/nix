@@ -36,6 +36,7 @@
       pavucontrol
       chntpw
       postman
+      nautilus
     ];
   };
 
