@@ -21,6 +21,7 @@
     ./fonts.nix
     ./alacritty.nix
     ./i3status.nix
+    ./dropbox.nix
   ];
 
   home = {
@@ -75,6 +76,7 @@
     fonts.enable = lib.mkDefault true;
     alacritty.enable = lib.mkDefault true;
     i3status.enable = lib.mkDefault true;
+    dropbox.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";
