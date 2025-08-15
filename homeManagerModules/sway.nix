@@ -55,7 +55,7 @@
             browser = "zen";
             run = "tofi-run | xargs swaymsg exec --";
             drun = "tofi-drun | xargs swaymsg exec --";
-            file_manager = "nautilus";
+            file_manager = "nautilus --new-window";
           in
           lib.mkOptionDefault {
             # Window and app controls
