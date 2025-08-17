@@ -24,6 +24,7 @@
     ./dropbox.nix
     ./rofi.nix
     ./xdg.nix
+    ./android.nix
   ];
 
   home = {
@@ -82,6 +83,7 @@
     dropbox.enable = lib.mkDefault true;
     rofi.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
+    android.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";

@@ -74,7 +74,13 @@
 
     users.users.${username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "input"
+        "video"
+        "kvm"
+        "adbusers"
+      ];
       shell = pkgs.zsh;
     };
 
@@ -83,6 +89,7 @@
       zsh.enable = true;
       geary.enable = false;
       sway.enable = true;
+      adb.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
