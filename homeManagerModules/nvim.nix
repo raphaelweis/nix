@@ -248,6 +248,7 @@
           vim.opt.winborder = "rounded"
           vim.opt.expandtab = true
           vim.opt.undofile = true
+          vim.opt.colorcolumn = "80"
 
           vim.diagnostic.config({ virtual_text = true })
 
