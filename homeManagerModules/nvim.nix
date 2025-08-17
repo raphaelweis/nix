@@ -32,6 +32,8 @@
         cmp-buffer
         cmp-path
         lspkind-nvim
+        cmp_luasnip
+        friendly-snippets
         {
           plugin = gitsigns-nvim;
           type = "lua";
@@ -126,6 +128,7 @@
               		{ name = "nvim_lsp" },
               		{ name = "buffer" },
               		{ name = "path" },
+              		{ name = "luasnip" },
               	},
               	window = {
               		completion = cmp.config.window.bordered(),
@@ -145,12 +148,27 @@
               				path = "[PTH]",
               			},
               		}),
+              		snippet = {
+              			expand = function(args)
+              				require("luasnip").lsp_expand(args.body)
+              			end,
+              		},
               	},
               	mapping = cmp.mapping.preset.insert({
               		["<C-n>"] = cmp.mapping.select_next_item(),
               		["<C-p>"] = cmp.mapping.select_prev_item(),
               		["<C-y>"] = cmp.mapping.confirm({ select = true }),
               		["<C-space>"] = cmp.mapping.complete({}),
+              		["<C-l>"] = cmp.mapping(function()
+              			if luasnip.expand_or_locally_jumpable() then
+              				luasnip.expand_or_jump()
+              			end
+              		end, { "i", "s" }),
+              		["<C-h>"] = cmp.mapping(function()
+              			if luasnip.locally_jumpable(-1) then
+              				luasnip.jump(-1)
+              			end
+              		end, { "i", "s" }),
               	}),
               })
 
@@ -211,9 +229,9 @@
         {
           plugin = luasnip;
           type = "lua";
-          config = # lua;
+          config = # lua
             ''
-
+              require("luasnip.loaders.from_vscode").lazy_load()
             '';
         }
       ];
