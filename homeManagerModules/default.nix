@@ -22,6 +22,7 @@
     ./alacritty.nix
     ./i3status.nix
     ./dropbox.nix
+    ./rofi.nix
     ./xdg.nix
   ];
 
@@ -69,7 +70,7 @@
     nvim.enable = lib.mkDefault true;
     sway.enable = lib.mkDefault true;
     ghostty.enable = lib.mkDefault true;
-    tofi.enable = lib.mkDefault true;
+    tofi.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     zsh.enable = lib.mkDefault true;
     git.enable = lib.mkDefault true;
@@ -79,6 +80,7 @@
     alacritty.enable = lib.mkDefault true;
     i3status.enable = lib.mkDefault true;
     dropbox.enable = lib.mkDefault true;
+    rofi.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
   };
 
