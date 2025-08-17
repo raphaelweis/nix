@@ -22,6 +22,7 @@
     ./alacritty.nix
     ./i3status.nix
     ./dropbox.nix
+    ./xdg.nix
   ];
 
   home = {
@@ -78,6 +79,7 @@
     alacritty.enable = lib.mkDefault true;
     i3status.enable = lib.mkDefault true;
     dropbox.enable = lib.mkDefault true;
+    xdg.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";

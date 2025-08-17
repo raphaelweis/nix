@@ -9,6 +9,7 @@
       playerctl
       brightnessctl
       hyprpicker
+      sway-contrib.grimshot
     ];
     wayland.windowManager.sway = {
       enable = true;
@@ -45,16 +46,16 @@
             pointer_accel = "0.5";
           };
         };
-        startup = [
-          {
-            command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false";
-          }
-        ];
+        # startup = [
+        #   {
+        #     # command = "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false";
+        #   }
+        # ];
         keybindings =
           let
             browser = "zen";
-            run = "tofi-run | xargs swaymsg exec --";
-            drun = "tofi-drun | xargs swaymsg exec --";
+            run = "rofi -show run";
+            drun = "pkill rofi || rofi -show drun";
             file_manager = "nautilus --new-window";
           in
           lib.mkOptionDefault {
@@ -68,6 +69,8 @@
             "ALT+SPACE" = "exec ${run}";
             "--release Super_L" = "exec ${drun}";
             "${modifier}+Shift+c" = "exec hyprpicker -al";
+            "${modifier}+Shift+s" =
+              "exec NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimshot --notify savecopy area $HOME/Pictures/Screenshots/screenshot_$NOW.png";
 
             # XF86 controls
             "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
