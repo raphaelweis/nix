@@ -31,6 +31,7 @@
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
+        lspkind-nvim
         {
           plugin = gitsigns-nvim;
           type = "lua";
@@ -58,6 +59,9 @@
               	style = {
               		comments = "none",
               	},
+              	on_highlights = function(highlights, colors)
+              		highlights.CmpItemKind = { fg = colors.comment }
+              	end,
               })
               vim.cmd("colorscheme vague")
             '';
@@ -116,6 +120,7 @@
           config = # lua
             ''
               local cmp = require("cmp")
+              local lspkind = require("lspkind")
               cmp.setup({
               	sources = {
               		{ name = "nvim_lsp" },
@@ -128,6 +133,18 @@
               	},
               	completion = {
               		completeopt = "menu,menuone,noinsert",
+              	},
+              	formatting = {
+              		fields = { "menu", "abbr", "kind" },
+              		format = lspkind.cmp_format({
+              			mode = "symbol_text",
+              			menu = {
+              				buffer = "[BFR]",
+              				nvim_lsp = "[LSP]",
+              				luasnip = "[SNP]",
+              				path = "[PTH]",
+              			},
+              		}),
               	},
               	mapping = cmp.mapping.preset.insert({
               		["<C-n>"] = cmp.mapping.select_next_item(),
@@ -189,6 +206,14 @@
               		section_separators = { left = "", right = "" },
               	},
               })
+            '';
+        }
+        {
+          plugin = luasnip;
+          type = "lua";
+          config = # lua;
+            ''
+
             '';
         }
       ];
