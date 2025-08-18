@@ -6,13 +6,6 @@
   config = {
     programs.alacritty = {
       enable = true;
-
-      # Vague for Alacritty
-      # -------------------
-      # Theme Author: vague2k <ilovedrawing056@gmail.com>
-      # Ported by:	skewb1k <skewb1kunix@gmail.com>
-      # License:  	MIT License
-      # Upstream: 	https://github.com/vague2k/vague.nvim/blob/main/extras/alacritty/vague.toml
       settings = {
         font = {
           normal = {
@@ -30,9 +23,20 @@
           };
           size = 12;
         };
-        mouse =  {
+        mouse = {
           hide_when_typing = true;
         };
+        window = {
+          decorations = "None";
+          startup_mode = "Maximized";
+        };
+
+        # Vague for Alacritty
+        # -------------------
+        # Theme Author: vague2k <ilovedrawing056@gmail.com>
+        # Ported by:	skewb1k <skewb1kunix@gmail.com>
+        # License:  	MIT License
+        # Upstream: 	https://github.com/vague2k/vague.nvim/blob/main/extras/alacritty/vague.toml
         colors = {
           primary = {
             background = "#141415";

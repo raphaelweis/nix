@@ -25,14 +25,11 @@
     ./rofi.nix
     ./xdg.nix
     ./android.nix
+    ./dconf.nix
+    ./cursor.nix
   ];
 
   home = {
-    pointerCursor = {
-      name = "macOS";
-      package = pkgs.apple-cursor;
-      size = 24;
-    };
     packages = with pkgs; [
       discord
       spotify
@@ -41,12 +38,6 @@
       postman
       nautilus
     ];
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
   };
 
   programs = {
@@ -61,15 +52,10 @@
     zen-browser.enable = true;
   };
 
-  systemd.user.sessionVariables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    NIXOS_OZONE_WL = 1;
-  };
-
   rw = {
     cmdline.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
-    sway.enable = lib.mkDefault true;
+    sway.enable = lib.mkDefault false;
     ghostty.enable = lib.mkDefault true;
     tofi.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
@@ -84,6 +70,8 @@
     rofi.enable = lib.mkDefault true;
     xdg.enable = lib.mkDefault true;
     android.enable = lib.mkDefault true;
+    dconf.enable = lib.mkDefault true;
+    cursor.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";

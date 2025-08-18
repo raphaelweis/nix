@@ -10,6 +10,7 @@
 {
   imports = [
     ./boot.nix
+    ./gnome.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -42,11 +43,6 @@
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
       gvfs.enable = true;
-      gnome = {
-        core-apps.enable = true;
-        gnome-online-accounts.enable = true;
-        gnome-keyring.enable = true;
-      };
       pipewire = {
         enable = true;
         alsa.enable = true;
@@ -104,6 +100,7 @@
 
     rw = {
       boot.enable = lib.mkDefault true;
+      gnome.enable = lib.mkDefault true;
     };
   };
 }
