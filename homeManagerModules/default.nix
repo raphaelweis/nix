@@ -27,6 +27,7 @@
     ./android.nix
     ./dconf.nix
     ./cursor.nix
+    ./minecraft.nix
   ];
 
   home = {
@@ -37,6 +38,8 @@
       chntpw
       postman
       nautilus
+      modrinth-app
+      jdk21
     ];
   };
 
@@ -72,6 +75,7 @@
     android.enable = lib.mkDefault true;
     dconf.enable = lib.mkDefault true;
     cursor.enable = lib.mkDefault true;
+    minecraft.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";
