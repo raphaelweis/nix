@@ -28,18 +28,16 @@
     ./dconf.nix
     ./cursor.nix
     ./minecraft.nix
+    ./discord.nix
   ];
 
   home = {
     packages = with pkgs; [
-      discord
       spotify
       pavucontrol
       chntpw
       postman
       nautilus
-      modrinth-app
-      jdk21
     ];
   };
 
@@ -76,6 +74,7 @@
     dconf.enable = lib.mkDefault true;
     cursor.enable = lib.mkDefault true;
     minecraft.enable = lib.mkDefault true;
+    discord.enable = lib.mkDefault true;
   };
 
   home.stateVersion = "25.05";
