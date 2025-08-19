@@ -48,6 +48,16 @@
           show-battery-percentage = true;
           enable-hot-corners = false;
         };
+        "org/gnome/settings-daemon/plugins/media-keys" = {
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          ];
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          binding = "<Super>e";
+          command = "nautilus --new-window";
+          name = "Nautilus";
+        };
         "org/gnome/desktop/background" = {
           color-shading-type = "solid";
           picture-options = "zoom";
