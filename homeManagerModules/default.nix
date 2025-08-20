@@ -1,43 +1,43 @@
 {
   pkgs,
-  lib,
-  inputs,
-  ...
+    lib,
+    inputs,
+    ...
 }:
 
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
-    ./cmdline.nix
-    ./nvim.nix
-    ./sway.nix
-    ./ghostty.nix
-    ./tofi.nix
-    ./tmux.nix
-    ./zsh.nix
-    ./git.nix
-    ./gh.nix
-    ./fzf.nix
-    ./fonts.nix
-    ./alacritty.nix
-    ./i3status.nix
-    ./dropbox.nix
-    ./rofi.nix
-    ./xdg.nix
-    ./android.nix
-    ./dconf.nix
-    ./cursor.nix
-    ./minecraft.nix
-    ./discord.nix
-  ];
+      ./cmdline.nix
+      ./nvim.nix
+      ./sway.nix
+      ./ghostty.nix
+      ./tofi.nix
+      ./tmux.nix
+      ./zsh.nix
+      ./git.nix
+      ./gh.nix
+      ./fzf.nix
+      ./fonts.nix
+      ./alacritty.nix
+      ./i3status.nix
+      ./dropbox.nix
+      ./rofi.nix
+      ./xdg.nix
+      ./android.nix
+      ./dconf.nix
+      ./cursor.nix
+      ./minecraft.nix
+      ./discord.nix
+      ];
 
   home = {
     packages = with pkgs; [
       spotify
-      pavucontrol
-      chntpw
-      postman
-      nautilus
+        pavucontrol
+        chntpw
+        postman
+        nautilus
     ];
   };
 

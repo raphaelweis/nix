@@ -81,7 +81,7 @@
       firefox.enable = true;
       zsh.enable = true;
       geary.enable = false;
-      sway.enable = true;
+      sway.enable = false;
       adb.enable = true;
     };
 

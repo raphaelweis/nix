@@ -1,0 +1,23 @@
+{ ... }:
+let
+  username = "raphaelw";
+in
+{
+  home = {
+    username = username;
+    homeDirectory = "/home/${username}";
+  };
+
+<<<<<<< HEAD
+  rw = {
+    dconf = {
+      wallpaper = ../../../assets/the_solo_traveller_wallpaper_laptop.png.png;
+    };
+    cursor = {
+      cursorSize = 24;
+      x11CursorSize = 48;
+    };
+  };
+=======
+>>>>>>> 6632459 (feat: Cursor config cleanup, disabled sway in nixos config.)
+}
