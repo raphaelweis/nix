@@ -58,12 +58,6 @@
               require("vague").setup({
               	transparent = false,
               	italic = false,
-              	style = {
-              		comments = "none",
-              	},
-              	on_highlights = function(highlights, colors)
-              		highlights.CmpItemKind = { fg = colors.comment }
-              	end,
               })
               vim.cmd("colorscheme vague")
             '';

@@ -26,7 +26,7 @@
           ];
           favorite-apps = [
             "zen-twilight.desktop"
-            "Alacritty.desktop"
+            "com.mitchellh.ghostty.desktop"
             "code.desktop"
             "discord.desktop"
             "spotify.desktop"

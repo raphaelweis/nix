@@ -14,8 +14,9 @@
         shell-integration-features = "no-cursor";
         cursor-style = "block";
         cursor-style-blink = false;
+        cursor-invert-fg-bg = true;
+        adjust-cursor-thickness = 1;
         gtk-titlebar-hide-when-maximized = true;
-        maximize = true;
         gtk-single-instance = true;
         keybind = [
           "ctrl+enter=unbind"
