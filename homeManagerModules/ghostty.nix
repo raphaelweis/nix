@@ -1,16 +1,21 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
-  options.rw = {
-    ghostty.enable = lib.mkEnableOption "ghostty configuration.";
+  options.rw.ghostty = {
+    enable = lib.mkEnableOption "ghostty configuration.";
+    fontSize = lib.mkOption {
+      type = lib.types.int;
+      default = 12;
+      description = "Set the default font size.";
+    };
   };
   config = {
     programs.ghostty = {
       enable = true;
       settings = {
-        confirm-close-surface = false;
+        confirm-close-surface = true;
         theme = "vague";
         font-family = "monospace";
-        font-size = 14;
+        font-size = config.rw.ghostty.fontSize;
         shell-integration-features = "no-cursor";
         cursor-style = "block";
         cursor-style-blink = false;
