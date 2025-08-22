@@ -48,6 +48,9 @@
           show-battery-percentage = true;
           enable-hot-corners = false;
         };
+        "org/gnome/desktop/peripherals/mouse" = {
+          accel-profile = "flat";
+        };
         "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
