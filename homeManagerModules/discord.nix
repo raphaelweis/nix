@@ -5,6 +5,9 @@
   };
   config =
     let
+      # Patch script to make krisp audio work.
+      # Run: krisp-patcher ~/.config/discord/<discord-version>/modules/discord_krisp/discord_krisp.node
+      # Don't forget to into discord settings and enable krisp audio afterwards.
       krisp-patcher =
         pkgs.writers.writePython3Bin "krisp-patcher"
           {
