@@ -1,11 +1,17 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 {
-  options.rw = {
-    dconf.enable = lib.mkEnableOption "dconf (gnome and gnome extensions) configuration.";
+  options.rw.dconf = {
+    enable = lib.mkEnableOption "dconf (gnome and gnome extensions) configuration.";
+    wallpaper = lib.mkOption {
+      type = lib.types.path;
+      default = ../assets/the_solo_traveller_wallpaper_desktop.png;
+      description = "An image to set as the gnome wallpaper.";
+    };
   };
   config =
     let
@@ -64,8 +70,8 @@
         "org/gnome/desktop/background" = {
           color-shading-type = "solid";
           picture-options = "zoom";
-          picture-uri = "file://${../assets/the_solo_traveller_wallpaper_laptop.png}";
-          picture-uri-dark = "file://${../assets/the_solo_traveller_wallpaper_laptop.png}";
+          picture-uri = "file://${config.rw.dconf.wallpaper}";
+          picture-uri-dark = "file://${config.rw.dconf.wallpaper}";
           primary-color = "#241f31";
           secondary-color = "#000000";
         };
