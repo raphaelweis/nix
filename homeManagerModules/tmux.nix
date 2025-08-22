@@ -25,6 +25,8 @@
           bind c new-window -c "#{pane_current_path}"
           bind '"' split-window -c "#{pane_current_path}"
           bind % split-window -h -c "#{pane_current_path}"
+          bind -T copy-mode-vi v send-keys -X begin-selection
+          bind -T copy-mode-vi y send-keys -X copy-selection
 
           set -g status on
           set -g status-position 'top'
