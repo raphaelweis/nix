@@ -13,16 +13,12 @@
     in
     {
       home.packages = with pkgs.gnomeExtensions; [
-        no-titlebar-when-maximized
         appindicator
-        dash-to-dock
       ];
       dconf.settings = {
         "org/gnome/shell" = {
           enabled-extensions = with pkgs.gnomeExtensions; [
-            no-titlebar-when-maximized.extensionUuid
             appindicator.extensionUuid
-            dash-to-dock.extensionUuid
           ];
           favorite-apps = [
             "zen-twilight.desktop"
@@ -51,6 +47,10 @@
         "org/gnome/desktop/peripherals/mouse" = {
           accel-profile = "flat";
         };
+        "org/gnome/shell/keybindings" = {
+          "show-screenshot-ui" = [ "<Shift><Super>s" ];
+          "screenshot" = [ "Print" ];
+        };
         "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -72,18 +72,6 @@
         "org/gnome/shell/extensions/unite" = {
           extend-left-box = false;
           notifications-position = "center";
-        };
-        "org/gnome/shell/extensions/dash-to-dock" = {
-          dock-position = "RIGHT";
-          extend-height = true;
-          dock-fixed = true;
-          dash-max-icon-size = 24;
-          custom-theme-shrink = true;
-          show-trash = false;
-          always-center-icons = true;
-          custom-background-color = true;
-          background-color = "rgb(0, 0, 0)";
-          transparency-mode = "DYNAMIC";
         };
       };
     };
