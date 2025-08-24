@@ -5,14 +5,7 @@
   };
   config = {
     virtualisation.docker = {
-      # disable system docker daemon and instead run docker in rootless mode with
-      # user service.
-      # https://docs.docker.com/engine/security/rootless/
-      enable = false;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      enable = true;
     };
   };
 }
