@@ -13,6 +13,7 @@
     ./gnome.nix
     ./networking.nix
     ./steam.nix
+    ./docker.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -73,6 +74,7 @@
         "video"
         "kvm"
         "adbusers"
+        "docker"
       ];
       shell = pkgs.zsh;
     };
@@ -100,6 +102,7 @@
       gnome.enable = lib.mkDefault true;
       networking.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
+      docker.enable = lib.mkDefault true;
     };
   };
 }
