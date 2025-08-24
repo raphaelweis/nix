@@ -11,6 +11,8 @@
   imports = [
     ./boot.nix
     ./gnome.nix
+    ./networking.nix
+    ./steam.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -27,11 +29,6 @@
         inputs.self.outputs.homeManagerModules.default
       ];
       extraSpecialArgs = { inherit inputs username system; };
-    };
-
-    networking = {
-      hostName = "patpat";
-      networkmanager.enable = true;
     };
 
     time.timeZone = "Europe/Paris";
@@ -101,6 +98,8 @@
     rw = {
       boot.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
+      networking.enable = lib.mkDefault true;
+      steam.enable = lib.mkDefault true;
     };
   };
 }

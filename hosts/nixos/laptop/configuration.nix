@@ -2,7 +2,10 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  rw.homeManagerConfig = ./home.nix;
+  rw = {
+    networking.hostName = "patpat";
+    homeManagerConfig = ./home.nix;
+  };
 
   boot = {
     initrd.prepend = lib.mkOrder 0 [

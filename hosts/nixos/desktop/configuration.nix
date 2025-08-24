@@ -2,7 +2,10 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  rw.homeManagerConfig = ./home.nix;
+  rw = {
+    networking.hostName = "pafpaf";
+    homeManagerConfig = ./home.nix;
+  };
 
   boot.kernelParams = [
     "amd_pstate=active"
