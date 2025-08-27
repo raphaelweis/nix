@@ -12,7 +12,7 @@
         Description = "Dropbox service";
       };
       Install = {
-        WantedBy = [ "default.target" ];
+        WantedBy = [ "graphical-session.target" ];
       };
       Service = {
         ExecStart = "${pkgs.dropbox}/bin/dropbox";
