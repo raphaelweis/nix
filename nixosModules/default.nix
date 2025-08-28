@@ -14,6 +14,7 @@
     ./networking.nix
     ./steam.nix
     ./docker.nix
+    ./virtualization.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -75,6 +76,7 @@
         "kvm"
         "adbusers"
         "docker"
+        "libvirtd"
       ];
       shell = pkgs.zsh;
     };
@@ -103,6 +105,7 @@
       networking.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
       docker.enable = lib.mkDefault true;
+      virtualization.enable = lib.mkDefault true;
     };
   };
 }
