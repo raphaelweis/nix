@@ -208,19 +208,6 @@
             '';
         }
         {
-          plugin = lualine-nvim;
-          type = "lua";
-          config = # lua
-            ''
-              require("lualine").setup({
-              	options = {
-              		component_separators = { left = "|", right = "|" },
-              		section_separators = { left = "", right = "" },
-              	},
-              })
-            '';
-        }
-        {
           plugin = luasnip;
           type = "lua";
           config = # lua

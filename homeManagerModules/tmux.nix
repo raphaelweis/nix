@@ -33,14 +33,13 @@
           set -g status-interval 1
           set -g status-left-length 100
           set -g status-right-length 100
-          set -g status-style "fg=white,bg=#1c1c24"
+          set -g status-style "fg=white"
           set -g status-justify absolute-centre
           set -g message-style "fg=black,bg=cyan"
-          set -g status-left "#[fg=black,bg=brightblue]  #H #[fg=white,bg=black]  #S #{prefix_highlight}"
-          set -g status-right "#[fg=black,bg=brightblue]   #(hostname -I | awk '{print $1}') "
-          setw -g window-status-separator " "
-          setw -g window-status-format "#[fg=black,bg=brightwhite] #I #[fg=white,bg=black] #W "
-          setw -g window-status-current-format "#[fg=black,bg=yellow] #I #[fg=white,bg=black] #W "
+          set -g window-status-current-style fg=yellow,bg=default,bold
+          # set -g status-left "[#S]"
+          set -g status-left ""
+          set -g status-right "[#S]"
           set -g @prefix_highlight_output_prefix "#[fg=black]#[bg=yellow]"
           set -g @prefix_highlight_output_suffix ""
         '';
