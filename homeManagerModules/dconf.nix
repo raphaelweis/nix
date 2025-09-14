@@ -56,6 +56,7 @@
         "org/gnome/shell/keybindings" = {
           "show-screenshot-ui" = [ "<Shift><Super>s" ];
           "screenshot" = [ "Print" ];
+          "toggle-overview" = [ "<Alt>space" ];
         };
         "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
