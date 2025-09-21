@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   options.rw = {
     zsh.enable = lib.mkEnableOption "zsh configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.zsh.enable {
     programs.zsh = {
       enable = true;
       autosuggestion.enable = true;

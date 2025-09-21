@@ -1,9 +1,14 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.rw = {
     rofi.enable = lib.mkEnableOption "rofi (launcher) configuration";
   };
-  config = {
+  config = lib.mkIf config.rw.rofi.enable {
     programs.rofi = {
       enable = true;
       package = pkgs.rofi;

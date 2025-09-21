@@ -1,9 +1,9 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 {
   options.rw = {
     tmux.enable = lib.mkEnableOption "tmux configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.tmux.enable {
     programs.tmux = {
       enable = true;
       keyMode = "vi";

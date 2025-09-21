@@ -1,9 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     dropbox.enable = lib.mkEnableOption "dropbox daemon configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.dropbox.enable {
     home.packages = with pkgs; [
       dropbox
     ];

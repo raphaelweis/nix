@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.rw = {
     sway.enable = lib.mkEnableOption "sway configuration.";
@@ -11,7 +16,7 @@
       hyprpicker
       sway-contrib.grimshot
     ];
-    wayland.windowManager.sway = {
+    wayland.windowManager.sway = lib.mkIf config.rw.sway.enable {
       enable = true;
       wrapperFeatures.gtk = true;
       config = rec {

@@ -8,7 +8,7 @@
       description = "Set the default font size.";
     };
   };
-  config = {
+  config = lib.mkIf config.rw.ghostty.enable {
     programs.ghostty = {
       enable = true;
       settings = {

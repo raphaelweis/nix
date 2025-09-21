@@ -1,9 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     fonts.enable = lib.mkEnableOption "fonts and fontconfig configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.fonts.enable {
     home.packages = with pkgs; [
       dejavu_fonts
       nerd-fonts.jetbrains-mono

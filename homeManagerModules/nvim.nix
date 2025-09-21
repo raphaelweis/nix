@@ -1,9 +1,14 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.rw = {
     nvim.enable = lib.mkEnableOption "neovim configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.nvim.enable {
     home.packages = with pkgs; [
       ripgrep
       tree-sitter

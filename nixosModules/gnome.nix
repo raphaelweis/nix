@@ -1,9 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     gnome.enable = lib.mkEnableOption "Gnome (Full desktop environment)";
   };
-  config = {
+  config = lib.mkIf config.rw.gnome.enable {
     services = {
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;

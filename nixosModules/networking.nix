@@ -7,7 +7,7 @@
       description = "The hostname of the system.";
     };
   };
-  config = {
+  config = lib.mkIf config.rw.networking.enable {
     networking = {
       hostName = config.rw.networking.hostName;
       networkmanager.enable = true;

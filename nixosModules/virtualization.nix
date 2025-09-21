@@ -1,9 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     virtualization.enable = lib.mkEnableOption "Virtualization software like qemu, virtualbox...";
   };
-  config = {
+  config = lib.mkIf config.rw.virtualization.enable {
     environment.systemPackages = with pkgs; [
       qemu
       gnome-boxes

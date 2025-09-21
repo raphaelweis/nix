@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   options.rw = {
     alacritty.enable = lib.mkEnableOption "Alacritty configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.alacritty.enable {
     programs.alacritty = {
       enable = true;
       settings = {

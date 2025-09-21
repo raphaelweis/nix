@@ -17,7 +17,7 @@
     let
       mkTuple = lib.hm.gvariant.mkTuple;
     in
-    {
+    lib.mkIf config.rw.dconf.enable {
       home.packages = with pkgs.gnomeExtensions; [
         appindicator
       ];

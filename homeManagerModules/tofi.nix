@@ -1,9 +1,14 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.rw = {
     tofi.enable = lib.mkEnableOption "tofi (dmenu-like launcher) configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.tofi.enable {
     programs.tofi = {
       enable = true;
       settings = {

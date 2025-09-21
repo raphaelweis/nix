@@ -17,7 +17,7 @@
     let
       themeName = "macOS";
     in
-    {
+    lib.mkIf config.rw.cursor.enable {
       home.pointerCursor = {
         enable = true;
         package = pkgs.apple-cursor;

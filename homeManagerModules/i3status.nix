@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   options.rw = {
     i3status.enable = lib.mkEnableOption "i3status configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.i3status.enable {
     programs.i3status = {
       enable = true;
       general = {

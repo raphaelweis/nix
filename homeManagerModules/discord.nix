@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     discord.enable = lib.mkEnableOption "discord configuration (with krisp patch).";
@@ -30,7 +35,7 @@
             )
           );
     in
-    {
+    lib.mkIf config.rw.discord.enable {
       home.packages = [
         krisp-patcher
         pkgs.discord
