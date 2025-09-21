@@ -10,6 +10,7 @@
       fd
       gcc
       nodejs
+      pnpm
       rlwrap
     ];
   };

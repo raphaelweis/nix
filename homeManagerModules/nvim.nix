@@ -11,6 +11,10 @@
       # LSPs
       nixd
       clang-tools
+      typescript-language-server
+      vscode-langservers-extracted
+      prisma-language-server
+      prettier
 
       # Formatters
       nixfmt-rfc-style
@@ -179,6 +183,13 @@
             ''
               vim.lsp.enable("nixd")
               vim.lsp.enable("clangd")
+              vim.lsp.enable("ts_ls")
+              vim.lsp.enable("eslint")
+              vim.lsp.enable("css")
+              vim.lsp.enable("html")
+              vim.lsp.enable("json")
+              vim.lsp.enable("markdown")
+              vim.lsp.enable("prismals")
             '';
         }
         {
@@ -192,6 +203,12 @@
               		c = { "clang-format" },
               		lua = { "stylua" },
               		sh = { "shfmt" },
+              		javascript = { "prettier" },
+              		typescript = { "prettier" },
+              		json = { "prettier" },
+              		css = { "prettier" },
+              		html = { "prettier" },
+              		markdown = { "prettier" },
               	},
               	formatters = {
               		injected = {
@@ -202,6 +219,9 @@
               				},
               			},
               		},
+              	},
+              	default_format_opts = {
+              		lsp_format = "fallback",
               	},
               })
               vim.keymap.set("n", "<leader>fm", require("conform").format, { desc = "Format current file" })

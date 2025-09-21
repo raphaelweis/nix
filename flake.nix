@@ -15,6 +15,10 @@
       url = "github:vague2k/vague.nvim";
       flake = false;
     };
+    prisma-language-server = {
+      url = "github:prisma/language-tools";
+      flake = false;
+    };
   };
 
   outputs =
@@ -35,6 +39,37 @@
                 src = inputs.nvim-vague;
               };
             };
+          })
+          (final: prev: {
+            prisma-language-server = prev.buildNpmPackage (finalAttrs: {
+              pname = "prisma-language-server";
+              version = "6.16.2";
+
+              src = pkgs.fetchFromGitHub {
+                owner = "prisma";
+                repo = "language-tools";
+                tag = "${finalAttrs.version}";
+                hash = "sha256-UZP0pLcbMeaYI0ytOJ68l/ZEC9dBhohJZyTU99p+1QM=";
+              };
+
+              sourceRoot = "${finalAttrs.src.name}/packages/language-server";
+
+              nativeBuildInputs = [ pkgs.pkg-config ];
+              buildInputs = [ pkgs.libsecret ];
+
+              npmDepsHash = "sha256-UAGz/qCYf+jsgCWqvR52mW6Ze3WWP9EHuE4k9wCbnH0=";
+
+              npmPackFlags = [ "--ignore-scripts" ];
+
+              NODE_OPTIONS = "--openssl-legacy-provider";
+
+              meta = {
+                description = "Language server for Prisma";
+                homepage = "https://github.com/prisma/language-tools";
+                license = inputs.nixpkgs.lib.licenses.asl20;
+                mainProgram = "prisma-language-server";
+              };
+            });
           })
         ];
       };
