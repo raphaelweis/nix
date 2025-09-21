@@ -4,8 +4,4 @@
     username = username;
     homeDirectory = "/home/${username}";
   };
-
-  rw = {
-    ghostty.fontSize = 14;
-  };
 }

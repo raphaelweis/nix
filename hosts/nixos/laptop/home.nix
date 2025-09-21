@@ -1,7 +1,4 @@
-{ ... }:
-let
-  username = "raphaelw";
-in
+{ username, ... }:
 {
   home = {
     username = username;

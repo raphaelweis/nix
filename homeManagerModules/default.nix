@@ -1,60 +1,39 @@
 {
-  pkgs,
-    lib,
-    inputs,
-    ...
+  lib,
+  inputs,
+  ...
 }:
 
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
-      ./cmdline.nix
-      ./nvim.nix
-      ./sway.nix
-      ./ghostty.nix
-      ./tofi.nix
-      ./tmux.nix
-      ./zsh.nix
-      ./git.nix
-      ./gh.nix
-      ./fzf.nix
-      ./fonts.nix
-      ./alacritty.nix
-      ./i3status.nix
-      ./dropbox.nix
-      ./rofi.nix
-      ./xdg.nix
-      ./android.nix
-      ./dconf.nix
-      ./cursor.nix
-      ./minecraft.nix
-      ./discord.nix
-      ];
-
-  home = {
-    packages = with pkgs; [
-      spotify
-        pavucontrol
-        chntpw
-        postman
-        nautilus
-    ];
-  };
-
-  programs = {
-    vscode = {
-      enable = true;
-      package = pkgs.vscode.fhs;
-    };
-    nix-index = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-    zen-browser.enable = true;
-  };
+    ./gui-pkgs.nix
+    ./cmdline-pkgs.nix
+    ./nvim.nix
+    ./sway.nix
+    ./ghostty.nix
+    ./tofi.nix
+    ./tmux.nix
+    ./zsh.nix
+    ./git.nix
+    ./gh.nix
+    ./fzf.nix
+    ./fonts.nix
+    ./alacritty.nix
+    ./i3status.nix
+    ./dropbox.nix
+    ./rofi.nix
+    ./xdg.nix
+    ./android.nix
+    ./dconf.nix
+    ./cursor.nix
+    ./minecraft.nix
+    ./discord.nix
+  ];
 
   rw = {
-    cmdline.enable = lib.mkDefault true;
+    guiPkgs.enable = lib.mkDefault true;
+    cmdlinePkgs.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
     sway.enable = lib.mkDefault false;
     ghostty.enable = lib.mkDefault true;

@@ -85,11 +85,24 @@
             inputs.home-manager.nixosModules.home-manager
           ];
         };
+      mkHome =
+        pathToConfig: username:
+        inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs username system; };
+          modules = [
+            pathToConfig
+            inputs.self.outputs.homeManagerModules.default
+          ];
+        };
     in
     {
       nixosConfigurations = {
         laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "raphaelw";
         desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "raphaelw";
+      };
+      homeConfigurations = {
+        work = mkHome ./hosts/home-manager/work/home.nix "Raphael.Weis";
       };
       nixosModules.default = ./nixosModules;
       homeManagerModules.default = ./homeManagerModules;

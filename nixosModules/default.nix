@@ -92,6 +92,7 @@
     environment.systemPackages = with pkgs; [
       vim
       killall
+      home-manager
     ];
 
     nix.settings.experimental-features = [
