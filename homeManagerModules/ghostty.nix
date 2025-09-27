@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.rw.ghostty = {
     enable = lib.mkEnableOption "ghostty configuration.";
@@ -11,6 +16,7 @@
   config = lib.mkIf config.rw.ghostty.enable {
     programs.ghostty = {
       enable = true;
+      package = if pkgs.stdenv.isLinux then pkgs.ghostty else null;
       settings = {
         confirm-close-surface = true;
         theme = "vague";
