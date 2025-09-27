@@ -25,6 +25,8 @@
         gtk-single-instance = true;
         keybind = [
           "ctrl+enter=unbind"
+          "performable:alt+c=copy_to_clipboard"
+          "performable:alt+v=paste_from_clipboard"
         ];
       };
       themes = {
