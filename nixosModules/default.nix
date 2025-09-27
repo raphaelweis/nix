@@ -4,6 +4,7 @@
   lib,
   pkgs,
   username,
+  isWork,
   system,
   ...
 }:
@@ -30,7 +31,7 @@
         (import config.rw.homeManagerConfig)
         inputs.self.outputs.homeManagerModules.default
       ];
-      extraSpecialArgs = { inherit inputs username system; };
+      extraSpecialArgs = { inherit inputs username isWork system; };
     };
 
     time.timeZone = "Europe/Paris";

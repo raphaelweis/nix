@@ -1,6 +1,7 @@
 {
   lib,
   inputs,
+  isWork,
   ...
 }:
 
@@ -32,28 +33,28 @@
   ];
 
   rw = {
-    guiPkgs.enable = lib.mkDefault true;
-    cmdlinePkgs.enable = lib.mkDefault true;
     nvim.enable = lib.mkDefault true;
-    sway.enable = lib.mkDefault false;
     ghostty.enable = lib.mkDefault true;
-    tofi.enable = lib.mkDefault false;
     tmux.enable = lib.mkDefault true;
     zsh.enable = lib.mkDefault true;
-    git.enable = lib.mkDefault true;
-    gh.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
-    fonts.enable = lib.mkDefault true;
-    alacritty.enable = lib.mkDefault true;
-    i3status.enable = lib.mkDefault true;
-    dropbox.enable = lib.mkDefault true;
-    rofi.enable = lib.mkDefault true;
-    xdg.enable = lib.mkDefault true;
-    android.enable = lib.mkDefault true;
-    dconf.enable = lib.mkDefault true;
-    cursor.enable = lib.mkDefault true;
-    minecraft.enable = lib.mkDefault true;
-    discord.enable = lib.mkDefault true;
+    guiPkgs.enable = lib.mkDefault (!isWork);
+    cmdlinePkgs.enable = lib.mkDefault (!isWork);
+    sway.enable = lib.mkDefault (!isWork);
+    tofi.enable = lib.mkDefault (!isWork);
+    git.enable = lib.mkDefault (!isWork);
+    gh.enable = lib.mkDefault (!isWork);
+    fonts.enable = lib.mkDefault (!isWork);
+    alacritty.enable = lib.mkDefault (!isWork);
+    i3status.enable = lib.mkDefault (!isWork);
+    dropbox.enable = lib.mkDefault (!isWork);
+    rofi.enable = lib.mkDefault (!isWork);
+    xdg.enable = lib.mkDefault (!isWork);
+    android.enable = lib.mkDefault (!isWork);
+    dconf.enable = lib.mkDefault (!isWork);
+    cursor.enable = lib.mkDefault (!isWork);
+    minecraft.enable = lib.mkDefault (!isWork);
+    discord.enable = lib.mkDefault (!isWork);
   };
 
   home.stateVersion = "25.05";

@@ -75,10 +75,10 @@
       };
 
       mkSystem =
-        pathToConfig: username:
+        pathToConfig: username: isWork:
         inputs.nixpkgs.lib.nixosSystem {
           inherit system pkgs;
-          specialArgs = { inherit inputs username system; };
+          specialArgs = { inherit inputs username isWork system; };
           modules = [
             pathToConfig
             inputs.self.outputs.nixosModules.default
@@ -86,10 +86,10 @@
           ];
         };
       mkHome =
-        pathToConfig: username:
+        pathToConfig: username: isWork:
         inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs username system; };
+          extraSpecialArgs = { inherit inputs username isWork system; };
           modules = [
             pathToConfig
             inputs.self.outputs.homeManagerModules.default
@@ -98,11 +98,11 @@
     in
     {
       nixosConfigurations = {
-        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "raphaelw";
-        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "raphaelw";
+        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "raphaelw" false;
+        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "raphaelw" false;
       };
       homeConfigurations = {
-        work = mkHome ./hosts/home-manager/work/home.nix "Raphael.Weis";
+        work = mkHome ./hosts/home-manager/work/home.nix "Raphael.Weis" true;
       };
       nixosModules.default = ./nixosModules;
       homeManagerModules.default = ./homeManagerModules;
