@@ -1,7 +1,17 @@
-{ username, pkgs, ... }:
+{ username, ... }:
 {
   home = {
     username = username;
-    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${username}" else "/home/${username}";
+    homeDirectory = "/Users/${username}";
+  };
+  rw = {
+    zsh = {
+      extraInit = # bash
+        ''
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+        '';
+    };
   };
 }
