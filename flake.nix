@@ -22,91 +22,71 @@
   };
 
   outputs =
-    { ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        system = system;
-        config = {
-          allowUnfree = true;
-          android_sdk.accept_license = true;
-        };
-        overlays = [
-          (final: prev: {
-            vimPlugins = prev.vimPlugins // {
-              nvim-vague = prev.vimUtils.buildVimPlugin {
-                name = "nvim-vague";
-                src = inputs.nvim-vague;
+      mkPkgs =
+        system:
+        import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            android_sdk.accept_license = true;
+          };
+          overlays = [
+            (final: prev: {
+              vimPlugins = prev.vimPlugins // {
+                nvim-vague = prev.vimUtils.buildVimPlugin {
+                  name = "nvim-vague";
+                  src = inputs.nvim-vague;
+                };
               };
-            };
-          })
-          (final: prev: {
-            prisma-language-server = prev.buildNpmPackage (finalAttrs: {
-              pname = "prisma-language-server";
-              version = "6.16.2";
-
-              src = pkgs.fetchFromGitHub {
-                owner = "prisma";
-                repo = "language-tools";
-                tag = "${finalAttrs.version}";
-                hash = "sha256-UZP0pLcbMeaYI0ytOJ68l/ZEC9dBhohJZyTU99p+1QM=";
-              };
-
-              sourceRoot = "${finalAttrs.src.name}/packages/language-server";
-
-              nativeBuildInputs = [ pkgs.pkg-config ];
-              buildInputs = [ pkgs.libsecret ];
-
-              npmDepsHash = "sha256-UAGz/qCYf+jsgCWqvR52mW6Ze3WWP9EHuE4k9wCbnH0=";
-
-              npmPackFlags = [ "--ignore-scripts" ];
-
-              NODE_OPTIONS = "--openssl-legacy-provider";
-
-              meta = {
-                description = "Language server for Prisma";
-                homepage = "https://github.com/prisma/language-tools";
-                license = inputs.nixpkgs.lib.licenses.asl20;
-                mainProgram = "prisma-language-server";
-              };
-            });
-          })
-        ];
-      };
-
-      mkSystem =
-        pathToConfig: username: isWork:
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = { inherit inputs username isWork system; };
-          modules = [
-            pathToConfig
-            inputs.self.outputs.nixosModules.default
-            inputs.home-manager.nixosModules.home-manager
+            })
           ];
         };
-      mkHome =
-        pathToConfig: username: isWork:
-        inputs.home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs username isWork system; };
+
+      mkSystem =
+        system: pathToConfig: username: isWork:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          pkgs = mkPkgs system;
+          specialArgs = { inherit inputs username isWork; };
           modules = [
             pathToConfig
-            inputs.self.outputs.homeManagerModules.default
+            self.outputs.nixosModules.default
+            home-manager.nixosModules.home-manager
+          ];
+        };
+
+      mkHome =
+        system: pathToConfig: username: isWork:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs system;
+          extraSpecialArgs = { inherit inputs username isWork; };
+          modules = [
+            pathToConfig
+            self.outputs.homeManagerModules.default
           ];
         };
     in
     {
       nixosConfigurations = {
-        laptop = mkSystem ./hosts/nixos/laptop/configuration.nix "raphaelw" false;
-        desktop = mkSystem ./hosts/nixos/desktop/configuration.nix "raphaelw" false;
+        laptop = mkSystem "x86_64-linux" ./hosts/nixos/laptop/configuration.nix "raphaelw" false;
+        desktop = mkSystem "x86_64-linux" ./hosts/nixos/desktop/configuration.nix "raphaelw" false;
       };
+
       homeConfigurations = {
-        work = mkHome ./hosts/home-manager/work/home.nix "Raphael.Weis" true;
+        work = mkHome "aarch64-darwin" ./hosts/home-manager/work/home.nix "raphael.weis" true;
       };
+
       nixosModules.default = ./nixosModules;
       homeManagerModules.default = ./homeManagerModules;
 
-      formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt-tree;
+      formatter.x86_64-linux = (mkPkgs "x86_64-linux").nixfmt-tree;
+      formatter.aarch64-darwin = (mkPkgs "aarch64-darwin").nixfmt-tree;
     };
 }
