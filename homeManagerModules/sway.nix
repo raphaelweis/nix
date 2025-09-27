@@ -8,7 +8,7 @@
   options.rw = {
     sway.enable = lib.mkEnableOption "sway configuration.";
   };
-  config = {
+  config = lib.mkIf config.rw.sway.enable {
     home.packages = with pkgs; [
       wl-clipboard
       playerctl
@@ -16,7 +16,7 @@
       hyprpicker
       sway-contrib.grimshot
     ];
-    wayland.windowManager.sway = lib.mkIf config.rw.sway.enable {
+    wayland.windowManager.sway = {
       enable = true;
       wrapperFeatures.gtk = true;
       config = rec {
