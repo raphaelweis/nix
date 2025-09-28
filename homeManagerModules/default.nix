@@ -30,6 +30,7 @@
     ./cursor.nix
     ./minecraft.nix
     ./discord.nix
+    ./hyprland.nix
   ];
 
   rw = {
@@ -55,6 +56,7 @@
     cursor.enable = lib.mkDefault (!isWork);
     minecraft.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
+    hyprland.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
   };

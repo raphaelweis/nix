@@ -16,6 +16,7 @@
     ./steam.nix
     ./docker.nix
     ./virtualization.nix
+    ./hyprland.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -31,7 +32,14 @@
         (import config.rw.homeManagerConfig)
         inputs.self.outputs.homeManagerModules.default
       ];
-      extraSpecialArgs = { inherit inputs username isWork system; };
+      extraSpecialArgs = {
+        inherit
+          inputs
+          username
+          isWork
+          system
+          ;
+      };
     };
 
     time.timeZone = "Europe/Paris";
@@ -107,6 +115,7 @@
       networking.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
       docker.enable = lib.mkDefault true;
+      hyprland.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
     };
   };
