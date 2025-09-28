@@ -38,6 +38,7 @@
     tmux.enable = lib.mkDefault true;
     zsh.enable = lib.mkDefault true;
     fzf.enable = lib.mkDefault true;
+
     guiPkgs.enable = lib.mkDefault (!isWork);
     cmdlinePkgs.enable = lib.mkDefault (!isWork);
     sway.enable = lib.mkDefault (!isWork);
@@ -47,7 +48,6 @@
     fonts.enable = lib.mkDefault (!isWork);
     alacritty.enable = lib.mkDefault (!isWork);
     i3status.enable = lib.mkDefault (!isWork);
-    dropbox.enable = lib.mkDefault (!isWork);
     rofi.enable = lib.mkDefault (!isWork);
     xdg.enable = lib.mkDefault (!isWork);
     android.enable = lib.mkDefault (!isWork);
@@ -55,6 +55,8 @@
     cursor.enable = lib.mkDefault (!isWork);
     minecraft.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
+
+    dropbox.enable = lib.mkDefault false;
   };
 
   home.stateVersion = "25.05";
