@@ -1,4 +1,9 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 {
   options.rw = {
     tmux.enable = lib.mkEnableOption "tmux configuration.";

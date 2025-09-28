@@ -240,6 +240,15 @@
               require("luasnip.loaders.from_vscode").lazy_load()
             '';
         }
+        {
+          plugin = lualine-nvim;
+          type = "lua";
+          config = # lua
+            ''
+              require("lualine").setup()
+            '';
+
+        }
       ];
       extraLuaConfig = # lua
         ''
