@@ -47,9 +47,6 @@
     i18n.defaultLocale = "en_US.UTF-8";
 
     services = {
-      xserver.enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
       gvfs.enable = true;
       pipewire = {
         enable = true;
@@ -111,12 +108,13 @@
 
     rw = {
       boot.enable = lib.mkDefault true;
-      gnome.enable = lib.mkDefault true;
       networking.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
       docker.enable = lib.mkDefault true;
       hyprland.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
+
+      gnome.enable = lib.mkDefault false;
     };
   };
 }

@@ -31,6 +31,7 @@
     ./minecraft.nix
     ./discord.nix
     ./hyprland.nix
+    ./gtk.nix
   ];
 
   rw = {
@@ -52,11 +53,12 @@
     rofi.enable = lib.mkDefault (!isWork);
     xdg.enable = lib.mkDefault (!isWork);
     android.enable = lib.mkDefault (!isWork);
-    dconf.enable = lib.mkDefault (!isWork);
     cursor.enable = lib.mkDefault (!isWork);
     minecraft.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
     hyprland.enable = lib.mkDefault (!isWork);
+    gtk.enable = lib.mkDefault (!isWork);
+    dconf.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
   };

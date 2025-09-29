@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }:
@@ -9,13 +8,12 @@
     enable = lib.mkEnableOption "Hyprland (Wayland compositor)";
   };
   config = lib.mkIf config.rw.hyprland.enable {
-    xdg.portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
-      ];
+    environment.variables = {
+      NIXOS_OZONE_WL = "1";
     };
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
   };
 }
