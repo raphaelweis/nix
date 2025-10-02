@@ -19,6 +19,7 @@
       plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
         prefix-highlight
+        resurrect
       ];
       extraConfig = # tmux
         ''
