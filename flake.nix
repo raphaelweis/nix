@@ -11,12 +11,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    astal.url = "github:aylur/astal";
+    ags.url = "github:aylur/ags";
     nvim-vague = {
       url = "github:vague2k/vague.nvim";
-      flake = false;
-    };
-    prisma-language-server = {
-      url = "github:prisma/language-tools";
       flake = false;
     };
   };

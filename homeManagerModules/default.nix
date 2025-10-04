@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.zen-browser.homeModules.twilight
+    inputs.ags.homeManagerModules.default
     ./gui-pkgs.nix
     ./cmdline-pkgs.nix
     ./nvim.nix
@@ -32,6 +33,7 @@
     ./discord.nix
     ./hyprland.nix
     ./gtk.nix
+    ./ags.nix
   ];
 
   rw = {
@@ -59,6 +61,7 @@
     hyprland.enable = lib.mkDefault (!isWork);
     gtk.enable = lib.mkDefault (!isWork);
     dconf.enable = lib.mkDefault (!isWork);
+    ags.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
   };

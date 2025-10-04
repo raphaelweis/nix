@@ -9,7 +9,7 @@
     enable = lib.mkEnableOption "dconf (gnome and gnome extensions) configuration.";
     wallpaper = lib.mkOption {
       type = lib.types.path;
-      default = ../assets/the_solo_traveller_wallpaper_desktop.png;
+      default = ../resources/assets/the_solo_traveller_wallpaper_desktop.png;
       description = "An image to set as the gnome wallpaper.";
     };
   };
