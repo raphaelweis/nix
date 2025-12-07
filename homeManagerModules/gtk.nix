@@ -17,12 +17,12 @@
       };
       gtk3 = {
         extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
+          gtk-application-prefer-dark-theme = 0; # set to 1 for dark mode
         };
       };
       gtk4 = {
         extraConfig = {
-          gtk-application-prefer-dark-theme = 1;
+          gtk-application-prefer-dark-theme = 0; # set to 1 for dark mode
         };
       };
     };

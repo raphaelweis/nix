@@ -29,7 +29,6 @@
     ];
     programs.neovim = {
       enable = true;
-      package = if pkgs.stdenv.isLinux then pkgs.neovim else null;
       defaultEditor = true;
       vimAlias = true;
       withNodeJs = false;

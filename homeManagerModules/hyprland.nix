@@ -17,7 +17,7 @@
         adwaita-icon-theme
       ];
     };
-   wayland.windowManager.hyprland = {
+    wayland.windowManager.hyprland = {
       enable = true;
       # Disable systemd integration if using uwsm.
       systemd.enable = false;
@@ -25,7 +25,10 @@
         input = {
           kb_layout = "us";
           kb_variant = "intl";
-          sensitivity = -0.5;
+          accel_profile = "flat";
+          touchpad = {
+            natural_scroll = true;
+          };
         };
 
         dwindle = {

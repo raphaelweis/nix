@@ -46,7 +46,7 @@
           ];
         };
         "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
+          color-scheme = "prefer-light";
           show-battery-percentage = true;
           enable-hot-corners = false;
         };

@@ -18,6 +18,7 @@
       pnpm
       rlwrap
       chntpw
+      acpi
     ];
 
     programs = {
