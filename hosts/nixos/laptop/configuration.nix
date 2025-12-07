@@ -56,7 +56,7 @@
         };
       in
       [
-        (pkgs.runCommandNoCC "subwoofers" { } ''
+        (pkgs.runCommand "subwoofers" { } ''
           mkdir -p $out/lib/firmware/
           cp ${tas} $out/lib/firmware/TAS2XXX38BB.bin
           cp ${tia} $out/lib/firmware/TIAS2781RCA4.bin

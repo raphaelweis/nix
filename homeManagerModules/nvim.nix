@@ -60,15 +60,14 @@
             '';
         }
         {
-          plugin = nvim-vague;
+          plugin = vscode-nvim;
           type = "lua";
           config = # lua
             ''
-              require("vague").setup({
-              	transparent = false,
-              	italic = false,
+              require("vscode").setup({
+              	transparent = true,
               })
-              vim.cmd("colorscheme vague")
+              vim.cmd("colorscheme vscode")
             '';
         }
         {

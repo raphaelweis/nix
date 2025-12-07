@@ -6,9 +6,11 @@
   config = lib.mkIf config.rw.git.enable {
     programs.git = {
       enable = true;
-      userEmail = "raphael.weis.g@gmail.com";
-      userName = "Raphaël Weis";
-      extraConfig = {
+      settings = {
+        user = {
+          email = "raphael.weis.g@gmail.com";
+          name = "Raphaël Weis";
+        };
         pull.rebase = true;
         push.autoSetupRemote = true;
       };

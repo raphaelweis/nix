@@ -10,7 +10,7 @@
     enable = lib.mkEnableOption "Ags configuration.";
   };
   config = lib.mkIf config.rw.ags.enable {
-    home.packages = [ inputs.astal.packages.${pkgs.system}.io ];
+    home.packages = [ inputs.astal.packages.${pkgs.stdenv.hostPlatform.system}.io ];
     programs.ags = {
       enable = true;
       configDir = ../resources/ags;

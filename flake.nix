@@ -50,7 +50,6 @@
       mkSystem =
         system: pathToConfig: username: isWork:
         nixpkgs.lib.nixosSystem {
-          inherit system;
           pkgs = mkPkgs system;
           specialArgs = { inherit inputs username isWork; };
           modules = [
