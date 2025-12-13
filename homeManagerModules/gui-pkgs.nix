@@ -14,6 +14,7 @@
       pavucontrol
       postman
       nautilus
+      quickshell
     ];
 
     programs = {

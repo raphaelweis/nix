@@ -18,8 +18,9 @@
       enable = true;
       package = if pkgs.stdenv.isLinux then pkgs.ghostty else null;
       settings = {
+        background-opacity = 1;
         confirm-close-surface = true;
-        theme = "vague";
+        theme = "Builtin Light";
         font-family = "monospace";
         font-size = config.rw.ghostty.fontSize;
         shell-integration-features = "no-cursor";

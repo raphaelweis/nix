@@ -20,6 +20,7 @@
       vscode-langservers-extracted
       prisma-language-server
       prettier
+      kdePackages.qtdeclarative
 
       # Formatters
       nixfmt-rfc-style
@@ -194,6 +195,7 @@
               vim.lsp.enable("json")
               vim.lsp.enable("markdown")
               vim.lsp.enable("prismals")
+              vim.lsp.enable("qmlls")
             '';
         }
         {

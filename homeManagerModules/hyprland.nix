@@ -22,6 +22,9 @@
       # Disable systemd integration if using uwsm.
       systemd.enable = false;
       settings = {
+        monitor = [
+          "eDP-1, 2944x1840@90, 0x0, 1.92"
+        ];
         input = {
           kb_layout = "us";
           kb_variant = "intl";
@@ -94,5 +97,16 @@
         ];
       };
     };
+    services.hyprpaper =
+      let
+        wallpaper = ../resources/assets/windows.jpg;
+      in
+      {
+        enable = true;
+        settings = {
+          preload = [ "${wallpaper}" ];
+          wallpaper = [ ", ${wallpaper}" ];
+        };
+      };
   };
 }

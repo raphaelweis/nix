@@ -16,12 +16,13 @@
       historySubstringSearch.enable = true;
       enableCompletion = true;
       defaultKeymap = "emacs";
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+      };
       initContent = lib.mkMerge [
         (lib.mkOrder 1500 # bash
           ''
-            autoload -U colors && colors
-            PS1="%{$fg[yellow]%}%~%{$fg[red]%} %{$reset_color%}$%b "
-
             alias ta="tmux attach"
             alias la="ls -la"
 
