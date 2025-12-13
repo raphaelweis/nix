@@ -22,7 +22,6 @@
         enable = true;
         package = pkgs.vscode.fhs;
       };
-      zen-browser.enable = true;
     };
   };
 }

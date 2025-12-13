@@ -95,6 +95,8 @@
       adb.enable = true;
     };
 
+    qt.enable = true;
+
     environment.systemPackages = with pkgs; [
       vim
       killall

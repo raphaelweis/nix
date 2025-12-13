@@ -61,14 +61,16 @@
             '';
         }
         {
-          plugin = vscode-nvim;
+          plugin = github-nvim-theme;
           type = "lua";
           config = # lua
             ''
-              require("vscode").setup({
-              	transparent = true,
+              require("github-theme").setup({
+              	options = {
+              		transparent = false,
+              	},
               })
-              vim.cmd("colorscheme vscode")
+              vim.cmd("colorscheme github_light_default")
             '';
         }
         {

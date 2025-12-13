@@ -80,7 +80,7 @@
           # Launch apps / programs
           "ALT, space, exec, rofi -show drun"
           "$mod, return, exec, ghostty"
-          "$mod, Q, exec, zen"
+          "$mod, Q, exec, firefox"
           "$mod, E, exec, nautilus"
           "$mod SHIFT, S, exec, NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimblast --notify --freeze copysave area ${config.xdg.userDirs.extraConfig.XDG_SCREENSHOT_DIR}/screenshot_$NOW.png"
 

@@ -7,7 +7,6 @@
 
 {
   imports = [
-    inputs.zen-browser.homeModules.twilight
     inputs.ags.homeManagerModules.default
     ./gui-pkgs.nix
     ./cmdline-pkgs.nix
