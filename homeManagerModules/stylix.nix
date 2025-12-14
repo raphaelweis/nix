@@ -12,6 +12,8 @@
       vscode.enable = false;
       waybar.enable = false;
       neovim.enable = false;
+      tmux.enable = false;
+      fzf.enable = false;
       firefox = {
         enable = true;
         profileNames = [ "default" ];

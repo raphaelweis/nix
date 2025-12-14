@@ -17,6 +17,7 @@
       quickshell
       netflix
       google-chrome
+      thunderbird
     ];
 
     programs = {
