@@ -36,6 +36,7 @@
     ./waybar.nix
     ./kanshi.nix
     ./stylix.nix
+    ./firefox.nix
   ];
 
   rw = {
@@ -66,6 +67,7 @@
     waybar.enable = lib.mkDefault (!isWork);
     kanshi.enable = lib.mkDefault (!isWork);
     stylix.enable = lib.mkDefault (!isWork);
+    firefox.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
     gtk.enable = false;

@@ -11,6 +11,7 @@
   config = lib.mkIf config.rw.stylix.enable {
     stylix = {
       enable = true;
+      polarity = "dark";
 
       # base16Scheme = {
       #   base00 = "F7FBF1"; # background
@@ -72,6 +73,10 @@
           package = pkgs.noto-fonts-color-emoji;
           name = "Noto Color Emoji";
         };
+      };
+
+      targets = {
+        chromium.enable = false;
       };
     };
   };

@@ -143,7 +143,7 @@
     services = {
       hyprpaper =
         let
-          wallpaper = ../resources/assets/windows-dark.png;
+          wallpaper = ../resources/assets/the_solo_traveller_wallpaper_desktop.png;
         in
         {
           enable = true;

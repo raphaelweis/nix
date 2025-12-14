@@ -189,7 +189,7 @@
             }
 
             #battery {
-              padding-right: 8px;
+              padding: 0 8px;
             }
 
             tooltip {

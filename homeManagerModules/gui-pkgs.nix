@@ -16,6 +16,7 @@
       nautilus
       quickshell
       netflix
+      google-chrome
     ];
 
     programs = {

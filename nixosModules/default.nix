@@ -96,7 +96,6 @@
     };
 
     programs = {
-      firefox.enable = true;
       zsh.enable = true;
       geary.enable = false;
       sway.enable = false;
