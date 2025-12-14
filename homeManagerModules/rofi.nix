@@ -17,7 +17,7 @@
         "drun"
       ];
       cycle = true;
-      font = "monospace 12";
+      # font = "monospace 12";
       location = "center";
       extraConfig = {
         show-icons = true;

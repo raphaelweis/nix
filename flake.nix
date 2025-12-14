@@ -9,9 +9,9 @@
     };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
-    nvim-vague = {
-      url = "github:vague2k/vague.nvim";
-      flake = false;
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -20,6 +20,7 @@
       self,
       nixpkgs,
       home-manager,
+      stylix,
       ...
     }@inputs:
     let
@@ -33,16 +34,16 @@
             allowUnfree = true;
             android_sdk.accept_license = true;
           };
-          overlays = [
-            (final: prev: {
-              vimPlugins = prev.vimPlugins // {
-                nvim-vague = prev.vimUtils.buildVimPlugin {
-                  name = "nvim-vague";
-                  src = inputs.nvim-vague;
-                };
-              };
-            })
-          ];
+          # overlays = [
+          #   (final: prev: {
+          #     vimPlugins = prev.vimPlugins // {
+          #       nvim-vague = prev.vimUtils.buildVimPlugin {
+          #         name = "nvim-vague";
+          #         src = inputs.nvim-vague;
+          #       };
+          #     };
+          #   })
+          # ];
         };
 
       mkSystem =
@@ -61,6 +62,7 @@
             pathToConfig
             self.outputs.nixosModules.default
             home-manager.nixosModules.home-manager
+            stylix.nixosModules.stylix
           ];
         };
 

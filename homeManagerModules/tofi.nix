@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   config,
   ...
@@ -13,7 +12,7 @@
       enable = true;
       settings = {
         # Directly providing the path to the font file massively improves startup time.
-        font = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono/JetBrainsMonoNLNerdFont-Regular.ttf";
+        # font = "${pkgs.nerd-fonts.jetbrains-mono}/share/fonts/truetype/NerdFonts/JetBrainsMono/JetBrainsMonoNLNerdFont-Regular.ttf";
         width = "100%";
         height = "100%";
         border-width = 0;
@@ -22,12 +21,12 @@
         padding-top = "35%";
         result-spacing = "25";
         num-results = "5";
-        selection-color = "#ffffff";
-        selection-background = "#285577";
+        # selection-color = "#ffffff";
+        # selection-background = "#285577";
         selection-background-padding = "4,10";
-        background-color = "#000A";
-        text-color = "#888888";
-        input-color = "#ffffff";
+        # background-color = "#000A";
+        # text-color = "#888888";
+        # input-color = "#ffffff";
       };
     };
   };

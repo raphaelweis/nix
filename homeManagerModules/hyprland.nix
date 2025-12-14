@@ -38,17 +38,15 @@
         };
 
         general = {
-          border_size = 2;
+          border_size = 0;
           gaps_in = 2.5;
           gaps_out = 5;
-          "col.active_border" = "0xff3b76bf";
-          "col.inactive_border" = "0x00000000";
         };
 
         decoration = {
           rounding = 16;
           shadow = {
-            enabled = false;
+            enabled = true;
           };
         };
 
@@ -86,7 +84,8 @@
           "$mod SHIFT, l, movewindoworgroup, r"
           "$mod, F, togglefloating"
           "$mod, M, fullscreen"
-          "bind = SUPER, T, layoutmsg, togglesplit"
+          "$mod, T, layoutmsg, togglesplit"
+          "$mod, P, pin"
 
           # Workspaces
           "$mod, 1, workspace, 1"
@@ -127,11 +126,14 @@
           ", XF86AudioPrev, exec, playerctl previous"
           "$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39"
           "$mod, F10, exec, hyprctl keyword monitor 'eDP-1, disable'"
-
         ];
         bindl = [
           ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
           ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, 2944x1840, 0x0, 1'"
+        ];
+        bindm = [
+          "$mod, mouse:272, movewindow"
+          "$mod, mouse:273, resizewindow"
         ];
       };
     };

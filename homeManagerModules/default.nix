@@ -35,6 +35,7 @@
     ./ags.nix
     ./waybar.nix
     ./kanshi.nix
+    ./stylix.nix
   ];
 
   rw = {
@@ -65,6 +66,7 @@
     ags.enable = lib.mkDefault (!isWork);
     waybar.enable = lib.mkDefault (!isWork);
     kanshi.enable = lib.mkDefault (!isWork);
+    stylix.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
   };

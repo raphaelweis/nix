@@ -15,6 +15,7 @@
       postman
       nautilus
       quickshell
+      netflix
     ];
 
     programs = {

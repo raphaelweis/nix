@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }:
@@ -11,10 +10,10 @@
   config = lib.mkIf config.rw.gtk.enable {
     gtk = {
       enable = true;
-      theme = {
-        name = "Adwaita";
-        package = pkgs.libadwaita;
-      };
+      # theme = {
+      #   name = "Adwaita";
+      #   package = pkgs.libadwaita;
+      # };
       gtk3 = {
         extraConfig = {
           gtk-application-prefer-dark-theme = 0; # set to 1 for dark mode

@@ -18,6 +18,7 @@
     ./docker.nix
     ./virtualization.nix
     ./hyprland.nix
+    ./stylix.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -122,6 +123,7 @@
       docker.enable = lib.mkDefault true;
       hyprland.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
+      stylix.enable = lib.mkDefault true;
 
       gnome.enable = lib.mkDefault false;
     };
