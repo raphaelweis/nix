@@ -67,10 +67,15 @@
             ''
               require("github-theme").setup({
               	options = {
-              		transparent = false,
+              		transparent = true,
+              	},
+              	groups = {
+              		github_dark_default = {
+              			StatusLine = { bg = "bg0", fg = "fg0" },
+              		},
               	},
               })
-              vim.cmd("colorscheme github_light_default")
+              vim.cmd("colorscheme github_dark_default")
             '';
         }
         {
@@ -242,15 +247,6 @@
             ''
               require("luasnip.loaders.from_vscode").lazy_load()
             '';
-        }
-        {
-          plugin = lualine-nvim;
-          type = "lua";
-          config = # lua
-            ''
-              require("lualine").setup()
-            '';
-
         }
       ];
       extraLuaConfig = # lua

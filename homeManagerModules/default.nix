@@ -61,7 +61,6 @@
     minecraft.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
     hyprland.enable = lib.mkDefault (!isWork);
-    gtk.enable = lib.mkDefault (!isWork);
     dconf.enable = lib.mkDefault (!isWork);
     ags.enable = lib.mkDefault (!isWork);
     waybar.enable = lib.mkDefault (!isWork);
@@ -69,6 +68,7 @@
     stylix.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
+    gtk.enable = false;
   };
 
   home.stateVersion = "25.05";

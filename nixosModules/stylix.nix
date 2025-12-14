@@ -12,25 +12,46 @@
     stylix = {
       enable = true;
 
-      base16Scheme = {
-        base00 = "F7FBF1"; # background
-        base01 = "F1F5EC"; # surfaceContainerLow
-        base02 = "ECEFE6"; # surfaceContainer
-        base03 = "DEE5D8"; # surfaceVariant
-        base04 = "72796F"; # outline
-        base05 = "181D17"; # onSurface
-        base06 = "E0E4DB"; # inverseOnSurface
-        base07 = "10140F"; # inverseSurface
+      # base16Scheme = {
+      #   base00 = "F7FBF1"; # background
+      #   base01 = "F1F5EC"; # surfaceContainerLow
+      #   base02 = "ECEFE6"; # surfaceContainer
+      #   base03 = "DEE5D8"; # surfaceVariant
+      #   base04 = "72796F"; # outline
+      #   base05 = "181D17"; # onSurface
+      #   base06 = "E0E4DB"; # inverseOnSurface
+      #   base07 = "10140F"; # inverseSurface
+      #
+      #   base08 = "BA1A1A"; # error
+      #   base09 = "38656A"; # tertiary
+      #   base0A = "52634F"; # secondary
+      #   base0B = "3B693A"; # primary
+      #   base0C = "BCEBF1"; # tertiaryContainer
+      #   base0D = "3B693A"; # primary (dark variant)
+      #   base0E = "D5E8CF"; # secondaryContainer
+      #   base0F = "FFDAD6"; # errorContainer
+      # };
 
-        base08 = "BA1A1A"; # error
-        base09 = "38656A"; # tertiary
-        base0A = "52634F"; # secondary
-        base0B = "3B693A"; # primary
+      base16Scheme = {
+        base00 = "10140F"; # background
+        base01 = "181D17"; # surfaceContainerLow
+        base02 = "1C211B"; # surfaceContainer
+        base03 = "424940"; # surfaceVariant
+        base04 = "8C9388"; # outline
+        base05 = "E0E4DB"; # onSurface
+        base06 = "EEF2E9"; # inverseOnSurface
+        base07 = "E0E4DB"; # inverseSurface
+
+        base08 = "FFB4AB"; # error
+        base09 = "A1CFD4"; # tertiary
+        base0A = "B9CCB4"; # secondary
+        base0B = "A0D39A"; # primary
         base0C = "BCEBF1"; # tertiaryContainer
-        base0D = "3B693A"; # primary (dark variant)
-        base0E = "D5E8CF"; # secondaryContainer
-        base0F = "FFDAD6"; # errorContainer
+        base0D = "A0D39A"; # primary (accent repeat)
+        base0E = "3B4B38"; # secondaryContainer
+        base0F = "93000A"; # errorContainer
       };
+
       fonts = {
         serif = {
           package = pkgs.roboto-serif;

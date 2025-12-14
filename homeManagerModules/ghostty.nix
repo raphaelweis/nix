@@ -20,9 +20,11 @@
       settings = {
         background-opacity = 1;
         confirm-close-surface = true;
-        theme = "Builtin Tango Light";
+        theme = "GitHub Dark Default";
         font-family = "monospace";
         font-size = config.rw.ghostty.fontSize;
+        window-padding-x = 5;
+        window-padding-y = 5;
         shell-integration-features = "no-cursor";
         cursor-style = "block";
         cursor-style-blink = false;

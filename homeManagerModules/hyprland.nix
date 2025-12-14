@@ -38,13 +38,16 @@
         };
 
         general = {
-          border_size = 0;
-          gaps_in = 2.5;
-          gaps_out = 5;
+          border_size = 2;
+          gaps_in = 5;
+          gaps_out = 10;
         };
 
         decoration = {
-          rounding = 16;
+          rounding = 8;
+          blur = {
+            enabled = true;
+          };
           shadow = {
             enabled = true;
           };
@@ -140,7 +143,7 @@
     services = {
       hyprpaper =
         let
-          wallpaper = ../resources/assets/windows.jpg;
+          wallpaper = ../resources/assets/windows-dark.png;
         in
         {
           enable = true;

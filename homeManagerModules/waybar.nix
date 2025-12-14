@@ -1,7 +1,6 @@
 {
   lib,
   config,
-  theme,
   ...
 }:
 {
@@ -149,12 +148,9 @@
             }
 
             window#waybar {
-              background-color: ${c.withHashtag.base07};
-              color: ${c.withHashtag.base06};
+              background-color: ${c.withHashtag.base00};
+              color: ${c.withHashtag.base05};
               padding: 6px 12px;
-
-              border-bottom-left-radius: 16px;
-              border-bottom-right-radius: 16px;
             }
 
             #workspaces {
@@ -164,12 +160,12 @@
             #workspaces button {
               color: ${c.withHashtag.base06};
               padding: 0 8px;
-              border-radius: 12px;
+              border-radius: 8px;
             }
 
             #workspaces button.active {
-              background-color: ${c.withHashtag.base0D};
-              color: ${c.withHashtag.base06};
+              background-color: ${c.withHashtag.base0B};
+              color: ${c.withHashtag.base02};
             }
 
             #clock {
