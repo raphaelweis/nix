@@ -148,8 +148,8 @@
             }
 
             window#waybar {
-              background-color: ${c.withHashtag.base00};
-              color: ${c.withHashtag.base05};
+              background-color: ${c.withHashtag.base07};
+              color: ${c.withHashtag.base06};
               padding: 6px 12px;
             }
 
@@ -164,7 +164,7 @@
             }
 
             #workspaces button.active {
-              background-color: ${c.withHashtag.base0B};
+              background-color: ${c.withHashtag.base0D};
               color: ${c.withHashtag.base02};
             }
 

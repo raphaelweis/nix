@@ -20,8 +20,7 @@
       settings = {
         background-opacity = 1;
         confirm-close-surface = true;
-        theme = "GitHub Dark Default";
-        background = "0A0A0A";
+        theme = "Builtin Tango Light";
         font-family = "monospace";
         font-size = config.rw.ghostty.fontSize;
         window-padding-x = 5;

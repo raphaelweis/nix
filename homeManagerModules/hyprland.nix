@@ -15,6 +15,8 @@
         playerctl
         gnome-themes-extra
         adwaita-icon-theme
+        brightnessctl
+        hyprpicker
       ];
     };
     wayland.windowManager.hyprland = {
@@ -62,6 +64,7 @@
           force_split = 2;
         };
 
+        # Config for no_gaps_when_only
         # workspace = [
         #   "w[tv1], gapsout:0, gapsin:0"
         #   "f[1], gapsout:0, gapsin:0"
@@ -118,6 +121,7 @@
           "$mod, Q, exec, firefox"
           "$mod, E, exec, nautilus"
           "$mod SHIFT, S, exec, NOW=$(date +%d-%b-%Y_%H-%M-%S) && grimblast --notify --freeze copysave area ${config.xdg.userDirs.extraConfig.XDG_SCREENSHOT_DIR}/screenshot_$NOW.png"
+          "$mod SHIFT, C, exec, hyprpicker -a -l"
 
           # Special keys / Other keybinds
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
@@ -140,6 +144,10 @@
         ];
       };
     };
+    programs.hyprlock = {
+      enable = true;
+      settings = { };
+    };
     services = {
       hyprpaper =
         let
@@ -158,7 +166,42 @@
           profile = [
             {
               time = "21:00";
-              temperature = 5500;
+              temperature = 5000;
+            }
+          ];
+        };
+      };
+      hypridle = {
+        enable = true;
+        settings = {
+          general = {
+            lock_cmd = "pidof hyprlock || hyprlock";
+            before_sleep_cmd = "loginctl lock-session";
+            after_sleep_cmd = "hyprctl dispatch dpms on";
+          };
+          listener = [
+            {
+              timeout = 150;
+              on-timeout = "brightnessctl - s set 10";
+              on-resume = "brightnessctl - r";
+            }
+            {
+              timeout = 150; # 2.5 mins
+              on-timeout = "brightnessctl - sd 'rgb:kbd_backlight' set 0";
+              on-resume = "brightnessctl - rd 'rgb:kbd_backlight'";
+            }
+            {
+              timeout = 300; # 5 mins
+              on-timeout = "loginctl lock-session";
+            }
+            {
+              timeout = 330; # 5.5 mins
+              on-timeout = "hyprctl dispatch dpms off";
+              on-resume = "hyprctl dispatch dpms on && brightnessctl - r";
+            }
+            {
+              timeout = 1800; # 30 mins
+              on-timeout = "systemctl suspend";
             }
           ];
         };
