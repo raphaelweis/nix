@@ -23,6 +23,8 @@
       ...
     }@inputs:
     let
+      theme = import ./theme.nix;
+
       mkPkgs =
         system:
         import nixpkgs {
@@ -47,7 +49,14 @@
         system: pathToConfig: username: isWork:
         nixpkgs.lib.nixosSystem {
           pkgs = mkPkgs system;
-          specialArgs = { inherit inputs username isWork; };
+          specialArgs = {
+            inherit
+              inputs
+              username
+              isWork
+              theme
+              ;
+          };
           modules = [
             pathToConfig
             self.outputs.nixosModules.default

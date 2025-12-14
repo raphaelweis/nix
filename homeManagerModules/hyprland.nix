@@ -20,11 +20,14 @@
     wayland.windowManager.hyprland = {
       enable = true;
       # Disable systemd integration if using uwsm.
-      systemd.enable = false;
+      systemd.enable = true;
       settings = {
         monitor = [
-          "eDP-1, 2944x1840@90, 0x0, 1.92"
+          # "eDP-1, 2944x1840@90, 0x0, 1.91"
+          "DP-1, 3440x1440@60, auto, 1"
+          ", preferred, auto, 1"
         ];
+
         input = {
           kb_layout = "us";
           kb_variant = "intl";
@@ -34,10 +37,40 @@
           };
         };
 
+        general = {
+          border_size = 2;
+          gaps_in = 2.5;
+          gaps_out = 5;
+          "col.active_border" = "0xff3b76bf";
+          "col.inactive_border" = "0x00000000";
+        };
+
+        decoration = {
+          rounding = 16;
+          shadow = {
+            enabled = false;
+          };
+        };
+
+        animation = [
+          "workspaces, 1, 3, default"
+        ];
+
         dwindle = {
           preserve_split = true;
           force_split = 2;
         };
+
+        # workspace = [
+        #   "w[tv1], gapsout:0, gapsin:0"
+        #   "f[1], gapsout:0, gapsin:0"
+        # ];
+        # windowrule = [
+        #   "bordersize 0, floating:0, onworkspace:w[tv1]"
+        #   "rounding 0, floating:0, onworkspace:w[tv1]"
+        #   "bordersize 0, floating:0, onworkspace:f[1]"
+        #   "rounding 0, floating:0, onworkspace:f[1]"
+        # ];
 
         "$mod" = "SUPER";
         bind = [
@@ -93,20 +126,38 @@
           ", XF86AudioNext, exec, playerctl next"
           ", XF86AudioPrev, exec, playerctl previous"
           "$mod, F9, exec, bluetoothctl connect 88:C9:E8:AD:13:39"
+          "$mod, F10, exec, hyprctl keyword monitor 'eDP-1, disable'"
 
+        ];
+        bindl = [
+          ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
+          ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, 2944x1840, 0x0, 1'"
         ];
       };
     };
-    services.hyprpaper =
-      let
-        wallpaper = ../resources/assets/windows.jpg;
-      in
-      {
+    services = {
+      hyprpaper =
+        let
+          wallpaper = ../resources/assets/windows.jpg;
+        in
+        {
+          enable = true;
+          settings = {
+            preload = [ "${wallpaper}" ];
+            wallpaper = [ ", ${wallpaper}" ];
+          };
+        };
+      hyprsunset = {
         enable = true;
         settings = {
-          preload = [ "${wallpaper}" ];
-          wallpaper = [ ", ${wallpaper}" ];
+          profile = [
+            {
+              time = "21:00";
+              temperature = 5500;
+            }
+          ];
         };
       };
+    };
   };
 }

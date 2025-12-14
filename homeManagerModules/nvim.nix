@@ -270,8 +270,6 @@
 
           vim.diagnostic.config({ virtual_text = true })
 
-          vim.lsp.inlay_hint.enable(true)
-
           vim.keymap.set("n", "<ESC>", "<CMD>noh<CR>", { desc = "Remove highlight after search" })
           vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true, desc = "Go up 1 screen line" })
           vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true, desc = "Go down 1 screen line" })

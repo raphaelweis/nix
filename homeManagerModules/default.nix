@@ -33,6 +33,8 @@
     ./hyprland.nix
     ./gtk.nix
     ./ags.nix
+    ./waybar.nix
+    ./kanshi.nix
   ];
 
   rw = {
@@ -61,6 +63,8 @@
     gtk.enable = lib.mkDefault (!isWork);
     dconf.enable = lib.mkDefault (!isWork);
     ags.enable = lib.mkDefault (!isWork);
+    waybar.enable = lib.mkDefault (!isWork);
+    kanshi.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
   };

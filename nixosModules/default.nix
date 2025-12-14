@@ -6,6 +6,7 @@
   username,
   isWork,
   system,
+  theme,
   ...
 }:
 {
@@ -38,6 +39,7 @@
           username
           isWork
           system
+          theme
           ;
       };
     };
@@ -67,6 +69,11 @@
         enable = true;
         powerOnBoot = true;
       };
+    };
+
+    i18n.inputMethod = {
+      enable = true;
+      type = "ibus";
     };
 
     powerManagement = {

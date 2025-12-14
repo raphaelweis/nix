@@ -28,9 +28,9 @@
   };
 
   services = {
-    # enable tlp on laptop to increase battery life.
+    # tlp config on laptop to increase battery life.
     tlp = {
-      enable = true;
+      enable = false;
       settings = {
         DEVICES_TO_ENABLE_ON_STARTUP = "wifi bluetooth";
       };
