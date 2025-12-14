@@ -14,6 +14,7 @@
       neovim.enable = false;
       tmux.enable = false;
       fzf.enable = false;
+      rofi.enable = false;
       firefox = {
         enable = true;
         profileNames = [ "default" ];

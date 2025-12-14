@@ -61,21 +61,14 @@
             '';
         }
         {
-          plugin = github-nvim-theme;
+          plugin = vague-nvim;
           type = "lua";
           config = # lua
             ''
-              require("github-theme").setup({
-              	options = {
-              		transparent = true,
-              	},
-              	groups = {
-              		github_dark_default = {
-              			StatusLine = { bg = "bg0", fg = "fg0" },
-              		},
-              	},
+              require("vague").setup({
+              	transparent = true,
               })
-              vim.cmd("colorscheme github_dark_default")
+              vim.cmd("colorscheme vague")
             '';
         }
         {

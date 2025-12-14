@@ -52,7 +52,6 @@
     tofi.enable = lib.mkDefault (!isWork);
     git.enable = lib.mkDefault (!isWork);
     gh.enable = lib.mkDefault (!isWork);
-    fonts.enable = lib.mkDefault (!isWork);
     alacritty.enable = lib.mkDefault (!isWork);
     i3status.enable = lib.mkDefault (!isWork);
     rofi.enable = lib.mkDefault (!isWork);
@@ -70,7 +69,8 @@
     firefox.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
-    gtk.enable = false;
+    gtk.enable = lib.mkDefault false;
+    fonts.enable = lib.mkDefault false;
   };
 
   home.stateVersion = "25.05";
