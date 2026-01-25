@@ -35,8 +35,8 @@
     ./ags.nix
     ./waybar.nix
     ./kanshi.nix
-    ./stylix.nix
     ./firefox.nix
+    ./niri.nix
   ];
 
   rw = {
@@ -58,19 +58,19 @@
     xdg.enable = lib.mkDefault (!isWork);
     android.enable = lib.mkDefault (!isWork);
     cursor.enable = lib.mkDefault (!isWork);
-    minecraft.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
     hyprland.enable = lib.mkDefault (!isWork);
     dconf.enable = lib.mkDefault (!isWork);
     ags.enable = lib.mkDefault (!isWork);
     waybar.enable = lib.mkDefault (!isWork);
     kanshi.enable = lib.mkDefault (!isWork);
-    stylix.enable = lib.mkDefault (!isWork);
     firefox.enable = lib.mkDefault (!isWork);
+    niri.enable = lib.mkDefault (!isWork);
 
     dropbox.enable = lib.mkDefault false;
     gtk.enable = lib.mkDefault false;
     fonts.enable = lib.mkDefault false;
+    minecraft.enable = lib.mkDefault false;
   };
 
   home.stateVersion = "25.05";

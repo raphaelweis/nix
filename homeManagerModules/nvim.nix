@@ -37,12 +37,13 @@
       withRuby = false;
       plugins = with pkgs.vimPlugins; [
         vim-tmux-navigator
-        nvim-treesitter.withAllGrammars
+        # nvim-treesitter.withAllGrammars
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
         lspkind-nvim
         cmp_luasnip
+        plenary-nvim
         friendly-snippets
         {
           plugin = gitsigns-nvim;
@@ -81,27 +82,27 @@
               vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
             '';
         }
-        {
-          plugin = telescope-fzf-native-nvim;
-          type = "lua";
-          config = # lua
-            ''
-              require("telescope").load_extension("fzf")
-            '';
-        }
-        {
-          plugin = nvim-treesitter;
-          type = "lua";
-          config = # lua
-            ''
-              require("nvim-treesitter.configs").setup({
-              	auto_install = false,
-              	highlight = {
-              		enable = true,
-              	},
-              })
-            '';
-        }
+        # {
+        #   plugin = telescope-fzf-native-nvim;
+        #   type = "lua";
+        #   config = # lua
+        #     ''
+        #       require("telescope").load_extension("fzf")
+        #     '';
+        # }
+        # {
+        #   plugin = nvim-treesitter;
+        #   type = "lua";
+        #   config = # lua
+        #     ''
+        #       require("nvim-treesitter.configs").setup({
+        #       	auto_install = false,
+        #       	highlight = {
+        #       		enable = true,
+        #       	},
+        #       })
+        #     '';
+        # }
         {
           plugin = vim-fugitive;
           type = "lua";

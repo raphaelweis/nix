@@ -18,7 +18,8 @@
     ./docker.nix
     ./virtualization.nix
     ./hyprland.nix
-    ./stylix.nix
+    ./dms.nix
+    ./niri.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -34,6 +35,7 @@
         (import config.rw.homeManagerConfig)
         inputs.self.outputs.homeManagerModules.default
       ];
+      backupFileExtension = "bak";
       extraSpecialArgs = {
         inherit
           inputs
@@ -99,7 +101,7 @@
       zsh.enable = true;
       geary.enable = false;
       sway.enable = false;
-      adb.enable = true;
+      nix-ld.enable = true;
     };
 
     qt.enable = true;
@@ -122,7 +124,8 @@
       docker.enable = lib.mkDefault true;
       hyprland.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
-      stylix.enable = lib.mkDefault true;
+      dms.enable = lib.mkDefault true;
+      niri.enable = lib.mkDefault true;
 
       gnome.enable = lib.mkDefault false;
     };

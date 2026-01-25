@@ -9,8 +9,12 @@
     };
     astal.url = "github:aylur/astal";
     ags.url = "github:aylur/ags";
-    stylix = {
-      url = "github:nix-community/stylix";
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -20,7 +24,6 @@
       self,
       nixpkgs,
       home-manager,
-      stylix,
       ...
     }@inputs:
     let
@@ -62,7 +65,6 @@
             pathToConfig
             self.outputs.nixosModules.default
             home-manager.nixosModules.home-manager
-            stylix.nixosModules.stylix
           ];
         };
 
@@ -81,6 +83,7 @@
       nixosConfigurations = {
         laptop = mkSystem "x86_64-linux" ./hosts/nixos/laptop/configuration.nix "raphaelw" false;
         desktop = mkSystem "x86_64-linux" ./hosts/nixos/desktop/configuration.nix "raphaelw" false;
+        vm = mkSystem "x86_64-linux" ./hosts/nixos/vm/configuration.nix "raphaelw" false;
       };
 
       homeConfigurations = {

@@ -18,6 +18,7 @@
       netflix
       google-chrome
       thunderbird
+      zed-editor
     ];
 
     programs = {
