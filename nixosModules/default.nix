@@ -17,9 +17,6 @@
     ./steam.nix
     ./docker.nix
     ./virtualization.nix
-    ./hyprland.nix
-    ./dms.nix
-    ./niri.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -122,12 +119,8 @@
       networking.enable = lib.mkDefault true;
       steam.enable = lib.mkDefault true;
       docker.enable = lib.mkDefault true;
-      hyprland.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
-      dms.enable = lib.mkDefault true;
-      niri.enable = lib.mkDefault true;
-
-      gnome.enable = lib.mkDefault false;
+      gnome.enable = lib.mkDefault true;
     };
   };
 }

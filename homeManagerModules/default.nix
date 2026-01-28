@@ -11,9 +11,7 @@
     ./gui-pkgs.nix
     ./cmdline-pkgs.nix
     ./nvim.nix
-    ./sway.nix
     ./ghostty.nix
-    ./tofi.nix
     ./tmux.nix
     ./zsh.nix
     ./git.nix
@@ -21,22 +19,13 @@
     ./fzf.nix
     ./fonts.nix
     ./alacritty.nix
-    ./i3status.nix
-    ./dropbox.nix
-    ./rofi.nix
     ./xdg.nix
     ./android.nix
     ./dconf.nix
     ./cursor.nix
-    ./minecraft.nix
     ./discord.nix
-    ./hyprland.nix
     ./gtk.nix
-    ./ags.nix
-    ./waybar.nix
-    ./kanshi.nix
     ./firefox.nix
-    ./niri.nix
   ];
 
   rw = {
@@ -48,29 +37,18 @@
 
     guiPkgs.enable = lib.mkDefault (!isWork);
     cmdlinePkgs.enable = lib.mkDefault (!isWork);
-    sway.enable = lib.mkDefault (!isWork);
-    tofi.enable = lib.mkDefault (!isWork);
     git.enable = lib.mkDefault (!isWork);
     gh.enable = lib.mkDefault (!isWork);
     alacritty.enable = lib.mkDefault (!isWork);
-    i3status.enable = lib.mkDefault (!isWork);
-    rofi.enable = lib.mkDefault (!isWork);
     xdg.enable = lib.mkDefault (!isWork);
     android.enable = lib.mkDefault (!isWork);
     cursor.enable = lib.mkDefault (!isWork);
     discord.enable = lib.mkDefault (!isWork);
-    hyprland.enable = lib.mkDefault (!isWork);
     dconf.enable = lib.mkDefault (!isWork);
-    ags.enable = lib.mkDefault (!isWork);
-    waybar.enable = lib.mkDefault (!isWork);
-    kanshi.enable = lib.mkDefault (!isWork);
     firefox.enable = lib.mkDefault (!isWork);
-    niri.enable = lib.mkDefault (!isWork);
+    fonts.enable = lib.mkDefault true;
 
-    dropbox.enable = lib.mkDefault false;
     gtk.enable = lib.mkDefault false;
-    fonts.enable = lib.mkDefault false;
-    minecraft.enable = lib.mkDefault false;
   };
 
   home.stateVersion = "25.05";
