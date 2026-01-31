@@ -26,6 +26,7 @@
     ./discord.nix
     ./gtk.nix
     ./firefox.nix
+    ./starship.nix
   ];
 
   rw = {
@@ -47,6 +48,7 @@
     dconf.enable = lib.mkDefault (!isWork);
     firefox.enable = lib.mkDefault (!isWork);
     fonts.enable = lib.mkDefault true;
+    starship.enable = lib.mkDefault true;
 
     gtk.enable = lib.mkDefault false;
   };

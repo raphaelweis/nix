@@ -19,6 +19,7 @@
       google-chrome
       thunderbird
       zed-editor
+      pgadmin4-desktopmode
     ];
 
     programs = {

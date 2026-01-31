@@ -17,6 +17,7 @@
     ./steam.nix
     ./docker.nix
     ./virtualization.nix
+    ./postgresql.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -121,6 +122,7 @@
       docker.enable = lib.mkDefault true;
       virtualization.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
+      postgresql.enable = lib.mkDefault true;
     };
   };
 }

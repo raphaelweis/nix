@@ -7,22 +7,6 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        # font = {
-        #   normal = {
-        #     family = "monospace";
-        #     style = "Regular";
-        #   };
-        #   bold = {
-        #     style = "Bold";
-        #   };
-        #   italic = {
-        #     style = "Italic";
-        #   };
-        #   bold_italic = {
-        #     style = "Bold Italic";
-        #   };
-        #   size = 12;
-        # };
         mouse = {
           hide_when_typing = true;
         };
@@ -30,39 +14,34 @@
           decorations = "None";
           startup_mode = "Maximized";
         };
+        colors = {
+          primary = {
+            background = "#1d2021";
+            foreground = "#ebdbb2";
+          };
 
-        # Vague for Alacritty
-        # -------------------
-        # Theme Author: vague2k <ilovedrawing056@gmail.com>
-        # Ported by:	skewb1k <skewb1kunix@gmail.com>
-        # License:  	MIT License
-        # Upstream: 	https://github.com/vague2k/vague.nvim/blob/main/extras/alacritty/vague.toml
-        #   colors = {
-        #     primary = {
-        #       background = "#141415";
-        #       foreground = "#cdcdcd";
-        #     };
-        #     normal = {
-        #       black = "#252530";
-        #       red = "#d8647e";
-        #       green = "#7fa563";
-        #       yellow = "#f3be7c";
-        #       blue = "#6e94b2";
-        #       magenta = "#bb9dbd";
-        #       cyan = "#aeaed1";
-        #       white = "#cdcdcd";
-        #     };
-        #     bright = {
-        #       black = "#606079";
-        #       red = "#e08398";
-        #       green = "#99b782";
-        #       yellow = "#f5cb96";
-        #       blue = "#90a0b5";
-        #       magenta = "#c9b1ca";
-        #       cyan = "#bebeda";
-        #       white = "#d7d7d7";
-        #     };
-        #   };
+          normal = {
+            black = "#282828";
+            red = "#cc241d";
+            green = "#98971a";
+            yellow = "#d79921";
+            blue = "#458588";
+            magenta = "#b16286";
+            cyan = "#689d6a";
+            white = "#a89984";
+          };
+
+          bright = {
+            black = "#928374";
+            red = "#fb4934";
+            green = "#b8bb26";
+            yellow = "#fabd2f";
+            blue = "#83a598";
+            magenta = "#d3869b";
+            cyan = "#8ec07c";
+            white = "#ebdbb2";
+          };
+        };
       };
     };
   };

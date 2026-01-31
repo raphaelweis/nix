@@ -9,7 +9,7 @@
     enable = lib.mkEnableOption "dconf (gnome and gnome extensions) configuration.";
     wallpaper = lib.mkOption {
       type = lib.types.path;
-      default = ../resources/assets/the_solo_traveller_wallpaper_desktop.png;
+      default = ../resources/assets/the_solo_traveller_wallpaper.png;
       description = "An image to set as the gnome wallpaper.";
     };
   };
@@ -51,6 +51,7 @@
           # color-scheme = "prefer-light";
           show-battery-percentage = true;
           enable-hot-corners = false;
+          accent-color = "green";
         };
         "org/gnome/desktop/peripherals/mouse" = {
           accel-profile = "flat";
@@ -114,6 +115,11 @@
           move-to-workspace-8 = [ "<Shift><Super>8" ];
           move-to-workspace-9 = [ "<Shift><Super>9" ];
           move-to-workspace-10 = [ "<Shift><Super>0" ];
+
+          switch-applications = [ "" ];
+          switch-applications-backward = [ "" ];
+          switch-windows = [ "<Alt>Tab" ];
+          switch-windows-backward = [ "<Shift><Alt>Tab" ];
         };
         "org/gnome/shell/extensions/just-perfection" = {
           workspace-popup = false;

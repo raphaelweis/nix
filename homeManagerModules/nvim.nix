@@ -23,14 +23,14 @@
       kdePackages.qtdeclarative
 
       # Formatters
-      nixfmt-rfc-style
+      nixfmt
       stylua
       clang-tools
       shfmt
     ];
     programs.neovim = {
       enable = true;
-      defaultEditor = true;
+      defaultEditor = false;
       vimAlias = true;
       withNodeJs = false;
       withPython3 = false;
@@ -62,14 +62,18 @@
             '';
         }
         {
-          plugin = vscode-nvim;
+          plugin = gruvbox-nvim;
           type = "lua";
           config = # lua
             ''
-              require("vscode").setup({
-              	transparent = true,
+              require("gruvbox").setup({
+                contrast = "hard",
+                italic = { strings = false },
+                overrides = {
+                  SignColumn = { bg = "NONE" },
+                },
               })
-              vim.cmd("colorscheme vscode")
+              vim.cmd("colorscheme gruvbox")
             '';
         }
         {
@@ -243,7 +247,7 @@
             '';
         }
       ];
-      extraLuaConfig = # lua
+      initLua = # lua
         ''
           vim.g.mapleader = " "
           vim.opt.number = true

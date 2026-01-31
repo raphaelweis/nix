@@ -19,6 +19,7 @@
       rlwrap
       chntpw
       acpi
+      google-cloud-sdk
     ];
 
     programs = {
