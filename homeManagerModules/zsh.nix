@@ -16,10 +16,6 @@
       historySubstringSearch.enable = true;
       enableCompletion = true;
       defaultKeymap = "emacs";
-      oh-my-zsh = {
-        enable = true;
-        theme = "robbyrussell";
-      };
       initContent = lib.mkMerge [
         (lib.mkOrder 1500 # bash
           ''
@@ -57,6 +53,9 @@
 
             add-zsh-hook chpwd load-nvmrc
             load-nvmrc
+
+            source ${../resources/raw/transient-prompt.zsh-theme}
+            TRANSIENT_PROMPT_TRANSIENT_PROMPT='$(starship module character)'
           ''
         )
         (lib.mkOrder 1600 config.rw.zsh.extraInit)

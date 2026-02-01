@@ -12,6 +12,7 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
+        add_newline = true;
         gcloud = {
           disabled = true;
         };
