@@ -20,6 +20,8 @@
       chntpw
       acpi
       google-cloud-sdk
+      sops
+      age
     ];
 
     programs = {

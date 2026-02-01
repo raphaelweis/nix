@@ -35,6 +35,7 @@
           bind -T copy-mode-vi y send-keys -X copy-selection
 
           set -g status on
+          set -g mouse on
           set -g status-position 'top'
           set -g status-interval 1
           set -g status-left-length 100

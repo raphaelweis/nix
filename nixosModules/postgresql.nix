@@ -8,8 +8,8 @@
       postgresql.enable = true;
       pgadmin = {
         enable = true;
-        initialEmail = "example@mail.com";
-        initialPasswordFile = "/run/secrets/pgadminpassword";
+        initialEmail = "admin@localhost.com";
+        initialPasswordFile = config.sops.secrets."pgadmin/admin_pwd".path;
       };
     };
   };

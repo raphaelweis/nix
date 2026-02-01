@@ -32,8 +32,13 @@
       userDirs = {
         enable = true;
         createDirectories = true;
-        extraConfig = {
-          XDG_SCREENSHOT_DIR = "${config.home.homeDirectory}/Pictures/Screenshots";
+      };
+      mimeApps = {
+        defaultApplications = {
+          "text/html" = [ "firefox.desktop" ];
+          "text/xml" = [ "firefox.desktop" ];
+          "x-scheme-handler/http" = [ "firefox.desktop" ];
+          "x-scheme-handler/https" = [ "firefox.desktop" ];
         };
       };
     };

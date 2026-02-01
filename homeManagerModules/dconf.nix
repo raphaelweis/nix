@@ -29,9 +29,10 @@
             just-perfection.extensionUuid
           ];
           favorite-apps = [
+            "firefox.desktop"
             "zen-twilight.desktop"
             "com.mitchellh.ghostty.desktop"
-            "code.desktop"
+            "dev.zed.Zed.desktop"
             "discord.desktop"
             "spotify.desktop"
           ];

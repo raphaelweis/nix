@@ -7,14 +7,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    astal.url = "github:aylur/astal";
-    ags.url = "github:aylur/ags";
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -24,6 +18,7 @@
       self,
       nixpkgs,
       home-manager,
+      sops-nix,
       ...
     }@inputs:
     let
@@ -65,6 +60,7 @@
             pathToConfig
             self.outputs.nixosModules.default
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
           ];
         };
 

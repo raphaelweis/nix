@@ -20,7 +20,7 @@
       settings = {
         background-opacity = 1;
         confirm-close-surface = true;
-        theme = "Builtin Tango Light";
+        theme = "Gruvbox Dark Hard";
         font-family = "monospace";
         font-size = config.rw.ghostty.fontSize;
         window-padding-x = 5;

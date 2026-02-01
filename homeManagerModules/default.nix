@@ -1,13 +1,11 @@
 {
   lib,
-  inputs,
   isWork,
   ...
 }:
 
 {
   imports = [
-    inputs.ags.homeManagerModules.default
     ./gui-pkgs.nix
     ./cmdline-pkgs.nix
     ./nvim.nix

@@ -18,6 +18,7 @@
     ./docker.nix
     ./virtualization.nix
     ./postgresql.nix
+    ./sops.nix
   ];
 
   options.rw.homeManagerConfig = lib.mkOption {
@@ -100,6 +101,7 @@
       geary.enable = false;
       sway.enable = false;
       nix-ld.enable = true;
+      gnupg.agent.enable = true;
     };
 
     qt.enable = true;
@@ -123,6 +125,7 @@
       virtualization.enable = lib.mkDefault true;
       gnome.enable = lib.mkDefault true;
       postgresql.enable = lib.mkDefault true;
+      sops.enable = lib.mkDefault true;
     };
   };
 }
