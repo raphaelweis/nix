@@ -44,7 +44,6 @@
           set -g status-justify absolute-centre
           set -g message-style "fg=black,bg=cyan"
           set -g window-status-current-style fg=yellow,bg=default,bold
-          # set -g status-left "[#S]"
           set -g status-left ""
           set -g status-right "[#S]"
           set -g @prefix_highlight_output_prefix "#[fg=black]#[bg=yellow]"
@@ -60,7 +59,12 @@
           if [[ $# -eq 1 ]]; then
             selected=$1
           else
-            selected=$(find ~ -mindepth 1 -maxdepth 1 -type d | fzf)
+            selected=$(
+              {
+                find ~/D ~/W -mindepth 1 -maxdepth 1 -type d
+                printf '%s\n' "$HOME/.dotfiles"
+              } | fzf
+            )
           fi
 
           if [[ -z $selected ]]; then
