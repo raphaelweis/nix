@@ -22,6 +22,9 @@
       google-cloud-sdk
       sops
       age
+      typst
+      file
+      jq
     ];
 
     programs = {
