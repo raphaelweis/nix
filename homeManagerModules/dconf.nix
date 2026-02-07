@@ -49,7 +49,7 @@
           ];
         };
         "org/gnome/desktop/interface" = {
-          # color-scheme = "prefer-light";
+          color-scheme = "prefer-dark";
           show-battery-percentage = true;
           enable-hot-corners = false;
           accent-color = "green";

@@ -4,6 +4,8 @@
 
   rw = {
     networking.hostName = "patpat";
+    postgresql.enable = false;
+    sops.enable = false;
     homeManagerConfig = ./home.nix;
   };
 
