@@ -37,7 +37,7 @@
       withRuby = false;
       plugins = with pkgs.vimPlugins; [
         vim-tmux-navigator
-        # nvim-treesitter.withAllGrammars
+        nvim-treesitter.withAllGrammars
         cmp-nvim-lsp
         cmp-buffer
         cmp-path
@@ -45,6 +45,7 @@
         cmp_luasnip
         plenary-nvim
         friendly-snippets
+        nvim-web-devicons
         {
           plugin = gitsigns-nvim;
           type = "lua";
@@ -67,11 +68,11 @@
           config = # lua
             ''
               require("gruvbox").setup({
-                contrast = "hard",
-                italic = { strings = false },
-                overrides = {
-                  SignColumn = { bg = "NONE" },
-                },
+              	contrast = "hard",
+              	italic = { strings = false },
+              	overrides = {
+              		SignColumn = { bg = "NONE" },
+              	},
               })
               vim.cmd("colorscheme gruvbox")
             '';
@@ -86,27 +87,52 @@
               vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
             '';
         }
-        # {
-        #   plugin = telescope-fzf-native-nvim;
-        #   type = "lua";
-        #   config = # lua
-        #     ''
-        #       require("telescope").load_extension("fzf")
-        #     '';
-        # }
-        # {
-        #   plugin = nvim-treesitter;
-        #   type = "lua";
-        #   config = # lua
-        #     ''
-        #       require("nvim-treesitter.configs").setup({
-        #       	auto_install = false,
-        #       	highlight = {
-        #       		enable = true,
-        #       	},
-        #       })
-        #     '';
-        # }
+        {
+          plugin = telescope-fzf-native-nvim;
+          type = "lua";
+          config = # lua
+            ''
+              require("telescope").load_extension("fzf")
+            '';
+        }
+        {
+          plugin = nvim-treesitter;
+          type = "lua";
+          config = # lua
+            ''
+              vim.api.nvim_create_autocmd("FileType", {
+              	pattern = {
+              		"bash",
+              		"c",
+              		"cpp",
+              		"css",
+              		"diff",
+              		"dockerfile",
+              		"gitcommit",
+              		"gitignore",
+              		"html",
+              		"java",
+              		"javascript",
+              		"json",
+              		"lua",
+              		"markdown",
+              		"nix",
+              		"python",
+              		"sql",
+              		"typescript",
+              		"tsx",
+              		"vim",
+              		"xml",
+              		"yaml",
+              		"zsh",
+              		"typst",
+              	},
+              	callback = function()
+              		vim.treesitter.start()
+              	end,
+              })
+            '';
+        }
         {
           plugin = vim-fugitive;
           type = "lua";
