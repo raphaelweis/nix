@@ -12,6 +12,7 @@
     home.packages = with pkgs; [
       ripgrep
       tree-sitter
+      websocat
 
       # LSPs
       nixd
@@ -21,6 +22,7 @@
       prisma-language-server
       prettier
       kdePackages.qtdeclarative
+      tinymist
 
       # Formatters
       nixfmt
@@ -45,7 +47,6 @@
         cmp_luasnip
         plenary-nvim
         friendly-snippets
-        nvim-web-devicons
         {
           plugin = gitsigns-nvim;
           type = "lua";
@@ -63,6 +64,20 @@
             '';
         }
         {
+          plugin = typst-preview-nvim;
+          type = "lua";
+          config = # lua
+            ''
+              require("typst-preview").setup({
+                port = 8000,
+                dependencies_bin = {
+                  ['tinymist'] = nil,
+                  ['websocat'] = nil,
+                },
+              })
+            '';
+        }
+        {
           plugin = gruvbox-nvim;
           type = "lua";
           config = # lua
@@ -75,6 +90,14 @@
               	},
               })
               vim.cmd("colorscheme gruvbox")
+            '';
+        }
+        {
+          plugin = nvim-web-devicons;
+          type = "lua";
+          config = # lua
+            ''
+              require("nvim-web-devicons").setup()
             '';
         }
         {
