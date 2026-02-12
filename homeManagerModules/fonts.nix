@@ -11,6 +11,9 @@
   config = lib.mkIf config.rw.fonts.enable {
     home.packages = with pkgs; [
       dejavu_fonts
+      inter
+      noto-fonts
+      noto-fonts-color-emoji
       nerd-fonts.jetbrains-mono
       nerd-fonts.fira-code
       (pkgs.stdenvNoCC.mkDerivation {
