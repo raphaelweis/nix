@@ -26,6 +26,7 @@
             alias ta="tmux attach"
             alias ts="tmux-sessionizer"
             alias la="ls -la"
+            alias ns="nix-shell --run zsh"
 
             export EDITOR="nvim"
 

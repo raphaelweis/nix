@@ -28,14 +28,7 @@
             appindicator.extensionUuid
             just-perfection.extensionUuid
           ];
-          favorite-apps = [
-            "firefox.desktop"
-            "zen-twilight.desktop"
-            "com.mitchellh.ghostty.desktop"
-            "dev.zed.Zed.desktop"
-            "discord.desktop"
-            "spotify.desktop"
-          ];
+          favorite-apps = [ ];
         };
         "org/gnome/shell/app-switcher" = {
           current-workspace-only = true;

@@ -11,14 +11,15 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
-
   outputs =
     {
       self,
       nixpkgs,
       home-manager,
       sops-nix,
+      nix-flatpak,
       ...
     }@inputs:
     let
@@ -61,6 +62,7 @@
             self.outputs.nixosModules.default
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
+            nix-flatpak.nixosModules.nix-flatpak
           ];
         };
 

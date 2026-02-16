@@ -15,10 +15,10 @@
       age.keyFile = "${config.users.users.${username}.home}/.config/sops/age/keys.txt";
 
       secrets = {
-        "pgadmin/admin_pwd" = {
-          owner = "pgadmin";
-          group = "pgadmin";
-        };
+        # "pgadmin/admin_pwd" = {
+        #   owner = "pgadmin";
+        #   group = "pgadmin";
+        # };
       };
     };
   };
