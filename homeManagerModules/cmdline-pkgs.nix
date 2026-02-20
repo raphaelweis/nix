@@ -25,6 +25,7 @@
       typst
       file
       jq
+      gnumake
     ];
 
     programs = {
