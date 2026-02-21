@@ -95,6 +95,7 @@
         "adbusers"
         "docker"
         "libvirtd"
+        "networkmanager"
       ];
       shell = pkgs.zsh;
     };
