@@ -26,6 +26,7 @@
       file
       jq
       gnumake
+      tree
     ];
 
     programs = {
