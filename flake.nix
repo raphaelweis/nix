@@ -12,6 +12,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
   };
   outputs =
     {
@@ -73,6 +81,7 @@
           extraSpecialArgs = { inherit inputs username isWork; };
           modules = [
             pathToConfig
+            inputs.zen-browser.homeModules.beta
             self.outputs.homeManagerModules.default
           ];
         };

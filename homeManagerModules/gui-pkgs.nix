@@ -24,7 +24,6 @@
         pgadmin4-desktopmode
         zathura
         libreoffice
-        microsoft-edge
       ]
       ++ [
         (pkgs.callPackage ./pkgs/helium.nix { })
@@ -35,6 +34,7 @@
         enable = true;
         package = pkgs.vscode.fhs;
       };
+      zen-browser.enable = true;
     };
   };
 }

@@ -32,6 +32,7 @@
       useGlobalPkgs = true;
       users.${username}.imports = [
         (import config.rw.homeManagerConfig)
+        inputs.zen-browser.homeModules.beta
         inputs.self.outputs.homeManagerModules.default
       ];
       backupFileExtension = "bak";
